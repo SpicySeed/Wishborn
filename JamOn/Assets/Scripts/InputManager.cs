@@ -20,14 +20,17 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             InternalThrow(throwablePrefab1);
+            TimeManager.Instance.ResetTimeScale();
         }
         else if (Input.GetMouseButtonUp(1))
         {
             InternalThrow(throwablePrefab2);
+            TimeManager.Instance.ResetTimeScale();
         }
         else if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             holdDownTimer = 1.0f;
+            TimeManager.Instance.DoSlowmotion();
         }
 
         holdDownTimer += Time.deltaTime * 2;
