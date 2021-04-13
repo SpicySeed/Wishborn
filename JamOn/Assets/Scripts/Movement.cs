@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour
             currentAcceleration += acceleration * currentDirection * Time.deltaTime;
 
             // Flip & hair rotation
-            if (currentDirection == 1)
+            /*if (currentDirection == 1)
             {
                 transform.localScale = new Vector3(1, 1, 1);
                 targetDir.eulerAngles = new Vector3(0, 0, 135);
@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1, 1, 1);
                 targetDir.eulerAngles = new Vector3(0, 0, 45);
-            }
+            }*/
         }
         else if (currentAcceleration != 0.0)
         {
@@ -50,6 +50,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(maxSpeed * currentAcceleration);
         myRigidBody.velocity = new Vector2(maxSpeed * currentAcceleration, myRigidBody.velocity.y);
     }
 

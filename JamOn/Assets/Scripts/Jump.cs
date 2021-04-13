@@ -7,19 +7,10 @@ public class Jump : MonoBehaviour
     [SerializeField] private Rigidbody2D myRigidbody;
     [SerializeField] private GroundDetector groundDetector;
 
-    [SerializeField] private float jumpHeight = 0.0f;
-    [SerializeField] private float jumpCancelThreshold = 0.5f;
-
-    [Range(0.0f, 1.0f)] [SerializeField] private float cancelRatio = 0.2f;
-
     [Space]
-    [SerializeField] private AnimationCurve ascendCurve;
-    [SerializeField] private AnimationCurve fallCurve;
-
-    private float ascendTimer;
-    private float fallTimer;
-
-    private bool canJump = false;
+    [SerializeField] private float jumpSpeed = 10.0f;
+    [SerializeField] private float fallMultiplier = 4.5f;
+    [SerializeField] private float lowJumpMultiplier = 4f;
 
     private float jumpTimer = 0;
     private float groundedRemember = 0;
@@ -33,57 +24,31 @@ public class Jump : MonoBehaviour
         if (groundedRemember > 0) groundedRemember -= Time.deltaTime;
 
         if (groundDetector.IsGrounded() && jumpTimer <= 0)
-        {
             groundedRemember = coyoteTime;
-        }
 
-        if (groundDetector.IsGrounded()) canJump = true;
-
-        CheckGravityChange();
 
         if (Input.GetKeyDown(KeyCode.Space))
             ExecuteJump();
-        if (Input.GetKeyUp(KeyCode.Space))
-            CancelJump();
+    
+        if(myRigidbody.velocity.y < 0)
+        {
+            myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1.0f) * Time.deltaTime;
+        }
+        else if(myRigidbody.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1.0f) * Time.deltaTime;
+        }
+    
     }
 
     public void ExecuteJump()
     {
-        if ((groundedRemember > 0 || groundDetector.IsGrounded()) && canJump)
+        if ((groundedRemember > 0 || groundDetector.IsGrounded()))
         {
-            float vel = Mathf.Sqrt(2.0f * -Physics2D.gravity.y * myRigidbody.gravityScale * jumpHeight);
-            myRigidbody.velocity *= Vector2.right;
-            myRigidbody.AddForce(Vector2.up * vel, ForceMode2D.Impulse);
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0);
+            myRigidbody.velocity += Vector2.up * jumpSpeed;
 
-            canJump = false;
-
-            ascendTimer = 0.0f;
-            fallTimer = 0.0f;
             groundedRemember = 0.0f;
         }
-    }
-
-    public void CancelJump()
-    {
-        if (canJump || groundDetector.IsGrounded()) return;
-
-        if(myRigidbody.velocity.y > jumpCancelThreshold)
-            myRigidbody.velocity *= new Vector2(1.0f, 1.0f - cancelRatio);
-    }
-
-    public void CheckGravityChange()
-    {
-        if (myRigidbody.velocity.y > 0.0)
-            ascendTimer += Time.deltaTime;
-
-        if (myRigidbody.velocity.y <= 0.0)
-            fallTimer += Time.deltaTime;
-
-        if (!canJump && myRigidbody.velocity.y > 0.0)
-            myRigidbody.gravityScale = ascendCurve.Evaluate(ascendTimer);
-        else if (!canJump && myRigidbody.velocity.y <= 0.0)
-            myRigidbody.gravityScale = fallCurve.Evaluate(fallTimer);
-        else
-            myRigidbody.gravityScale = 1.0f;
     }
 }
