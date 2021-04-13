@@ -21,8 +21,22 @@ public class Jump : MonoBehaviour
 
     private bool canJump = false;
 
+    private float jumpTimer = 0;
+    private float groundedRemember = 0;
+
+    [Range(0.1f, 1.0f)] [SerializeField] private float coyoteTime;
+
     private void Update()
     {
+        // Coyote time
+        if (jumpTimer > 0) jumpTimer -= Time.deltaTime;
+        if (groundedRemember > 0) groundedRemember -= Time.deltaTime;
+
+        if (groundDetector.IsGrounded() && jumpTimer <= 0)
+        {
+            groundedRemember = coyoteTime;
+        }
+
         if (groundDetector.IsGrounded()) canJump = true;
 
         CheckGravityChange();
@@ -35,17 +49,19 @@ public class Jump : MonoBehaviour
 
     public void ExecuteJump()
     {
-        if (!groundDetector.IsGrounded() || !canJump) return;
+        if ((groundedRemember > 0 || groundDetector.IsGrounded()) && canJump)
+        {
+            float vel = Mathf.Sqrt(2.0f * -Physics2D.gravity.y * myRigidbody.gravityScale * jumpHeight);
+            myRigidbody.velocity *= Vector2.right;
+            myRigidbody.AddForce(Vector2.up * vel, ForceMode2D.Impulse);
 
-        float vel = Mathf.Sqrt(2.0f * -Physics2D.gravity.y * myRigidbody.gravityScale * jumpHeight);
-        myRigidbody.velocity *= Vector2.right;
-        myRigidbody.AddForce(Vector2.up * vel, ForceMode2D.Impulse);
+            groundDetector.ForceGrounded(false);
+            canJump = false;
 
-        groundDetector.ForceGrounded(false);
-        canJump = false;
-
-        ascendTimer = 0.0f;
-        fallTimer = 0.0f;
+            ascendTimer = 0.0f;
+            fallTimer = 0.0f;
+            groundedRemember = 0.0f;
+        }
     }
 
     public void CancelJump()

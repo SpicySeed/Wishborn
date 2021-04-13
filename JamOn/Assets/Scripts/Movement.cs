@@ -14,14 +14,30 @@ public class Movement : MonoBehaviour
     private float currentAcceleration = 0.0f; // [0.0, 1.0]
     private int currentDirection = 0;
 
+    public Transform targetDir;
+
     private void Update()
     {
         float xAxis = Input.GetAxisRaw("Horizontal");
         Move(Mathf.RoundToInt(xAxis));
 
         if (currentDirection != 0)
+        {
             currentAcceleration += acceleration * currentDirection * Time.deltaTime;
-        else if(currentAcceleration != 0.0)
+
+            // Flip & hair rotation
+            if (currentDirection == 1)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                targetDir.eulerAngles = new Vector3(0, 0, 135);
+            }
+            else if (currentDirection == -1)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                targetDir.eulerAngles = new Vector3(0, 0, 45);
+            }
+        }
+        else if (currentAcceleration != 0.0)
         {
             float sign = Mathf.Sign(currentAcceleration);
             currentAcceleration -= deceleration * sign * Time.deltaTime;
@@ -43,7 +59,8 @@ public class Movement : MonoBehaviour
         myRigidBody.angularVelocity = 0;
     }
 
-    public void Move(int direction) {
+    public void Move(int direction)
+    {
         if (direction < 0) direction = -1;
         if (direction > 0) direction = 1;
 
