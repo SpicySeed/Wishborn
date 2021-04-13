@@ -55,7 +55,6 @@ public class Jump : MonoBehaviour
             myRigidbody.velocity *= Vector2.right;
             myRigidbody.AddForce(Vector2.up * vel, ForceMode2D.Impulse);
 
-            groundDetector.ForceGrounded(false);
             canJump = false;
 
             ascendTimer = 0.0f;

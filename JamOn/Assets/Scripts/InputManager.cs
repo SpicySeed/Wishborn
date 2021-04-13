@@ -32,14 +32,10 @@ public class InputManager : MonoBehaviour
 
             holdDownTimer = 1.0f;
         }
-
-        holdDownTimer += Time.deltaTime * 2;
-    }
-
-    private void FixedUpdate()
-    {
         if (throwable == null && thrown && groundDetector.IsGrounded())
             thrown = false;
+
+        holdDownTimer += Time.deltaTime * 2;
     }
 
     private Throwable ThrowObject(Throwable throwable, Vector3 throwForce)
