@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6571495201443163349}
   - component: {fileID: 6571495201443163346}
   m_Layer: 0
-  m_Name: legs
+  m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495201443163346
 SpriteRenderer:
@@ -113,7 +113,7 @@ Transform:
   m_Children:
   - {fileID: 6571495203194485000}
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &6571495201594559267
 LineRenderer:
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 6571495201604638271}
   - component: {fileID: 6571495201604638268}
   m_Layer: 0
-  m_Name: foot
+  m_Name: FootL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,11 +278,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6571495201604638270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.365691, y: -2.4, z: 0}
+  m_LocalPosition: {x: -0.35, y: -2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495201604638268
 SpriteRenderer:
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 6571495201774575025}
   - component: {fileID: 6571495201774575038}
   m_Layer: 0
-  m_Name: scarf
+  m_Name: Scarf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495201774575038
 SpriteRenderer:
@@ -446,7 +446,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495201831299073
 SpriteRenderer:
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 6571495201897227794}
   - component: {fileID: 6571495201897227795}
   m_Layer: 0
-  m_Name: foot (1)
+  m_Name: FootR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 3
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495201897227795
 SpriteRenderer:
@@ -656,7 +656,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5951451}
+  m_Offset: {x: 0, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -667,7 +667,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5170181, y: 0.19029021}
+  m_Size: {x: 0.8, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &6571495202507873564
 MonoBehaviour:
@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 6571495202797616804}
   - component: {fileID: 6571495202797616805}
   m_Layer: 0
-  m_Name: handL
+  m_Name: HandL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,11 +707,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6571495202797616807}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8842447, y: -1.4088832, z: 0}
+  m_LocalPosition: {x: -0.88, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495202797616805
 SpriteRenderer:
@@ -793,7 +793,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495202818635905
 SpriteRenderer:
@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 6571495202867088359}
   - component: {fileID: 6571495202867088356}
   m_Layer: 0
-  m_Name: handR
+  m_Name: HandR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -871,12 +871,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6571495202867088358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.85141534, y: -1.1722022, z: 0}
+  m_LocalPosition: {x: 0.85, y: -1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6571495203086581453}
   m_Father: {fileID: 6571495202907281578}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6571495202867088356
 SpriteRenderer:
@@ -963,15 +963,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6571495202507873566}
+  - {fileID: 6571495201594559269}
+  - {fileID: 6571495202818635904}
+  - {fileID: 6571495201774575025}
   - {fileID: 6571495201831299072}
-  - {fileID: 6571495201604638271}
-  - {fileID: 6571495201897227794}
   - {fileID: 6571495202797616804}
   - {fileID: 6571495202867088359}
   - {fileID: 6571495201443163349}
-  - {fileID: 6571495201774575025}
-  - {fileID: 6571495202818635904}
-  - {fileID: 6571495201594559269}
+  - {fileID: 6571495201604638271}
+  - {fileID: 6571495201897227794}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -988,7 +988,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.0328239}
+  m_Offset: {x: 0, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -999,7 +999,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6481743, y: 3.0656478}
+  m_Size: {x: 1, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &6571495202907281583
 Rigidbody2D:
@@ -1047,9 +1047,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidBody: {fileID: 6571495202907281583}
-  maxSpeed: 7
-  acceleration: 3.5
-  deceleration: 3.5
+  maxSpeed: 10
+  acceleration: 100
+  deceleration: 100
   targetDir: {fileID: 6571495202461926781}
 --- !u!114 &6571495202907281579
 MonoBehaviour:
@@ -1065,84 +1065,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 6571495202907281583}
   groundDetector: {fileID: 6571495202507873564}
-  jumpHeight: 4
-  jumpCancelThreshold: 3.5
-  cancelRatio: 0.2
-  ascendCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.90956116
-      inSlope: 0.3223935
-      outSlope: 0.3223935
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.17703028
-    - serializedVersion: 3
-      time: 0.13594219
-      value: 0.96453434
-      inSlope: 0.2024819
-      outSlope: 0.2024819
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.24832967
-    - serializedVersion: 3
-      time: 0.9785156
-      value: 1.0296631
-      inSlope: 0.00587196
-      outSlope: 0.00587196
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.8412311
-      outWeight: 0
-    m_PreInfinity: 0
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  fallCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 9.666338
-      outSlope: 9.666338
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.39708525
-    - serializedVersion: 3
-      time: 0.19758561
-      value: 2.7470677
-      inSlope: 5.331251
-      outSlope: 5.331251
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3440389
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.46324447
-      value: 3.5861518
-      inSlope: 2.0350142
-      outSlope: 2.0350142
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.71945155
-      outWeight: 0.3860415
-    - serializedVersion: 3
-      time: 0.9635406
-      value: 3.9676034
-      inSlope: 0.028298693
-      outSlope: 0.028298693
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.96466625
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  jumpSpeed: 10
+  fallMultiplier: 4.5
+  lowJumpMultiplier: 4
   coyoteTime: 0.25
 --- !u!114 &6571495202907281577
 MonoBehaviour:
@@ -1160,8 +1085,7 @@ MonoBehaviour:
   groundDetector: {fileID: 6571495202507873564}
   throwablePrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
   offset: 1
-  maxHoldDown: 2.5
-  forceMultiplier: 10
+  forceMultiplier: 15
 --- !u!1 &6571495203086581452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,7 +1097,7 @@ GameObject:
   - component: {fileID: 6571495203086581453}
   - component: {fileID: 6571495203086581450}
   m_Layer: 0
-  m_Name: orb
+  m_Name: Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1187,7 +1111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6571495203086581452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -0.27, z: 0}
+  m_LocalPosition: {x: 0.04, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571495202867088359}

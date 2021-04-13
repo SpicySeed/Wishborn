@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class Throw : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
     [SerializeField] private GroundDetector groundDetector;
@@ -13,10 +13,7 @@ public class InputManager : MonoBehaviour
     private bool thrown = false;
 
     [SerializeField] float offset = 1.0f;
-
-    [SerializeField] private float maxHoldDown = 2.5f;
     [SerializeField] private float forceMultiplier = 10.0f;
-    private float holdDownTimer = 1.0f;
 
     private void Update()
     {
@@ -29,13 +26,10 @@ public class InputManager : MonoBehaviour
         {
             throwable.Teleport(gameObject);
             Destroy(throwable.gameObject);
-
-            holdDownTimer = 1.0f;
         }
+
         if (throwable == null && thrown && groundDetector.IsGrounded())
             thrown = false;
-
-        holdDownTimer += Time.deltaTime * 2;
     }
 
     private Throwable ThrowObject(Throwable throwable, Vector3 throwForce)
@@ -48,11 +42,15 @@ public class InputManager : MonoBehaviour
 
     private Throwable InternalThrow(Throwable prefab)
     {
-        holdDownTimer = Mathf.Clamp(holdDownTimer, 1.0f, maxHoldDown);
         Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         direction.z = 0;
         direction.Normalize();
-        Vector3 force = direction * forceMultiplier * holdDownTimer;
+        Vector3 force = direction * forceMultiplier;
         return ThrowObject(prefab, force);
+    }
+
+    public void ChargeUp()
+    {
+        thrown = false;
     }
 }
