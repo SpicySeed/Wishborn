@@ -37,6 +37,12 @@ public class Movement : MonoBehaviour
         myRigidBody.velocity = new Vector2(maxSpeed * currentAcceleration, myRigidBody.velocity.y);
     }
 
+    public void ClearForces()
+    {
+        myRigidBody.velocity = Vector2.zero;
+        myRigidBody.angularVelocity = 0;
+    }
+
     public void Move(int direction) {
         if (direction < 0) direction = -1;
         if (direction > 0) direction = 1;
