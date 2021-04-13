@@ -944,7 +944,6 @@ GameObject:
   - component: {fileID: 6571495202907281582}
   - component: {fileID: 6571495202907281579}
   - component: {fileID: 6571495202907281577}
-  - component: {fileID: 6571495202907281576}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1035,7 +1034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe28328afc582ce4bb1928e61684d483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 6571495202907281582}
 --- !u!114 &6571495202907281582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,25 +1156,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd21d1109f62e1428676d4188dc6495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerThrow: {fileID: 6571495202907281576}
   playerHealth: {fileID: 6571495202907281590}
-  teleporterPrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
-  weaponPrefab: {fileID: 6759122069760399645, guid: 00497651a41ed6649a6ba5c645ffa64a, type: 3}
+  groundDetector: {fileID: 6571495202507873564}
+  throwablePrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
+  offset: 1
   maxHoldDown: 2.5
   forceMultiplier: 10
---- !u!114 &6571495202907281576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6571495202907281569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d88c2732c7835a14c877d623a59ab9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: 1
 --- !u!1 &6571495203086581452
 GameObject:
   m_ObjectHideFlags: 0

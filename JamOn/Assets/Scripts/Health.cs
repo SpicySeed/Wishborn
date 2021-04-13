@@ -20,4 +20,10 @@ public class Health : MonoBehaviour
     {
         return alive;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Damage"))
+            Die();
+    }
 }
