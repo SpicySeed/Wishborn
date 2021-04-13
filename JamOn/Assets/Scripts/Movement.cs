@@ -11,6 +11,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float acceleration = 1.0f;
     [SerializeField] private float deceleration = 1.0f;
 
+    [SerializeField] private float portImpulseFactor = 10.0f;
+
     private float currentAcceleration = 0.0f; // [0.0, 1.0]
     private int currentDirection = 0;
 
@@ -78,5 +80,11 @@ public class Movement : MonoBehaviour
     public float GetDeceleration()
     {
         return deceleration;
+    }
+
+    public void AddImpulse(Vector3 direction)
+    {
+        Debug.Log("WEAPON VELOCITY: " + direction.ToString());
+        myRigidBody.AddForce(direction * portImpulseFactor, ForceMode2D.Impulse);
     }
 }

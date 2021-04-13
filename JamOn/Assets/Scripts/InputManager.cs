@@ -15,7 +15,8 @@ public class InputManager : MonoBehaviour
     private Throwable weapon = null;
 
     [SerializeField] private float maxHoldDown = 2.5f;
-    [SerializeField] private float forceMultiplier = 10.0f;
+    [SerializeField] private float weaponForceMultiplier = 10.0f;
+    [SerializeField] private float teleporterForceMultiplier = 5.0f;
     private float holdDownTimer = 1.0f;
 
 
@@ -23,13 +24,13 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) && teleporter == null)
         {
-            teleporter = InternalThrow(teleporterPrefab);
+            teleporter = InternalThrow(teleporterPrefab, teleporterForceMultiplier);
             playerHealth.SetTarget(teleporter);
             TimeManager.Instance.ResetTimeScale();
         }
         else if (Input.GetMouseButtonUp(1) && weapon == null)
         {
-            weapon = InternalThrow(weaponPrefab);
+            weapon = InternalThrow(weaponPrefab, weaponForceMultiplier);
             TimeManager.Instance.ResetTimeScale();
         }
         else if ((Input.GetMouseButtonDown(0) && teleporter == null) || (Input.GetMouseButtonDown(1) && weapon == null))
@@ -41,13 +42,13 @@ public class InputManager : MonoBehaviour
         holdDownTimer += Time.deltaTime * 2;
     }
 
-    private Throwable InternalThrow(Throwable prefab)
+    private Throwable InternalThrow(Throwable prefab, float forceMult)
     {
         holdDownTimer = Mathf.Clamp(holdDownTimer, 1.0f, maxHoldDown);
         Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         direction.z = 0;
         direction.Normalize();
-        Vector3 force = direction * forceMultiplier * holdDownTimer;
-        return playerThrow.ThrowObject(prefab, force);
+        Vector3 force = direction * forceMult * holdDownTimer;
+        return playerThrow.ThrowObject(prefab, force, playerHealth);
     }
 }

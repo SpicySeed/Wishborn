@@ -14,7 +14,8 @@ public class Weapon : Throwable
             if (bounceCount < 0) Destroy(gameObject);
         }
 
-        if (collision.otherCollider.gameObject.CompareTag("Player") || collision.collider.gameObject.CompareTag("Player"))
+        if (collision.otherCollider.gameObject.CompareTag("Player") || collision.collider.gameObject.CompareTag("Player") ||
+            collision.otherCollider.gameObject.CompareTag("Teleporter") || collision.collider.gameObject.CompareTag("Teleporter"))
             Destroy(gameObject);
     }
 }

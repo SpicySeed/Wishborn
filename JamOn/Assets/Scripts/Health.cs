@@ -20,12 +20,13 @@ public class Health : MonoBehaviour
         this.target = target;
     }
 
-    private void Die()
+    public void Die(Vector3 portDirection)
     {
         if (target != null)
         {
             movement.ClearForces();
-            transform.position = target.transform.position;
+            transform.position = target.transform.position + (portDirection * 5.0f);
+            movement.AddImpulse(portDirection);
             Destroy(target.gameObject);
         }
         else
@@ -37,6 +38,6 @@ public class Health : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.otherCollider.gameObject.CompareTag("Weapon") || collision.collider.gameObject.CompareTag("Weapon"))
-            Die();
+            alive = false; //Die();
     }
 }
