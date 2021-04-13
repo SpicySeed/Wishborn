@@ -25,8 +25,8 @@ public class Health : MonoBehaviour
         if (target != null)
         {
             movement.ClearForces();
-            transform.position = target.transform.position + (portDirection * 5.0f);
-            movement.AddImpulse(portDirection);
+            transform.position = target.transform.position; //+ (portDirection * 5.0f);
+            movement.SetKnifeDirection(portDirection);
             Destroy(target.gameObject);
         }
         else

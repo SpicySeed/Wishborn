@@ -794,7 +794,7 @@ MonoBehaviour:
   maxSpeed: 5
   acceleration: 3.5
   deceleration: 3.5
-  portImpulseFactor: 250
+  portImpulseFactor: 1
 --- !u!114 &1857227443
 MonoBehaviour:
   m_ObjectHideFlags: 0

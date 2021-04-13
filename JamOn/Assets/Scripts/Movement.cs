@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     private float currentAcceleration = 0.0f; // [0.0, 1.0]
     private int currentDirection = 0;
 
+    public bool borning = false;
+
     private void Update()
     {
         float xAxis = Input.GetAxisRaw("Horizontal");
@@ -23,7 +25,7 @@ public class Movement : MonoBehaviour
 
         if (currentDirection != 0)
             currentAcceleration += acceleration * currentDirection * Time.deltaTime;
-        else if(currentAcceleration != 0.0)
+        else if (currentAcceleration != 0.0)
         {
             float sign = Mathf.Sign(currentAcceleration);
             currentAcceleration -= deceleration * sign * Time.deltaTime;
@@ -36,7 +38,8 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        myRigidBody.velocity = new Vector2(maxSpeed * currentAcceleration, myRigidBody.velocity.y);
+        //if (!borning)
+            //myRigidBody.velocity = new Vector2(maxSpeed * currentAcceleration, myRigidBody.velocity.y);
     }
 
     public void ClearForces()
@@ -45,7 +48,8 @@ public class Movement : MonoBehaviour
         myRigidBody.angularVelocity = 0;
     }
 
-    public void Move(int direction) {
+    public void Move(int direction)
+    {
         if (direction < 0) direction = -1;
         if (direction > 0) direction = 1;
 
@@ -82,9 +86,18 @@ public class Movement : MonoBehaviour
         return deceleration;
     }
 
-    public void AddImpulse(Vector3 direction)
+    public void SetKnifeDirection(Vector3 direction)
     {
-        Debug.Log("WEAPON VELOCITY: " + direction.ToString());
-        myRigidBody.AddForce(direction * portImpulseFactor, ForceMode2D.Impulse);
+        //Debug.Log("WEAPON VELOCITY: " + direction.ToString());
+        //Vector2 aux = new Vector2(direction.x, direction.y);
+        //myRigidBody.AddForce(direction * portImpulseFactor, ForceMode2D.Impulse);
+        myRigidBody.velocity = direction;
+        borning = true;
+        Invoke("EndBorning", 0.1f);
+    }
+
+    private void EndBorning()
+    {
+        borning = false;
     }
 }

@@ -23,7 +23,7 @@ public class Throwable : MonoBehaviour
             if (rb == null)
                 Debug.LogError("ERROR: Weapon no tiene RigidBody2D!");
             
-            thrower.Die(rb.velocity.normalized);
+            thrower.Die(rb.velocity);
             Destroy(gameObject);
         }
     }
