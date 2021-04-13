@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    public virtual void OnCollisionEnter2D(Collision2D collision)
+    public void Teleport(GameObject player)
     {
-        if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            Destroy(this.gameObject);
+        player.transform.position = gameObject.transform.position;
     }
 }

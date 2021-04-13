@@ -447,7 +447,6 @@ GameObject:
   - component: {fileID: 1600615272}
   - component: {fileID: 1600615277}
   - component: {fileID: 1600615279}
-  - component: {fileID: 1600615278}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -471,6 +470,7 @@ MonoBehaviour:
   maxSpeed: 5
   acceleration: 3.5
   deceleration: 3.5
+  targetDir: {fileID: 0}
 --- !u!50 &1600615273
 Rigidbody2D:
   serializedVersion: 4
@@ -676,19 +676,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1600615278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600615271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d88c2732c7835a14c877d623a59ab9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: 1
+  coyoteTime: 0
 --- !u!114 &1600615279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,10 +689,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd21d1109f62e1428676d4188dc6495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerThrow: {fileID: 1600615278}
   playerHealth: {fileID: 1600615280}
-  teleporterPrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
-  weaponPrefab: {fileID: 6759122069760399645, guid: 00497651a41ed6649a6ba5c645ffa64a, type: 3}
+  groundDetector: {fileID: 1203107546}
+  throwablePrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
+  offset: 1
   maxHoldDown: 2.5
   forceMultiplier: 10
 --- !u!114 &1600615280
@@ -719,7 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe28328afc582ce4bb1928e61684d483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 1600615272}
 --- !u!1 &1838917110
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,8 +718,8 @@ GameObject:
   - component: {fileID: 1838917113}
   - component: {fileID: 1838917112}
   - component: {fileID: 1838917111}
-  m_Layer: 6
-  m_Name: Floor (1)
+  m_Layer: 0
+  m_Name: Wall
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
