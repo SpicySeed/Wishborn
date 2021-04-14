@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
     public void ObjectCollected()
     {
         collectablesCollected[currentLevel]++;
-        collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
+        if (collectableText != null)
+            collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
     }
 
     public int GetObjectsCollected()

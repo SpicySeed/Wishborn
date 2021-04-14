@@ -37,6 +37,7 @@ public class ThrowableCharge : Collectable
             collected = true;
             sprite.enabled = false;
             collision.gameObject.GetComponent<Throw>().ChargeUp();
+            TimeManager.Instance.DoSlowMotion();
         }
     }
 }

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1818037127592079398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2510175510672954228}
+  m_Layer: 0
+  m_Name: OrbSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2510175510672954228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818037127592079398}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6571495202907281578}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3757833294931357052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1049,7 @@ GameObject:
   - component: {fileID: 6571495202907281582}
   - component: {fileID: 6571495202907281579}
   - component: {fileID: 6571495202907281577}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1047,6 +1077,7 @@ Transform:
   - {fileID: 6571495201443163349}
   - {fileID: 6571495201604638271}
   - {fileID: 6571495201897227794}
+  - {fileID: 2510175510672954228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1159,11 +1190,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 6571495202907281582}
   jump: {fileID: 6571495202907281579}
-  playerHealth: {fileID: 6571495202907281590}
+  playerHair: {fileID: 0}
   groundDetector: {fileID: 6571495202507873564}
+  orbSpawn: {fileID: 2510175510672954228}
   throwablePrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
-  offset: 1
-  forceMultiplier: 15
+  forceMultiplier: 35
   movementScaleOnTeleport: 0.2
   gravityScaleOnTeleport: 0.15
   timeToWaitOnTeleport: 0.15

@@ -9,12 +9,12 @@ public class Throw : MonoBehaviour
     [SerializeField] private Jump jump;
     [SerializeField] private Hair playerHair;
     [SerializeField] private GroundDetector groundDetector;
+    [SerializeField] private Transform orbSpawn;
 
     [SerializeField] private Throwable throwablePrefab;
     private Throwable throwable = null;
     private bool thrown = false;
 
-    [SerializeField] float offset = 1.0f;
     [SerializeField] private float forceMultiplier = 10.0f;
 
     [SerializeField] private float movementScaleOnTeleport = 0.2f;
@@ -53,7 +53,7 @@ public class Throw : MonoBehaviour
 
     private Throwable ThrowObject(Throwable throwable, Vector3 throwForce)
     {
-        Throwable aux = Instantiate(throwable, transform.position + (throwForce.normalized * offset), Quaternion.identity);
+        Throwable aux = Instantiate(throwable, orbSpawn.transform.position, Quaternion.identity);
         Rigidbody2D rb = aux.GetComponent<Rigidbody2D>();
         if (rb != null) rb.AddForce(throwForce, ForceMode2D.Impulse);
         return aux;
