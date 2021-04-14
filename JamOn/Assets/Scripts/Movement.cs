@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody2D myRigidBody;
 
     [SerializeField] private float maxSpeed = 1.0f;
+    private float inertiaSpeed = 0.0f;
 
     [SerializeField] private float acceleration = 1.0f;
     [SerializeField] private float deceleration = 1.0f;
@@ -50,7 +51,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        myRigidBody.velocity = new Vector2(maxSpeed * currentAcceleration, myRigidBody.velocity.y);
+        myRigidBody.velocity = new Vector2(inertiaSpeed + maxSpeed * currentAcceleration, myRigidBody.velocity.y);
     }
 
     public void ClearForces()
@@ -65,6 +66,23 @@ public class Movement : MonoBehaviour
         if (direction > 0) direction = 1;
 
         currentDirection = direction;
+    }
+
+    public void LerpSpeed(float from, float to, float time)
+    {
+        StartCoroutine(InternalLerpSpeed(from, to, time));
+    }
+
+    private IEnumerator InternalLerpSpeed(float from, float to, float time)
+    {
+        float ogTime = time;
+        while(time > 0.0f)
+        {
+            inertiaSpeed = Mathf.Lerp(from, to, ogTime - time);
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        inertiaSpeed = to;
     }
 
     public void SetMaxSpeed(float maxSpeed)

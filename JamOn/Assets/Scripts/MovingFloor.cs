@@ -8,12 +8,18 @@ public class MovingFloor : MonoBehaviour
     [SerializeField] private List<Transform> destinationPoints;
     [SerializeField] private Transform platformTransform;
     [SerializeField] private float speed;
-    [SerializeField] private Collider2D myCollider;
+
+    [SerializeField] private Vector2 center;
+    [SerializeField] private Vector2 size;
+
     private Transform playerTransform;
     private Transform ballTransform;
     private int last=0, next=1;
     private float middlePos=0;
     private bool calculated = false;
+
+    private Collider2D[] currColliders = null;
+    private Collider2D[] oldColliders = null;
  
     private void LateUpdate()
     {
@@ -21,14 +27,17 @@ public class MovingFloor : MonoBehaviour
         playerTransform = null;
         ballTransform = null;
     }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         CheckObjects();
+        CheckInertia();
+
         Vector2 actualpos = platformTransform.position;
         Vector2 position = Vector2.Lerp(destinationPoints[last].position, destinationPoints[next].position,middlePos);
         float distance = Vector3.Distance(destinationPoints[last].position, destinationPoints[next].position);
-        middlePos += (Time.fixedDeltaTime/ distance) *speed;
+        middlePos += (Time.fixedDeltaTime/ distance) * speed;
         if (middlePos > 1)
         {
             middlePos = 0;
@@ -37,7 +46,7 @@ public class MovingFloor : MonoBehaviour
         }
         Vector2 positionDif = position - actualpos;
  
-        if(playerTransform!=null)
+        if(playerTransform != null)
             playerTransform.position = new Vector3(playerTransform.position.x + positionDif.x, playerTransform.position.y + positionDif.y, playerTransform.position.z);
        
         if (ballTransform != null)
@@ -46,22 +55,58 @@ public class MovingFloor : MonoBehaviour
         platformTransform.position = position;
     }
 
+    private void CheckInertia()
+    {
+        if (oldColliders == null) return;
+
+        for(int i = 0; i < oldColliders.Length; i++)
+        {
+            if (!System.Array.Exists(currColliders, (Collider2D c) => { return c == oldColliders[i]; }))
+            {
+                if (oldColliders[i] == null) continue;
+
+                if (oldColliders[i].gameObject.CompareTag("Player"))
+                {
+                    Vector2 direction = destinationPoints[next].position - destinationPoints[last].position;
+                    direction.Normalize();
+                    // Horizontal inertia
+                    Movement movement = oldColliders[i].gameObject.GetComponent<Movement>();
+                    movement.LerpSpeed(speed * direction.x, 0.0f, 0.75f);
+
+                    // Vertical inertia
+                    if (direction.y > 0.0)
+                    {
+                        Rigidbody2D rB = oldColliders[i].gameObject.GetComponent<Rigidbody2D>();
+                        rB.velocity += Vector2.up * direction.y * speed;
+                    }
+
+                    playerTransform = null;
+                }
+                if (oldColliders[i].gameObject.layer == LayerMask.NameToLayer("Egg"))
+                {
+                    ballTransform = null;
+                }
+            }
+        }
+    }
+
     private void CheckObjects()
     {
         if (calculated) return;
 
         calculated = true;
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(myCollider.bounds.center, myCollider.bounds.size, 0.0f);
+        oldColliders = currColliders;
+        currColliders = Physics2D.OverlapBoxAll((Vector2)platformTransform.position + center, size * platformTransform.lossyScale * size, 0.0f);
 
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < currColliders.Length; i++)
         {
-            if (colliders[i].gameObject.tag == "Player")
+            if (currColliders[i].gameObject.tag == "Player")
             {
-                playerTransform = colliders[i].transform;
+                playerTransform = currColliders[i].transform;
             }
-            else if (colliders[i].gameObject.layer == LayerMask.NameToLayer("Egg"))
+            else if (currColliders[i].gameObject.layer == LayerMask.NameToLayer("Egg"))
             {
-                ballTransform = colliders[i].transform;
+                ballTransform = currColliders[i].transform;
             }
         }
         
@@ -69,6 +114,11 @@ public class MovingFloor : MonoBehaviour
     public void ForceCalculate()
     {
         calculated = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube((Vector2)platformTransform.position + center, size * platformTransform.lossyScale * size);
     }
 
 }
