@@ -8,6 +8,7 @@ public class Throw : MonoBehaviour
     [SerializeField] private Movement movement;
     [SerializeField] private Jump jump;
     [SerializeField] private Health playerHealth;
+    [SerializeField] private Hair playerHair;
     [SerializeField] private GroundDetector groundDetector;
 
     [SerializeField] private Throwable throwablePrefab;
@@ -30,7 +31,11 @@ public class Throw : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && throwable != null)
         {
+            Vector3 earlyPos = transform.position;
             throwable.Teleport(gameObject);
+            Vector3 laterPos = transform.position;
+            Vector3 newHairPos = laterPos - earlyPos;
+            playerHair.Tp(newHairPos);
             movement.ClearForces();
             movement.SetMovementScaleForTTime(movementScaleOnTeleport, timeToWaitOnTeleport);
             jump.SetGravityScaleForTTime(gravityScaleOnTeleport, timeToWaitOnTeleport);

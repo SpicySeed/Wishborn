@@ -45,4 +45,13 @@ public class Hair : MonoBehaviour
 
         lineRend.SetPositions(segmentPoses);
     }
+
+    public void Tp(Vector3 pos)
+    {
+        for (int i = 1; i < segmentPoses.Length; i++)
+        {
+            segmentPoses[i] += pos;
+        }
+        lineRend.SetPositions(segmentPoses);
+    }
 }
