@@ -46,7 +46,7 @@ public class Hair : MonoBehaviour
         lineRend.SetPositions(segmentPoses);
     }
 
-    public void Tp(Vector3 pos)
+    public void Teleport(Vector3 pos)
     {
         for (int i = 1; i < segmentPoses.Length; i++)
         {

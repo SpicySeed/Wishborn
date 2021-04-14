@@ -31,19 +31,19 @@ public class Jump : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             ExecuteJump();
-    
-        if(myRigidbody.velocity.y < 0)
+
+        if (myRigidbody.velocity.y < 0)
         {
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * myRigidbody.gravityScale * (fallMultiplier - 1.0f) * Time.deltaTime;
 
             if (Mathf.Abs(myRigidbody.velocity.y) > maxFallSpeed)
                 myRigidbody.velocity = Vector2.up * -maxFallSpeed;
         }
-        else if(myRigidbody.velocity.y > 0 && !Input.GetButton("Jump"))
+        else if (myRigidbody.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1.0f) * Time.deltaTime;
         }
-    
+
     }
 
     public void SetGravityScaleForTTime(float scale, float time)

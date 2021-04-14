@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] int numLevels = 2;
+    [SerializeField] private int numLevels = 3;
+    [SerializeField] private int levelOffset = 0;
     [SerializeField] Text collectableText; //TODO: mover esto al manager de la interfaz del nivel
 
     private int currentLevel = 0;
-    private int[] collectablesCollected;   
+    private int[] collectablesCollected;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -29,10 +31,16 @@ public class GameManager : MonoBehaviour
         collectablesCollected = new int[numLevels];
     }
 
+    public void LoadNextLevel()
+    {
+        currentLevel++;
+        SceneManager.LoadScene(currentLevel);
+    }
+
     public void ObjectCollected()
     {
         collectablesCollected[currentLevel]++;
-        collectableText.text = collectablesCollected[currentLevel].ToString();
+        collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
     }
 
     public int GetObjectsCollected()

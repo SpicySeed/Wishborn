@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour
     private IEnumerator InternalLerpSpeed(float from, float to, float time)
     {
         float ogTime = time;
-        while(time > 0.0f)
+        while (time > 0.0f)
         {
             inertiaSpeed = Mathf.Lerp(from, to, ogTime - time);
             time -= Time.deltaTime;

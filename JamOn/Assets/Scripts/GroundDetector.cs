@@ -23,7 +23,7 @@ public class GroundDetector : MonoBehaviour
         calculated = true;
         Collider2D[] colliders = Physics2D.OverlapBoxAll(myCollider.bounds.center, myCollider.bounds.size, 0.0f);
 
-        for(int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < colliders.Length; i++)
         {
             if (((1 << colliders[i].gameObject.layer) & groundMask) != 0)
             {

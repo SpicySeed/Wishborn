@@ -30,7 +30,7 @@ public class OptionsManager : MonoBehaviour
         resDropdown.ClearOptions();
         int currentIndex = 0;
 
-        for(int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
         {
             if (resolutions[i].Equals(Screen.currentResolution))
                 currentIndex = i;

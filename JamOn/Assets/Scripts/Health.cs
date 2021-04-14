@@ -6,6 +6,13 @@ public class Health : MonoBehaviour
 {
     private bool alive = true;
 
+    private Vector2 respanwPosition;
+
+    private void Start()
+    {
+        respanwPosition = transform.position;
+    }
+
     public void Die()
     {
         alive = false;
@@ -13,12 +20,18 @@ public class Health : MonoBehaviour
 
     public void Revive()
     {
-        //Respawn
+        alive = true;
+        transform.position = respanwPosition;
     }
 
     public bool IsAlive()
     {
         return alive;
+    }
+
+    public void SetRespawnPosition(Vector2 position)
+    {
+        respanwPosition = position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
