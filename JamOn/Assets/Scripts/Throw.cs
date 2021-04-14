@@ -14,7 +14,7 @@ public class Throw : MonoBehaviour
     [SerializeField] private Throwable throwablePrefab;
     private Throwable throwable = null;
     private bool thrown = false;
-
+    private bool stopped = false;
     [SerializeField] private float forceMultiplier = 10.0f;
 
     [SerializeField] private float movementScaleOnTeleport = 0.2f;
@@ -23,12 +23,14 @@ public class Throw : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0) && throwable == null && !thrown)
+       
+        
+        if (Input.GetMouseButtonUp(0) && throwable == null && !thrown && !stopped)
         {
             throwable = InternalThrow(throwablePrefab);
             thrown = true;
         }
-        else if (Input.GetMouseButtonUp(0) && throwable != null)
+        else if (Input.GetMouseButtonUp(0) && throwable != null && !stopped)
         {
             Vector3 earlyPos = transform.position;
             throwable.Teleport(gameObject);
@@ -40,7 +42,7 @@ public class Throw : MonoBehaviour
             jump.SetGravityScaleForTTime(gravityScaleOnTeleport, timeToWaitOnTeleport);
             Destroy(throwable.gameObject);
         }
-        else if (Input.GetMouseButtonDown(1) && throwable != null)
+        else if (Input.GetMouseButtonDown(1) && throwable != null && !stopped)
         {
             Destroy(throwable.gameObject);
             throwable = null;
@@ -49,6 +51,11 @@ public class Throw : MonoBehaviour
 
         if (throwable == null && thrown && groundDetector.IsGrounded())
             thrown = false;
+
+        if (Time.timeScale == 0)
+            stopped = true;
+        else
+            stopped = false;
     }
 
     private Throwable ThrowObject(Throwable throwable, Vector3 throwForce)

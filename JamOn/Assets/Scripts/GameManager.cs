@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int levelOffset = 0;
     [SerializeField] Text collectableText; //TODO: mover esto al manager de la interfaz del nivel
 
-    private int currentLevel = 0;
+    private int currentLevel = 1;
     private int[] collectablesCollected;
 
     private void Awake()
@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
         collectablesCollected = new int[numLevels];
     }
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void LoadNextLevel()
     {
         currentLevel++;

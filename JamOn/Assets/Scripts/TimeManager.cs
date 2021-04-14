@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
     public float slowdownFactor = 0.05f;
     public float slowdownLength = 2f;
     public static TimeManager Instance;
+    private bool stopped=false;
 
     private void Awake()
     {
@@ -21,8 +22,11 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime;
-        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+        if (!stopped)
+        {
+            Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+        }
     }
 
     public void DoSlowMotion()
@@ -34,5 +38,15 @@ public class TimeManager : MonoBehaviour
     public void ResetTimeScale()
     {
         Time.timeScale = 1.0f;
+    }
+    public void Resume()
+    {
+        ResetTimeScale();
+        stopped = false;
+    }
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        stopped = true;
     }
 }
