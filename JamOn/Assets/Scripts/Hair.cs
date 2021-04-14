@@ -46,12 +46,14 @@ public class Hair : MonoBehaviour
         lineRend.SetPositions(segmentPoses);
     }
 
-    public void Teleport(Vector3 pos)
+    public void Teleport()
     {
+        segmentPoses[0] = targetDir.position;
+ 
         for (int i = 1; i < segmentPoses.Length; i++)
         {
-            segmentPoses[i] += pos;
+            segmentPoses[i] = segmentPoses[i - 1] + targetDir.right * targetDist + new Vector3(0, -0.002f * Mathf.Pow(i, 2.0f));
         }
-        lineRend.SetPositions(segmentPoses);
+            lineRend.SetPositions(segmentPoses);
     }
 }

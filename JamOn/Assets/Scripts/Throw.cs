@@ -32,11 +32,10 @@ public class Throw : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && throwable != null && !stopped)
         {
-            Vector3 earlyPos = transform.position;
+
             throwable.Teleport(gameObject);
-            Vector3 laterPos = transform.position;
-            Vector3 newHairPos = laterPos - earlyPos;
-            playerHair.Teleport(newHairPos);
+            playerHair.Teleport();
+
             movement.ClearForces();
             movement.SetMovementScaleForTTime(movementScaleOnTeleport, timeToWaitOnTeleport);
             jump.SetGravityScaleForTTime(gravityScaleOnTeleport, timeToWaitOnTeleport);
