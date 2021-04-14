@@ -754,6 +754,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCollider: {fileID: 6571495202507873567}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &6571495202797616807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1019,7 @@ GameObject:
   - component: {fileID: 6571495202907281582}
   - component: {fileID: 6571495202907281579}
   - component: {fileID: 6571495202907281577}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1138,6 +1141,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 6571495202907281583}
   groundDetector: {fileID: 6571495202507873564}
   jumpSpeed: 10
+  maxFallSpeed: 24
   fallMultiplier: 4.5
   lowJumpMultiplier: 4
   coyoteTime: 0.25
@@ -1153,11 +1157,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd21d1109f62e1428676d4188dc6495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 6571495202907281582}
+  jump: {fileID: 6571495202907281579}
   playerHealth: {fileID: 6571495202907281590}
   groundDetector: {fileID: 6571495202507873564}
   throwablePrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
   offset: 1
   forceMultiplier: 15
+  movementScaleOnTeleport: 0.2
+  gravityScaleOnTeleport: 0.15
+  timeToWaitOnTeleport: 0.15
 --- !u!1 &6571495203086581452
 GameObject:
   m_ObjectHideFlags: 0

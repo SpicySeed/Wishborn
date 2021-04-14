@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float acceleration = 1.0f;
     [SerializeField] private float deceleration = 1.0f;
 
+    private float movementScale = 1.0f;
+
     private float currentAcceleration = 0.0f; // [0.0, 1.0]
     private int currentDirection = 0;
 
@@ -51,7 +53,24 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        myRigidBody.velocity = new Vector2(inertiaSpeed + maxSpeed * currentAcceleration, myRigidBody.velocity.y);
+        myRigidBody.velocity = new Vector2(inertiaSpeed + maxSpeed * currentAcceleration, myRigidBody.velocity.y) * movementScale;
+    }
+
+    public void SetMovementScaleForTTime(float scale, float time)
+    {
+        StartCoroutine(InternalSetMovementScaleForTTime(scale, time));
+    }
+
+    private IEnumerator InternalSetMovementScaleForTTime(float scale, float time)
+    {
+        movementScale = scale;
+        while (time > 0.0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        movementScale = 1.0f;
     }
 
     public void ClearForces()

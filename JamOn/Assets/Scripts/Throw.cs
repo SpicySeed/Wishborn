@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
+    [SerializeField] private Movement movement;
+    [SerializeField] private Jump jump;
     [SerializeField] private Health playerHealth;
     [SerializeField] private GroundDetector groundDetector;
 
@@ -14,6 +16,10 @@ public class Throw : MonoBehaviour
 
     [SerializeField] float offset = 1.0f;
     [SerializeField] private float forceMultiplier = 10.0f;
+
+    [SerializeField] private float movementScaleOnTeleport = 0.2f;
+    [SerializeField] private float gravityScaleOnTeleport = 0.2f;
+    [SerializeField] private float timeToWaitOnTeleport = 0.5f;
 
     private void Update()
     {
@@ -25,7 +31,16 @@ public class Throw : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && throwable != null)
         {
             throwable.Teleport(gameObject);
+            movement.ClearForces();
+            movement.SetMovementScaleForTTime(movementScaleOnTeleport, timeToWaitOnTeleport);
+            jump.SetGravityScaleForTTime(gravityScaleOnTeleport, timeToWaitOnTeleport);
             Destroy(throwable.gameObject);
+        }
+        else if(Input.GetMouseButtonDown(1) && throwable != null)
+        {
+            Destroy(throwable.gameObject);
+            throwable = null;
+            thrown = false;
         }
 
         if (throwable == null && thrown && groundDetector.IsGrounded())

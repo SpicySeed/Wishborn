@@ -9,6 +9,8 @@ public class Jump : MonoBehaviour
 
     [Space]
     [SerializeField] private float jumpSpeed = 10.0f;
+
+    [SerializeField] private float maxFallSpeed = 30.0f;
     [SerializeField] private float fallMultiplier = 4.5f;
     [SerializeField] private float lowJumpMultiplier = 4f;
 
@@ -32,13 +34,33 @@ public class Jump : MonoBehaviour
     
         if(myRigidbody.velocity.y < 0)
         {
-            myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1.0f) * Time.deltaTime;
+            myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * myRigidbody.gravityScale * (fallMultiplier - 1.0f) * Time.deltaTime;
+
+            if (Mathf.Abs(myRigidbody.velocity.y) > maxFallSpeed)
+                myRigidbody.velocity = Vector2.up * -maxFallSpeed;
         }
         else if(myRigidbody.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1.0f) * Time.deltaTime;
         }
     
+    }
+
+    public void SetGravityScaleForTTime(float scale, float time)
+    {
+        StartCoroutine(InternalSetGravityScaleForTTime(scale, time));
+    }
+
+    private IEnumerator InternalSetGravityScaleForTTime(float scale, float time)
+    {
+        myRigidbody.gravityScale = scale;
+        while (time > 0.0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        myRigidbody.gravityScale = 1.0f;
     }
 
     public void ExecuteJump()

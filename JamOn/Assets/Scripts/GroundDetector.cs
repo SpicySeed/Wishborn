@@ -9,6 +9,8 @@ public class GroundDetector : MonoBehaviour
     private bool calculated = false;
     private bool grounded = false;
 
+    [SerializeField] private LayerMask groundMask;
+
     private void LateUpdate()
     {
         calculated = false;
@@ -23,7 +25,7 @@ public class GroundDetector : MonoBehaviour
 
         for(int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject.layer == LayerMask.NameToLayer("Ground"))
+            if (((1 << colliders[i].gameObject.layer) & groundMask) != 0)
             {
                 return grounded = true;
             }
