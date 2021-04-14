@@ -93,7 +93,7 @@ public class MovingFloor : MonoBehaviour
                     playerTransform = null;
                 }
 
-                if (oldColliders[i].gameObject.layer == LayerMask.NameToLayer("Egg"))
+                if (oldColliders[i].gameObject.layer == LayerMask.NameToLayer("Orb"))
                     ballTransform = null;
             }
         }
@@ -106,6 +106,7 @@ public class MovingFloor : MonoBehaviour
         calculated = true;
         oldColliders = currColliders;
         currColliders = Physics2D.OverlapBoxAll((Vector2)platformTransform.position + center, size * platformTransform.lossyScale * size, 0.0f);
+   
 
         for (int i = 0; i < currColliders.Length; i++)
         {
@@ -113,13 +114,12 @@ public class MovingFloor : MonoBehaviour
             {
                 playerTransform = currColliders[i].transform;
             }
-            else if (currColliders[i].gameObject.layer == LayerMask.NameToLayer("Egg"))
+            else if (currColliders[i].gameObject.layer == LayerMask.NameToLayer("Orb"))
             {
                 ballTransform = currColliders[i].transform;
             }
         }
     }
-
     public void ForceCalculate()
     {
         calculated = false;
@@ -127,6 +127,7 @@ public class MovingFloor : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.yellow;
         Gizmos.DrawCube((Vector2)platformTransform.position + center, size * platformTransform.lossyScale * size);
     }
 }
