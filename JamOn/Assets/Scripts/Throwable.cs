@@ -24,7 +24,23 @@ public class Throwable : MonoBehaviour
     public void Teleport(GameObject player)
     {
         if (teleportEnabled)
+        {
+            Collider2D collider = player.GetComponent<Collider2D>();
+
+            Collider2D[] collisions = Physics2D.OverlapBoxAll(transform.position, collider.bounds.size, 0.0f);
+            Collider2D collision = null;
+            System.Array.ForEach(collisions, (Collider2D c) =>
+            {
+                if (collision == null) collision = c;
+
+                if (collision.transform.position.y > c.transform.transform.position.y)
+                    collision = c;
+            });
+
+            if (collision != null)
+                transform.position -= Vector3.up * collider.bounds.size.y;
             player.transform.position = transform.position;
+        }
         else
         {
             Health playerHealth = player.GetComponent<Health>();

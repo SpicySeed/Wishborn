@@ -47,7 +47,7 @@ public class Jump : MonoBehaviour
 
         if (myRigidbody.velocity.y < 0)
         {
-            if (Mathf.Abs(myRigidbody.velocity.y) > 0.5f)
+            if (Mathf.Abs(myRigidbody.velocity.y) > 1.0f)
                 playerAnim.Play("PlayerFall");
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * myRigidbody.gravityScale * (fallMultiplier - 1.0f) * Time.deltaTime;
 
