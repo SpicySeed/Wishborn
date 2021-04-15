@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3742768134328210140}
+  collider: {fileID: 2400975004594260006}
   deltaTimeMultiplier: 4
 --- !u!1 &8135724608659413809
 GameObject:
@@ -220,7 +221,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5243941459202419588}
   - component: {fileID: 2400975004594260006}
-  - component: {fileID: 4176214861528867436}
   m_Layer: 0
   m_Name: BarrierDetector
   m_TagString: Untagged
@@ -258,16 +258,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &4176214861528867436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8135724608659413809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28e6dead19ac554ca9a19d1bbe3ae96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwable: {fileID: 2656051278956351368}

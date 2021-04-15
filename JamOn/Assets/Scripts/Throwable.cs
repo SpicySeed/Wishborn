@@ -5,9 +5,8 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private CircleCollider2D collider;
     [SerializeField] private float deltaTimeMultiplier = 1.2f;
-
-    private bool teleportEnabled = true;
 
     public void Update()
     {
@@ -23,7 +22,14 @@ public class Throwable : MonoBehaviour
 
     public void Teleport(GameObject player)
     {
-        if (teleportEnabled)
+        Collider2D[] barriers = Physics2D.OverlapCircleAll(transform.position, collider.radius, 1 << LayerMask.NameToLayer("Barriers"));
+        bool teleportEnabled = barriers.Length == 0;
+        if (!teleportEnabled)
+        {
+            Health playerHealth = player.GetComponent<Health>();
+            if (playerHealth != null) playerHealth.Die();
+        }
+        else
         {
             Collider2D collider = player.GetComponent<Collider2D>();
 
@@ -41,15 +47,5 @@ public class Throwable : MonoBehaviour
                 transform.position -= Vector3.up * collider.bounds.size.y;
             player.transform.position = transform.position;
         }
-        else
-        {
-            Health playerHealth = player.GetComponent<Health>();
-            if (playerHealth != null) playerHealth.Die();
-        }
-    }
-
-    public void SetTeleportEnabled(bool enabled)
-    {
-        this.teleportEnabled = enabled;
     }
 }
