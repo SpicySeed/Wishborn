@@ -1166,6 +1166,7 @@ MonoBehaviour:
   fallMultiplier: 4.5
   lowJumpMultiplier: 4
   coyoteTime: 0.25
+  inputRemerberTime: 0.2
 --- !u!114 &6571495202907281577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,10 +1179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd21d1109f62e1428676d4188dc6495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundDetector: {fileID: 6571495202507873564}
   movement: {fileID: 6571495202907281582}
   jump: {fileID: 6571495202907281579}
   playerHair: {fileID: 6571495201594559266}
-  groundDetector: {fileID: 6571495202507873564}
   orbSpawn: {fileID: 2510175510672954228}
   throwablePrefab: {fileID: 2656051278956351368, guid: 45f3093d1cd4e6448bd89a79b1e66010, type: 3}
   forceMultiplier: 35

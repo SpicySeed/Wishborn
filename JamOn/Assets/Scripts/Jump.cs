@@ -16,21 +16,32 @@ public class Jump : MonoBehaviour
 
     private float jumpTimer = 0;
     private float groundedRemember = 0;
+    private float inputTimer = 0.0f;
 
     [Range(0.1f, 1.0f)] [SerializeField] private float coyoteTime;
+    [Tooltip("Tiempo que se queda guardado un inout de salto para que tenga efecto mas tarde")]
+    [Range(0.0f, 1.0f)] [SerializeField] private float inputRemerberTime;
 
     private void Update()
     {
         // Coyote time
         if (jumpTimer > 0) jumpTimer -= Time.deltaTime;
         if (groundedRemember > 0) groundedRemember -= Time.deltaTime;
+        if (inputTimer > 0.0) inputTimer -= Time.deltaTime;
 
         if (groundDetector.IsGrounded() && jumpTimer <= 0)
             groundedRemember = coyoteTime;
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            inputTimer = inputRemerberTime;
+        }
+
+        if(inputTimer > 0.0f)
+        {
             ExecuteJump();
+        }
 
         if (myRigidbody.velocity.y < 0)
         {
