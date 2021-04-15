@@ -13,6 +13,11 @@ public class Health : MonoBehaviour
         respanwPosition = transform.position;
     }
 
+    private void Update()
+    {
+        if (!IsAlive()) Revive();
+    }
+
     public void Die()
     {
         alive = false;

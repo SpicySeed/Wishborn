@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    private TimeManager tm;
+    [SerializeField] private GameObject panel;
     private bool stopped = false;
-    [SerializeField] private GameObject Panel;
+    private TimeManager tm;
+
     void Start()
     {
         tm = TimeManager.Instance;
-    }
-
-    public void Resume()
-    {
-        tm.Resume();
-        Panel.SetActive(false);
-        stopped = false;
     }
 
     private void Update()
@@ -25,16 +19,28 @@ public class PauseMenu : MonoBehaviour
         {
             if (stopped)
             {
-                tm.Resume();
-                Panel.SetActive(false);
+                panel.SetActive(false);
                 stopped = false;
+                tm.Resume();
             }
             else
             {
-                tm.Pause();
-                Panel.SetActive(true);
+                panel.SetActive(true);
                 stopped = true;
+                tm.Pause();
             }
         }
+    }
+
+    public void Resume()
+    {
+        panel.SetActive(false);
+        stopped = false;
+        tm.Resume();
+    }
+
+    public void LoadMainMenu()
+    {
+        GameManager.Instance.LoadMainMenu();
     }
 }

@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
+    [SerializeField] private GroundDetector groundDetector;
     [SerializeField] private Movement movement;
     [SerializeField] private Jump jump;
     [SerializeField] private Hair playerHair;
-    [SerializeField] private GroundDetector groundDetector;
     [SerializeField] private Transform orbSpawn;
 
     [SerializeField] private Throwable throwablePrefab;
     private Throwable throwable = null;
     private bool thrown = false;
     private bool stopped = false;
+
     [SerializeField] private float forceMultiplier = 10.0f;
 
     [SerializeField] private float movementScaleOnTeleport = 0.2f;
@@ -23,8 +24,6 @@ public class Throw : MonoBehaviour
 
     private void Update()
     {
-       
-        
         if (Input.GetMouseButtonUp(0) && throwable == null && !thrown && !stopped)
         {
             throwable = InternalThrow(throwablePrefab);
@@ -51,10 +50,7 @@ public class Throw : MonoBehaviour
         if (throwable == null && thrown && groundDetector.IsGrounded())
             thrown = false;
 
-        if (Time.timeScale == 0)
-            stopped = true;
-        else
-            stopped = false;
+        stopped = Time.timeScale == 0;
     }
 
     private Throwable ThrowObject(Throwable throwable, Vector3 throwForce)

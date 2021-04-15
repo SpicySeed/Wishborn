@@ -7,11 +7,23 @@ public class Throwable : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float deltaTimeMultiplier = 1.2f;
 
-    private bool tpEnabled = true;
+    private bool teleportEnabled = true;
+
+    public void Update()
+    {
+        float increasedDeltaTime = deltaTimeMultiplier * Time.deltaTime;
+        rb.velocity += Physics2D.gravity / rb.mass * increasedDeltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Damage"))
+            Destroy(gameObject);
+    }
 
     public void Teleport(GameObject player)
     {
-        if (tpEnabled)
+        if (teleportEnabled)
             player.transform.position = transform.position;
         else
         {
@@ -20,14 +32,8 @@ public class Throwable : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        float increasedDeltaTime = deltaTimeMultiplier * Time.deltaTime;
-        rb.velocity += Physics2D.gravity / rb.mass * increasedDeltaTime;
-    }
-
     public void SetTeleportEnabled(bool enabled)
     {
-        this.tpEnabled = enabled;
+        this.teleportEnabled = enabled;
     }
 }

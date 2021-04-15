@@ -4,33 +4,23 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] private Health playerHealth;
+    private Health playerHealth;
+
     [SerializeField] private MovingFloor[] movingFloors;
     // Más elementos de la sala
-    private GameManager gm;
 
-    void Start()
+    private void Start()
     {
-        gm = GameManager.Instance;
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
     }
 
-    public void LoadMainMenu()
-    {
-        gm.LoadMainMenu();
-    }
-    public void LoadNextLevel()
-    {
-        gm.LoadNextLevel();
-    }
     private void Update()
     {
-        if (!playerHealth.IsAlive())
-            Reset();
+        if (!playerHealth.IsAlive()) Reset();
     }
 
     private void Reset()
     {
-        playerHealth.Revive();
         foreach (MovingFloor mf in movingFloors) mf.Reset();
         // Más elementos de la sala
     }
