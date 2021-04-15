@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     private int currentDirection = 0;
 
     public Transform targetDir;
+    public Transform ringDir;
 
     public Animator playerAnim;
 
@@ -37,11 +38,13 @@ public class Movement : MonoBehaviour
             {
                 transform.localScale = new Vector3(1, 1, 1);
                 targetDir.eulerAngles = new Vector3(0, 0, 135);
+                ringDir.eulerAngles = new Vector3(0, 0, 180);
             }
             else if (currentDirection == -1)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
                 targetDir.eulerAngles = new Vector3(0, 0, 45);
+                ringDir.eulerAngles = new Vector3(0, 0, 0);
             }
         }
         else if (currentAcceleration != 0.0)

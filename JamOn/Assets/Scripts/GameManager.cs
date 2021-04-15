@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
             Init();
             return;
         }
+        Instance.transitionManager = this.transitionManager;
         Instance.loading = false;
         Destroy(gameObject);
     }

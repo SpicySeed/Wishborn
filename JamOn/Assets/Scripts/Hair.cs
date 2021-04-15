@@ -49,11 +49,11 @@ public class Hair : MonoBehaviour
     public void Teleport()
     {
         segmentPoses[0] = targetDir.position;
- 
+
         for (int i = 1; i < segmentPoses.Length; i++)
         {
             segmentPoses[i] = segmentPoses[i - 1] + targetDir.right * targetDist + new Vector3(0, -0.002f * Mathf.Pow(i, 2.0f));
         }
-            lineRend.SetPositions(segmentPoses);
+        lineRend.SetPositions(segmentPoses);
     }
 }
