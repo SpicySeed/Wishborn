@@ -46,3 +46,4 @@ MonoBehaviour:
   numLevels: 3
   levelOffset: 0
   collectableText: {fileID: 0}
+  transitionManager: {fileID: 5120752806867512267, guid: a038429f6e1b306489e703db16aa48f6, type: 3}

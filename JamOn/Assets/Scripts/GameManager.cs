@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int numLevels = 3;
     [SerializeField] private int levelOffset = 0;
     [SerializeField] Text collectableText; //TODO: mover esto al manager de la interfaz del nivel
+    [SerializeField] private TransitionManager transitionManager;
 
     private int currentLevel = 1;
     private int[] collectablesCollected;
+    private bool loading = false; 
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
             Init();
             return;
         }
+        Instance.loading = false;
         Destroy(gameObject);
     }
 
@@ -33,17 +36,26 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        if (loading) return;
+
+        loading = true;
         SceneManager.LoadScene(0);
+        StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.FADE, currentLevel));
     }
 
     public void LoadNextLevel()
     {
+        if (loading) return;
+
+        loading = true;
         currentLevel++;
-        SceneManager.LoadScene(currentLevel);
+        StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.CURTAIN, currentLevel));
     }
 
     public void ObjectCollected()
     {
+        StartCoroutine(transitionManager.StartTransition(TransitionManager.Transitions.FADE, TransitionManager.Mode.WHOLE));
+
         collectablesCollected[currentLevel]++;
         if (collectableText != null)
             collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
