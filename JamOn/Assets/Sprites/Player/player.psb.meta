@@ -5063,4 +5063,6 @@ ScriptedImporter:
   textureAssetName: player Texture
   prefabAssetName: player Prefab
   spriteLibAssetName: player Sprite Lib
-  secondarySpriteTextures: []
+  secondarySpriteTextures:
+  - name: _NormalMap
+    texture: {fileID: -2810581459184437694, guid: fbf76b201c505a246b018a3fafaac96b, type: 3}
