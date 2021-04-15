@@ -14,6 +14,8 @@ public class Jump : MonoBehaviour
     [SerializeField] private float fallMultiplier = 4.5f;
     [SerializeField] private float lowJumpMultiplier = 4f;
 
+    [SerializeField] private Animator playerAnim;
+
     private float jumpTimer = 0;
     private float groundedRemember = 0;
     private float inputTimer = 0.0f;
@@ -45,6 +47,8 @@ public class Jump : MonoBehaviour
 
         if (myRigidbody.velocity.y < 0)
         {
+            if (Mathf.Abs(myRigidbody.velocity.y) > 0.5f)
+                playerAnim.Play("PlayerFall");
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * myRigidbody.gravityScale * (fallMultiplier - 1.0f) * Time.deltaTime;
 
             if (Mathf.Abs(myRigidbody.velocity.y) > maxFallSpeed)
@@ -78,6 +82,7 @@ public class Jump : MonoBehaviour
     {
         if ((groundedRemember > 0 || groundDetector.IsGrounded()))
         {
+            playerAnim.Play("PlayerJump");
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0);
             myRigidbody.velocity += Vector2.up * jumpSpeed;
 

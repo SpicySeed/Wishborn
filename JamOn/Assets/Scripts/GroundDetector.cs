@@ -1,15 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GroundDetector : MonoBehaviour
 {
     [SerializeField] private Collider2D myCollider;
+    [SerializeField] private Animator playerAnim;
 
     private bool calculated = false;
     private bool grounded = false;
 
     [SerializeField] private LayerMask groundMask;
+
+    private void Update()
+    {
+        bool currGrounded = grounded;
+        IsGrounded();
+
+        /*if (grounded && !currGrounded)
+            playerAnim.Play("PlayerLand");*/
+
+        playerAnim.SetBool("Grounded", grounded);
+    }
 
     private void LateUpdate()
     {
