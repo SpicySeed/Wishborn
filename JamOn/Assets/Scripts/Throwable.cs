@@ -5,7 +5,7 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private CircleCollider2D collider;
+    [SerializeField] private Collider2D myCollider;
     [SerializeField] private float deltaTimeMultiplier = 1.2f;
 
     public void Update()
@@ -22,7 +22,7 @@ public class Throwable : MonoBehaviour
 
     public void Teleport(GameObject player)
     {
-        Collider2D[] barriers = Physics2D.OverlapCircleAll(transform.position, collider.radius, 1 << LayerMask.NameToLayer("Barriers"));
+        Collider2D[] barriers = Physics2D.OverlapBoxAll(transform.position, myCollider.bounds.size, 0.0f, 1 << LayerMask.NameToLayer("Barriers"));
         bool teleportEnabled = barriers.Length == 0;
         if (!teleportEnabled)
         {
@@ -33,19 +33,16 @@ public class Throwable : MonoBehaviour
         {
             Collider2D collider = player.GetComponent<Collider2D>();
 
-            Collider2D[] collisions = Physics2D.OverlapBoxAll(transform.position, collider.bounds.size, 0.0f);
-            Collider2D collision = null;
-            System.Array.ForEach(collisions, (Collider2D c) =>
-            {
-                if (collision == null) collision = c;
+            Collider2D[] collisions = Physics2D.OverlapBoxAll(transform.position, 1.25f * collider.bounds.size, 0.0f);
 
-                if (collision.transform.position.y > c.transform.transform.position.y)
-                    collision = c;
-            });
-
-            if (collision != null)
-                transform.position -= Vector3.up * collider.bounds.size.y;
+            if (collisions.Length > 0)
+                transform.position -= Vector3.up * collider.bounds.size.y * 0.8f; ;
             player.transform.position = transform.position;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, myCollider.bounds.size);
     }
 }
