@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
 
     public Transform targetDir;
 
+    public Animator playerAnim;
+
     private void Update()
     {
         float xAxis = Input.GetAxisRaw("Horizontal");
@@ -27,6 +29,8 @@ public class Movement : MonoBehaviour
         if (currentDirection != 0)
         {
             currentAcceleration += acceleration * currentDirection * Time.deltaTime;
+
+            playerAnim.SetBool("Running", true);
 
             // Flip & hair rotation
             if (currentDirection == 1)
@@ -47,6 +51,8 @@ public class Movement : MonoBehaviour
             if (currentAcceleration * sign < 0.0)
                 currentAcceleration = 0.0f;
         }
+        else
+            playerAnim.SetBool("Running", false);
 
         currentAcceleration = Mathf.Clamp(currentAcceleration, -1.0f, 1.0f);
     }
