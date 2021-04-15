@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2417276534256942076}
   m_Layer: 0
-  m_Name: RingDir
+  m_Name: OrbDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1030,7 +1030,7 @@ MonoBehaviour:
   acceleration: 100
   deceleration: 100
   targetDir: {fileID: 6571495202461926781}
-  ringDir: {fileID: 2417276534256942076}
+  orbDir: {fileID: 2417276534256942076}
   playerAnim: {fileID: 8093905302622192036}
 --- !u!114 &6571495202907281579
 MonoBehaviour:
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 6571495202907281583}
   groundDetector: {fileID: 6571495202507873564}
-  jumpSpeed: 10
+  jumpSpeed: 10.75
   maxFallSpeed: 24
   fallMultiplier: 4.5
   lowJumpMultiplier: 4
@@ -1069,7 +1069,8 @@ MonoBehaviour:
   movement: {fileID: 6571495202907281582}
   jump: {fileID: 6571495202907281579}
   playerHair: {fileID: 6571495201594559266}
-  ring: {fileID: 806034867}
+  playerHealth: {fileID: 6571495202907281590}
+  orb: {fileID: 806034867}
   orbSpawn: {fileID: 2510175510672954228}
   aimTarget: {fileID: 1856970958}
   aimOffset: 6

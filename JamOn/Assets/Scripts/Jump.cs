@@ -34,16 +34,14 @@ public class Jump : MonoBehaviour
         if (groundDetector.IsGrounded() && jumpTimer <= 0)
             groundedRemember = coyoteTime;
 
-
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             inputTimer = inputRemerberTime;
         }
 
-        if(inputTimer > 0.0f)
+        if (inputTimer > 0.0f)
         {
             ExecuteJump();
-            inputTimer = 0.0f;
         }
 
         if (myRigidbody.velocity.y < 0)
@@ -59,11 +57,10 @@ public class Jump : MonoBehaviour
         {
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1.0f) * Time.deltaTime;
         }
-        else if(myRigidbody.velocity.y > 0 && Mathf.Abs(myRigidbody.velocity.y) < jumpSpeed * 0.75)
+        else if (myRigidbody.velocity.y > 0 && Mathf.Abs(myRigidbody.velocity.y) < jumpSpeed * 0.75)
         {
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1.0f) * Time.deltaTime;
-        } 
-
+        }
     }
 
     public void SetGravityScaleForTTime(float scale, float time)

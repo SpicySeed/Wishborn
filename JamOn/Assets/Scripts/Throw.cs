@@ -9,7 +9,8 @@ public class Throw : MonoBehaviour
     [SerializeField] private Movement movement;
     [SerializeField] private Jump jump;
     [SerializeField] private Hair playerHair;
-    [SerializeField] private FollowingRing ring;
+    [SerializeField] private Health playerHealth;
+    [SerializeField] private FollowingOrb orb;
     [SerializeField] private Transform orbSpawn;
     [SerializeField] private GameObject aimTarget;
     [SerializeField] private float aimOffset = 1.0f;
@@ -30,16 +31,17 @@ public class Throw : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && throwable == null && !thrown && !stopped)
         {
             throwable = InternalThrow(throwablePrefab);
+            playerHealth.SetThrowable(throwable);
             thrown = true;
-            ring.gameObject.SetActive(false);
+            orb.gameObject.SetActive(false);
             aimTarget.SetActive(false);
         }
         else if (Input.GetMouseButtonUp(0) && throwable != null && !stopped)
         {
             throwable.Teleport(gameObject);
             playerHair.Teleport();
-            ring.ResetRing();
-            ring.Teleport();
+            orb.Reset();
+            orb.Teleport();
 
             movement.ClearForces();
             movement.SetMovementScaleForTTime(movementScaleOnTeleport, timeToWaitOnTeleport);
@@ -48,14 +50,14 @@ public class Throw : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1) && throwable != null && !stopped)
         {
-            ring.ResetRing();
+            orb.Reset();
             Destroy(throwable.gameObject);
             throwable = null;
             thrown = false;
         }
         else if (Input.GetMouseButton(0) && throwable == null && !stopped)
         {
-            ring.GetCloser(orbSpawn);
+            orb.GetCloser(orbSpawn);
             aimTarget.SetActive(true);
             Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - orbSpawn.position);
             direction.z = 0;
@@ -65,7 +67,7 @@ public class Throw : MonoBehaviour
         if (throwable == null && thrown && groundDetector.IsGrounded())
         {
             thrown = false;
-            ring.ResetRing();
+            orb.Reset();
         }
 
         stopped = Time.timeScale == 0;

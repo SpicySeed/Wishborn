@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    private Throwable throwable;
     private bool alive = true;
 
     private Vector2 respanwPosition;
@@ -20,6 +21,8 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        StartCoroutine(GameManager.Instance.GetTransitionManager().StartTransition(TransitionManager.Transitions.CURTAIN, TransitionManager.Mode.WHOLE));
+        if (throwable != null) Destroy(throwable.gameObject);
         alive = false;
     }
 
@@ -32,6 +35,11 @@ public class Health : MonoBehaviour
     public bool IsAlive()
     {
         return alive;
+    }
+
+    public void SetThrowable(Throwable throwable)
+    {
+        this.throwable = throwable;
     }
 
     public void SetRespawnPosition(Vector2 position)

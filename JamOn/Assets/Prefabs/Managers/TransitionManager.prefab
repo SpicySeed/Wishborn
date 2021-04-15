@@ -937,7 +937,7 @@ MonoBehaviour:
   - {fileID: 1018536351}
   - {fileID: 155796475}
   transitionTime: 1
-  initialTransition: 1
+  initialTransition: 0
 --- !u!1 &5120752808330262627
 GameObject:
   m_ObjectHideFlags: 0

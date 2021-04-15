@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
 
     public void ObjectCollected()
     {
-        StartCoroutine(transitionManager.StartTransition(TransitionManager.Transitions.FADE, TransitionManager.Mode.WHOLE));
-
         collectablesCollected[currentLevel]++;
         if (collectableText != null)
             collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
@@ -65,5 +63,10 @@ public class GameManager : MonoBehaviour
     public int GetObjectsCollected()
     {
         return collectablesCollected[currentLevel];
+    }
+
+    public TransitionManager GetTransitionManager()
+    {
+        return transitionManager;
     }
 }

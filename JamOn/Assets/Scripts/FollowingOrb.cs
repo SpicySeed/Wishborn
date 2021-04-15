@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowingRing : MonoBehaviour
+public class FollowingOrb : MonoBehaviour
 {
-
     Vector3[] segmentV;
 
     public int length;
@@ -66,7 +65,7 @@ public class FollowingRing : MonoBehaviour
         transform.position = segmentPoses[nSegment];
     }
 
-    public void ResetRing()
+    public void Reset()
     {
         gameObject.SetActive(true);
         nSegment = length - 1;
