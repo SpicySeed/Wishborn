@@ -40,9 +40,4 @@ public class Throwable : MonoBehaviour
             player.transform.position = transform.position;
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(transform.position, myCollider.bounds.size);
-    }
 }
