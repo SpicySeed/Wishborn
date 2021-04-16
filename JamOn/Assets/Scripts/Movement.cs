@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Movement : MonoBehaviour
 {
@@ -11,12 +12,13 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float acceleration = 1.0f;
     [SerializeField] private float deceleration = 1.0f;
+    [SerializeField] private StudioEventEmitter soundEmitter;
 
     private float movementScale = 1.0f;
 
     private float currentAcceleration = 0.0f; // [0.0, 1.0]
     private int currentDirection = 0;
-
+    private bool sound = false;
     [SerializeField] private Transform targetDir;
     [SerializeField] private Transform orbDir;
 
@@ -47,6 +49,12 @@ public class Movement : MonoBehaviour
 
             emission.enabled = true;
             playerAnim.SetBool("Running", true);
+            if (!sound)
+            {
+                soundEmitter.Play();
+                sound = true;
+            }
+            
 
             // Flip & hair rotation
             if (currentDirection == 1)
@@ -75,6 +83,11 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            if (sound)
+            {
+                soundEmitter.Stop();
+                sound = false;
+            }
             playerAnim.SetBool("Running", false);
             emission.enabled = false;
         }

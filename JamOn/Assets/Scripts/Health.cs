@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using FMODUnity;
 
 public class Health : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class Health : MonoBehaviour
     {
         GameManager.Instance.SetInputFreeze(true);
         timer = timeToRespawn;
-
+        RuntimeManager.PlayOneShotAttached("event:/Posible muerte", this.gameObject);
         deathParticles.Play();
 
         InstantiateDeathBody();

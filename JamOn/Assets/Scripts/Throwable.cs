@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Throwable : MonoBehaviour
 {
@@ -17,7 +18,14 @@ public class Throwable : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Damage"))
+        {
+            RuntimeManager.PlayOneShotAttached("event:/orbeRompiendose", this.gameObject);
             Destroy(gameObject);
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            RuntimeManager.PlayOneShotAttached("event:/Colision anillo", this.gameObject);
+        }
     }
 
     public void Teleport(GameObject player)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -22,12 +23,14 @@ public class PauseMenu : MonoBehaviour
                 panel.SetActive(false);
                 stopped = false;
                 tm.Resume();
+                RuntimeManager.PlayOneShotAttached("event:/Reaundar", this.gameObject);
             }
             else
             {
                 panel.SetActive(true);
                 stopped = true;
                 tm.Pause();
+                RuntimeManager.PlayOneShotAttached("event:/Pausar", this.gameObject);
             }
         }
     }
@@ -37,6 +40,7 @@ public class PauseMenu : MonoBehaviour
         panel.SetActive(false);
         stopped = false;
         tm.Resume();
+        RuntimeManager.PlayOneShotAttached("event:/Reaundar", this.gameObject);
     }
 
     public void LoadMainMenu()

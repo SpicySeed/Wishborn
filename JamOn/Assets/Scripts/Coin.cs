@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Coin : Collectable
 {    
@@ -8,6 +9,7 @@ public class Coin : Collectable
     private Health playerHealth = null;
     private GroundDetector groundDetector = null;
     private SpriteRenderer spriteRenderer = null;
+    [SerializeField] private StudioEventEmitter emitter;
 
     private void Start()
     {
@@ -35,6 +37,8 @@ public class Coin : Collectable
     {
         if (collision.gameObject.CompareTag("Player") && collected == 0)
         {
+            if (spriteRenderer.enabled)
+                emitter.Play();
             spriteRenderer.enabled = false;
             GameManager.Instance.ObjectCollected();
             playerHealth = collision.gameObject.GetComponent<Health>();

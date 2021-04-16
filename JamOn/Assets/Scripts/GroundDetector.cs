@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using FMODUnity;
 public class GroundDetector : MonoBehaviour
 {
     [SerializeField] private Collider2D myCollider;
@@ -21,7 +21,10 @@ public class GroundDetector : MonoBehaviour
         IsGrounded();
 
         if (grounded && !currGrounded)
+        {
             landParticles.Play();
+            RuntimeManager.PlayOneShotAttached("event:/Caida", this.gameObject);
+        }
 
         playerAnim.SetBool("Grounded", grounded);
     }

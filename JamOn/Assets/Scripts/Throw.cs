@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using FMODUnity;
 
 public class Throw : MonoBehaviour
 {
@@ -14,11 +15,15 @@ public class Throw : MonoBehaviour
     [SerializeField] private Transform orbSpawn;
     [SerializeField] private GameObject aimTarget;
     [SerializeField] private float aimOffset = 1.0f;
+    [SerializeField] private StudioEventEmitter soundEmitter;
+   
 
-    [SerializeField] private Throwable throwablePrefab;
+
+   [SerializeField] private Throwable throwablePrefab;
     private Throwable throwable = null;
     private bool thrown = false;
     private bool stopped = false;
+    private bool playingSound = false;
 
     [SerializeField] private float forceMultiplier = 10.0f;
 
@@ -50,6 +55,11 @@ public class Throw : MonoBehaviour
 
             startCastingParticles.Play();
             castingParticles.Stop();
+            soundEmitter.SetParameter("Lanzar", 1);
+            if (playingSound)
+            {
+                playingSound = false;
+            }
         }
         else if (Input.GetMouseButtonUp(0) && throwable != null && !stopped)
         {
@@ -58,6 +68,9 @@ public class Throw : MonoBehaviour
             orb.Reset();
             orb.Teleport();
 
+           
+
+
             playerAnim.SetTrigger("Appear");
             appearParticles.Play();
 
@@ -65,12 +78,19 @@ public class Throw : MonoBehaviour
             movement.SetMovementScaleForTTime(movementScaleOnTeleport, timeToWaitOnTeleport);
             jump.SetGravityScaleForTTime(gravityScaleOnTeleport, timeToWaitOnTeleport);
             Destroy(throwable.gameObject);
+
+
+            
+          
+            RuntimeManager.PlayOneShotAttached("event:/Teleport", this.gameObject);
+           
         }
         else if (Input.GetMouseButtonDown(1) && throwable != null && !stopped)
         {
             orb.Reset();
             Destroy(throwable.gameObject);
             throwable = null;
+            RuntimeManager.PlayOneShotAttached("event:/recuperar orbe", this.gameObject);
             thrown = false;
         }
         else if (Input.GetMouseButton(0) && throwable == null && !thrown && !stopped)
@@ -83,12 +103,31 @@ public class Throw : MonoBehaviour
 
             playerAnim.SetBool("Casting", true);
             castingParticles.Play();
+            soundEmitter.Event = "event:/lanzamiento";
+            if (!playingSound)
+                soundEmitter.Stop();
+            soundEmitter.SetParameter("Lanzar", 0);
+            soundEmitter.OverrideAttenuation = true;
+            soundEmitter.OverrideMaxDistance = 500;
+            if (!playingSound)
+            {
+                playingSound = true;
+                soundEmitter.Play();
+            }
         }
-        else if(throwable == null && !thrown)
+        else if (throwable == null && !thrown)
         {
             playerAnim.SetBool("Casting", false);
+            if (playingSound)
+            { 
+                playingSound = false;
+                soundEmitter.Stop();
+            }
+
+           // soundEmitter.Event = null;
             orb.Reset();
             aimTarget.SetActive(false);
+            
         }
 
         if (throwable == null && thrown && groundDetector.IsGrounded())

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{c4b6e2e7-e058-4a64-8d29-0d42388b030c}">
+		<property name="assetPath">
+			<value>Pisada-05.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.51785416666666662</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e97340de-fba6-4d9e-86eb-af11d128eb05}</destination>
+		</relationship>
+	</object>
+</objects>

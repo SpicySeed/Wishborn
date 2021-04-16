@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{778ce5c4-4799-4bbe-9506-6b738307a777}">
+		<property name="name">
+			<value>Lanzar</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a893c119-89be-469f-ac2e-ea308910b9c6}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1cc89c1e-154e-4e03-8ca2-68950f8cb0b0}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1cc89c1e-154e-4e03-8ca2-68950f8cb0b0}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
