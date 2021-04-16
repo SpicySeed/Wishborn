@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private int numLevels = 3;
-    [SerializeField] private int levelOffset = 0;
     [SerializeField] Text collectableText; //TODO: mover esto al manager de la interfaz del nivel
     [SerializeField] private TransitionManager transitionManager;
 
@@ -37,13 +36,12 @@ public class GameManager : MonoBehaviour
         collectablesCollected = new int[numLevels];
     }
 
-    public void LoadMainMenu()
+    public void LoadScene(int index)
     {
         if (loading) return;
 
         loading = true;
-        SceneManager.LoadScene(0);
-        StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.FADE, currentLevel));
+        StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.FADE, index));
     }
 
     public void LoadNextLevel()
@@ -55,11 +53,16 @@ public class GameManager : MonoBehaviour
         StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.CURTAIN, currentLevel));
     }
 
+    public void ResetCurrentLevel()
+    {
+        currentLevel = 1;
+    }
+
     public void ObjectCollected()
     {
         collectablesCollected[currentLevel]++;
         if (collectableText != null)
-            collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
+            collectableText.text = collectablesCollected[currentLevel].ToString();
     }
 
     public int GetObjectsCollected()
@@ -71,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
         collectablesCollected[currentLevel]--;
         if (collectableText != null)
-            collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
+            collectableText.text = collectablesCollected[currentLevel].ToString();
     }
 
     public TransitionManager GetTransitionManager()

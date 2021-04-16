@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numLevels: 3
-  levelOffset: 0
+  levelOffset: 1
   collectableText: {fileID: 0}
   transitionManager: {fileID: 0}
