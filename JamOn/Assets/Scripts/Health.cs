@@ -16,10 +16,11 @@ public class Health : MonoBehaviour
     private float timer = 0.0f;
 
     [SerializeField] private GameObject mainBody;
-    [SerializeField] private GameObject[] bodyParts;
+    [SerializeField] private SpriteRenderer[] bodyParts;
     List<GameObject> instantiated;
 
     public ParticleSystem deathParticles;
+    public Animator playerAnim;
 
     private void Awake()
     {
@@ -46,7 +47,11 @@ public class Health : MonoBehaviour
         deathParticles.Play();
 
         InstantiateDeathBody();
-        mainBody.SetActive(false);
+
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
+            bodyParts[i].enabled = false;
+        }
 
         StartCoroutine(InternalDie());
 
@@ -61,9 +66,17 @@ public class Health : MonoBehaviour
             Destroy(go);
         }
 
-        deathParticles.Stop();
         GameManager.Instance.SetInputFreeze(false);
-        mainBody.SetActive(true);
+
+        playerAnim.SetTrigger("Reset");
+        deathParticles.Stop();
+
+         for(int i = 0; i < bodyParts.Length; i++)
+         {
+            bodyParts[i].enabled = true;
+         }
+
+
         alive = true;
         transform.position = respanwPosition;
     }
@@ -98,7 +111,7 @@ public class Health : MonoBehaviour
     {
         for(int i = 0; i < bodyParts.Length; i++)
         {
-            GameObject gO = Instantiate(bodyParts[i], bodyParts[i].transform.position, bodyParts[i].transform.rotation);
+            GameObject gO = Instantiate(bodyParts[i].gameObject, bodyParts[i].gameObject.transform.position, bodyParts[i].transform.rotation);
             gO.transform.localScale = mainBody.transform.localScale;
             SpriteSkin ss = gO.GetComponent<SpriteSkin>();
             if (ss != null) Destroy(ss);

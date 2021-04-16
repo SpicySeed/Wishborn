@@ -64,7 +64,7 @@ public class Throw : MonoBehaviour
             throwable = null;
             thrown = false;
         }
-        else if (Input.GetMouseButton(0) && throwable == null && !stopped)
+        else if (Input.GetMouseButton(0) && throwable == null && !thrown && !stopped)
         {
             orb.GetCloser(orbSpawn);
             aimTarget.SetActive(true);
@@ -73,6 +73,12 @@ public class Throw : MonoBehaviour
             aimTarget.transform.position = orbSpawn.position + direction.normalized * aimOffset;
 
             playerAnim.SetBool("Casting", true);
+        }
+        else if(throwable == null && !thrown)
+        {
+            playerAnim.SetBool("Casting", false);
+            orb.Reset();
+            aimTarget.SetActive(false);
         }
 
         if (throwable == null && thrown && groundDetector.IsGrounded())

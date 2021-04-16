@@ -40,10 +40,14 @@ public class Jump : MonoBehaviour
         if(inputTimer > 0.0f)
             ExecuteJump();
 
+        if(groundDetector.IsGrounded())
+            playerAnim.SetBool("Falling", false);
+
         if (myRigidbody.velocity.y < 0)
         {
             if (Mathf.Abs(myRigidbody.velocity.y) > 2.5f)
-                playerAnim.Play("PlayerFall");
+                playerAnim.SetBool("Falling", true);
+
             myRigidbody.velocity += Vector2.up * Physics2D.gravity.y * myRigidbody.gravityScale * (fallMultiplier - 1.0f) * Time.deltaTime;
 
             if (Mathf.Abs(myRigidbody.velocity.y) > maxFallSpeed)
@@ -81,6 +85,7 @@ public class Jump : MonoBehaviour
         if ((groundedRemember > 0 || groundDetector.IsGrounded()))
         {
             playerAnim.Play("PlayerJump");
+            playerAnim.SetTrigger("Jump");
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0);
             myRigidbody.velocity += Vector2.up * jumpSpeed;
 
