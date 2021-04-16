@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Teleport
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -38,8 +40,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: Background1
+    uniqueID: 1187215253
+    locked: 0
+  - name: Background2
     uniqueID: 1103857823
+    locked: 0
+  - name: Background3
+    uniqueID: 1826985087
     locked: 0
   - name: Default
     uniqueID: 0
