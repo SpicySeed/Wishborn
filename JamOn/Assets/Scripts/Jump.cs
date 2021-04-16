@@ -24,6 +24,8 @@ public class Jump : MonoBehaviour
     [Tooltip("Tiempo que se queda guardado un inout de salto para que tenga efecto mas tarde")]
     [Range(0.0f, 1.0f)] [SerializeField] private float inputRemerberTime;
 
+    [SerializeField] private ParticleSystem jumpParticles;
+
     private void Update()
     {
         // Coyote time
@@ -84,6 +86,7 @@ public class Jump : MonoBehaviour
     {
         if ((groundedRemember > 0 || groundDetector.IsGrounded()))
         {
+            jumpParticles.Play();
             playerAnim.Play("PlayerJump");
             playerAnim.SetTrigger("Jump");
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0);

@@ -22,6 +22,15 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private Animator playerAnim;
 
+    [SerializeField] private ParticleSystem runParticles;
+
+    private ParticleSystem.EmissionModule emission;
+
+    private void Start()
+    {
+        emission = runParticles.emission;
+    }
+
     private void Update()
     {
         if (!GameManager.Instance.GetInputFreeze())
@@ -36,6 +45,7 @@ public class Movement : MonoBehaviour
         {
             currentAcceleration += acceleration * currentDirection * Time.deltaTime;
 
+            emission.enabled = true;
             playerAnim.SetBool("Running", true);
 
             // Flip & hair rotation
@@ -44,12 +54,16 @@ public class Movement : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1);
                 targetDir.eulerAngles = new Vector3(0, 0, 135);
                 orbDir.eulerAngles = new Vector3(0, 0, 180);
+
+                runParticles.transform.localScale = new Vector3(1, 1, 1);
             }
             else if (currentDirection == -1)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
                 targetDir.eulerAngles = new Vector3(0, 0, 45);
                 orbDir.eulerAngles = new Vector3(0, 0, 0);
+
+                runParticles.transform.localScale = new Vector3(-1, 1, 1);
             }
         }
         else if (currentAcceleration != 0.0)
@@ -60,7 +74,10 @@ public class Movement : MonoBehaviour
                 currentAcceleration = 0.0f;
         }
         else
+        {
             playerAnim.SetBool("Running", false);
+            emission.enabled = false;
+        }
 
         currentAcceleration = Mathf.Clamp(currentAcceleration, -1.0f, 1.0f);
     }

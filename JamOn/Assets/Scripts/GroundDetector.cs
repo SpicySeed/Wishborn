@@ -13,13 +13,15 @@ public class GroundDetector : MonoBehaviour
 
     [SerializeField] private LayerMask groundMask;
 
+    [SerializeField] private ParticleSystem landParticles;
+
     private void Update()
     {
         bool currGrounded = grounded;
         IsGrounded();
 
-        /*if (grounded && !currGrounded)
-            playerAnim.Play("PlayerLand");*/
+        if (grounded && !currGrounded)
+            landParticles.Play();
 
         playerAnim.SetBool("Grounded", grounded);
     }

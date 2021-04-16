@@ -28,6 +28,10 @@ public class Throw : MonoBehaviour
 
     [SerializeField] private Animator playerAnim;
 
+    [SerializeField] private ParticleSystem castingParticles;
+    [SerializeField] private ParticleSystem throwParticles;
+    [SerializeField] private ParticleSystem appearParticles;
+
     private void Update()
     {
         if (GameManager.Instance.GetInputFreeze()) return;
@@ -42,6 +46,7 @@ public class Throw : MonoBehaviour
 
             playerAnim.SetTrigger("Throw");
             playerAnim.SetBool("Casting", false);
+            castingParticles.Play();
         }
         else if (Input.GetMouseButtonUp(0) && throwable != null && !stopped)
         {
