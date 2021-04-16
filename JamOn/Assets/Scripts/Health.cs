@@ -83,6 +83,11 @@ public class Health : MonoBehaviour
         respanwPosition = position;
     }
 
+    public Vector2 GetRespawnPosition()
+    {
+        return respanwPosition;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Damage"))
