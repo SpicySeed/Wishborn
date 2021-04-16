@@ -67,6 +67,13 @@ public class GameManager : MonoBehaviour
         return collectablesCollected[currentLevel];
     }
 
+    public void CollectableReset()
+    {
+        collectablesCollected[currentLevel]--;
+        if (collectableText != null)
+            collectableText.text = collectablesCollected[currentLevel + levelOffset].ToString();
+    }
+
     public TransitionManager GetTransitionManager()
     {
         return transitionManager;

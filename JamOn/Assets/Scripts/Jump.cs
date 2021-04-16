@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D myRigidbody;
-    [SerializeField] private GroundDetector groundDetector;
+    [SerializeField] public GroundDetector groundDetector;
 
     [Space]
     [SerializeField] private float jumpSpeed = 10.0f;
