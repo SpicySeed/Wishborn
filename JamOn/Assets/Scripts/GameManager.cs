@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private int numLevels = 3;
-    [SerializeField] Text collectableText; //TODO: mover esto al manager de la interfaz del nivel
     [SerializeField] private TransitionManager transitionManager;
+    [SerializeField] private CollectableManager collectableManager;
 
     private int currentLevel = 1;
-    private int[] collectablesCollected;
     private bool loading = false;
 
     private bool inputFreeze = false;
@@ -23,17 +20,12 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Init();
             return;
         }
         Instance.transitionManager = this.transitionManager;
+        Instance.collectableManager = this.collectableManager;
         Instance.loading = false;
         Destroy(gameObject);
-    }
-
-    public void Init()
-    {
-        collectablesCollected = new int[numLevels];
     }
 
     public void LoadScene(int index)
@@ -60,21 +52,12 @@ public class GameManager : MonoBehaviour
 
     public void ObjectCollected()
     {
-        collectablesCollected[currentLevel]++;
-        if (collectableText != null)
-            collectableText.text = collectablesCollected[currentLevel].ToString();
-    }
-
-    public int GetObjectsCollected()
-    {
-        return collectablesCollected[currentLevel];
+        collectableManager.ObjectCollected();
     }
 
     public void CollectableReset()
     {
-        collectablesCollected[currentLevel]--;
-        if (collectableText != null)
-            collectableText.text = collectablesCollected[currentLevel].ToString();
+        collectableManager.ObjectReset();
     }
 
     public TransitionManager GetTransitionManager()
