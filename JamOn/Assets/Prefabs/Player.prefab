@@ -5885,6 +5885,7 @@ MonoBehaviour:
   movementScaleOnTeleport: 0.2
   gravityScaleOnTeleport: 0.15
   timeToWaitOnTeleport: 0.15
+  playerAnim: {fileID: 8093905302622192036}
 --- !u!1 &6571495203194485003
 GameObject:
   m_ObjectHideFlags: 0

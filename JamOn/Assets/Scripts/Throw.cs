@@ -26,6 +26,7 @@ public class Throw : MonoBehaviour
     [SerializeField] private float gravityScaleOnTeleport = 0.2f;
     [SerializeField] private float timeToWaitOnTeleport = 0.5f;
 
+    [SerializeField] private Animator playerAnim;
 
     private void Update()
     {
@@ -38,6 +39,9 @@ public class Throw : MonoBehaviour
             thrown = true;
             orb.gameObject.SetActive(false);
             aimTarget.SetActive(false);
+
+            playerAnim.SetTrigger("Throw");
+            playerAnim.SetBool("Casting", false);
         }
         else if (Input.GetMouseButtonUp(0) && throwable != null && !stopped)
         {
@@ -45,6 +49,8 @@ public class Throw : MonoBehaviour
             playerHair.Teleport();
             orb.Reset();
             orb.Teleport();
+
+            playerAnim.SetTrigger("Appear");
 
             movement.ClearForces();
             movement.SetMovementScaleForTTime(movementScaleOnTeleport, timeToWaitOnTeleport);
@@ -65,6 +71,8 @@ public class Throw : MonoBehaviour
             Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - orbSpawn.position);
             direction.z = 0;
             aimTarget.transform.position = orbSpawn.position + direction.normalized * aimOffset;
+
+            playerAnim.SetBool("Casting", true);
         }
 
         if (throwable == null && thrown && groundDetector.IsGrounded())
