@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject endText;
     DialogueTrigger dialogueTrigger;
-    bool dialoguefinished = false;
+    public bool dialoguefinished = false;
 
     Queue<string> sentences;
     
@@ -33,15 +33,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        //if (!endText.activeSelf) return;
-
         if (sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
-
-        //print("display next");
 
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
@@ -62,7 +58,7 @@ public class DialogueManager : MonoBehaviour
             //AudioManager.instance.Stop("Write");
             //AudioManager.instance.Play("Write");
 
-            if (letter == '.') // || letter == ',' || letter == '?'
+            if (letter == '.') 
                 yield return new WaitForSeconds(0.2f);
             else
                 yield return new WaitForSeconds(0.02f); ;
