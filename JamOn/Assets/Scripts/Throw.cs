@@ -28,6 +28,7 @@ public class Throw : MonoBehaviour
 
     [SerializeField] private Animator playerAnim;
 
+    [SerializeField] private ParticleSystem startCastingParticles;
     [SerializeField] private ParticleSystem castingParticles;
     [SerializeField] private ParticleSystem throwParticles;
     [SerializeField] private ParticleSystem appearParticles;
@@ -46,7 +47,9 @@ public class Throw : MonoBehaviour
 
             playerAnim.SetTrigger("Throw");
             playerAnim.SetBool("Casting", false);
-            castingParticles.Play();
+
+            startCastingParticles.Play();
+            castingParticles.Stop();
         }
         else if (Input.GetMouseButtonUp(0) && throwable != null && !stopped)
         {
@@ -56,6 +59,7 @@ public class Throw : MonoBehaviour
             orb.Teleport();
 
             playerAnim.SetTrigger("Appear");
+            appearParticles.Play();
 
             movement.ClearForces();
             movement.SetMovementScaleForTTime(movementScaleOnTeleport, timeToWaitOnTeleport);
@@ -78,6 +82,7 @@ public class Throw : MonoBehaviour
             aimTarget.transform.position = orbSpawn.position + direction.normalized * aimOffset;
 
             playerAnim.SetBool("Casting", true);
+            castingParticles.Play();
         }
         else if(throwable == null && !thrown)
         {
@@ -90,6 +95,11 @@ public class Throw : MonoBehaviour
         {
             thrown = false;
             orb.Reset();
+
+            startCastingParticles.Stop();
+            castingParticles.Stop();
+            throwParticles.Stop();
+            appearParticles.Stop();
         }
 
         stopped = Time.timeScale == 0;

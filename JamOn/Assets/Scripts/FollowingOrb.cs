@@ -24,6 +24,8 @@ public class FollowingOrb : MonoBehaviour
     private float chargeTimer = 0.0f;
     private Transform chargeTransform;
 
+    public ParticleSystem resetParticles;
+
     void Start()
     {
         segmentPoses = new Vector3[length];
@@ -33,7 +35,7 @@ public class FollowingOrb : MonoBehaviour
 
     void Update()
     {
-
+        resetParticles.Stop();
         wiggleDir.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * wiggleSpeed) * wiggleMagnitude);
 
         segmentPoses[0] = target.position;
@@ -70,6 +72,7 @@ public class FollowingOrb : MonoBehaviour
         gameObject.SetActive(true);
         nSegment = length - 1;
         chargingUp = false;
+        resetParticles.Play();
     }
 
     public void GetCloser(Transform target)
