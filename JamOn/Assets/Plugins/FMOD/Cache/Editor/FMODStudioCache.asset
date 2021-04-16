@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8740859610941463304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lanzamiento/Lanzar
+  m_EditorClassIdentifier: 
+  Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-8367935951314641286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +380,6 @@ MonoBehaviour:
   - {fileID: 3098391940439949233}
   - {fileID: 7966329182492409479}
   EditorEvents:
-  - {fileID: 3344955694305339817}
   - {fileID: 5182147507189678296}
   - {fileID: -2758762253834255247}
   - {fileID: 8543639502031757448}
@@ -370,18 +389,19 @@ MonoBehaviour:
   - {fileID: 795398607784214873}
   - {fileID: -7519764895720442171}
   - {fileID: 2778757957198340384}
-  - {fileID: -1413273263676660423}
   - {fileID: 6167136437958582588}
   - {fileID: -1614071666555070522}
   - {fileID: 1782070619755305935}
   - {fileID: 4069164611695004798}
   - {fileID: 9153295490890736256}
+  - {fileID: 2198751229884428286}
+  - {fileID: 3048687987702308666}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7966329182492409479}
   StringsBanks:
   - {fileID: 3098391940439949233}
-  stringsBankWriteTime: 637542083565926560
+  stringsBankWriteTime: 637542106993703394
   cacheVersion: 6
 --- !u!114 &795398607784214873
 MonoBehaviour:
@@ -446,10 +466,33 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -4996039329113190581}
+  - {fileID: -8740859610941463304}
   MinDistance: 1
   MaxDistance: 20
   Length: 5717
+--- !u!114 &2198751229884428286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Reaundar
+  m_EditorClassIdentifier: 
+  Path: event:/Reaundar
+  guid: 2671b2c6f707cd4c841d2b44d38284df
+  Banks:
+  - {fileID: 7966329182492409479}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3514
 --- !u!114 &2778757957198340384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +514,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 850
   Length: 980
 --- !u!114 &2899802212637715893
 MonoBehaviour:
@@ -493,6 +536,29 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &3048687987702308666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Recuperar orbe
+  m_EditorClassIdentifier: 
+  Path: event:/Recuperar orbe
+  guid: 955f5314a06c3e49a72415f98565d7cf
+  Banks:
+  - {fileID: 7966329182492409479}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 45
+  Length: 590
 --- !u!114 &3098391940439949233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +574,7 @@ MonoBehaviour:
   Path: ../FMOD PROJECT/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637542083565926560
+  lastModified: 637542106993703394
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -627,7 +693,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 500
   Length: 410
 --- !u!114 &6259163696418495053
 MonoBehaviour:
@@ -724,7 +790,7 @@ MonoBehaviour:
   Path: ../FMOD PROJECT/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637542083565906576
+  lastModified: 637542106993683411
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -749,8 +815,8 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
-  Length: 1253
+  MaxDistance: 300
+  Length: 1173
 --- !u!114 &9153295490890736256
 MonoBehaviour:
   m_ObjectHideFlags: 0
