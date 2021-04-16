@@ -22,15 +22,15 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private Animator playerAnim;
 
-    bool inputFrozen = false;
-
     private void Update()
     {
-        if (!inputFrozen)
+        if (!GameManager.Instance.GetInputFreeze())
         {
             float xAxis = Input.GetAxisRaw("Horizontal");
             Move(Mathf.RoundToInt(xAxis));
         }
+        else if (currentDirection != 0)
+            currentDirection = 0;
 
         if (currentDirection != 0)
         {
@@ -116,11 +116,6 @@ public class Movement : MonoBehaviour
             yield return null;
         }
         inertiaSpeed = to;
-    }
-
-    public void FreezeInput(bool freeze)
-    {
-        inputFrozen = freeze;
     }
 
     public void SetMaxSpeed(float maxSpeed)

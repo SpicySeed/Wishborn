@@ -46,4 +46,9 @@ public class TransitionManager : MonoBehaviour
 
         SceneManager.LoadScene(sceneIndex);
     }
+
+    public float GetTransitionTime()
+    {
+        return transitionTime;
+    }
 }

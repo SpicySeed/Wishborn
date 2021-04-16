@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
 
     private int currentLevel = 1;
     private int[] collectablesCollected;
-    private bool loading = false; 
+    private bool loading = false;
+
+    private bool inputFreeze = false;
 
     private void Awake()
     {
@@ -68,5 +70,15 @@ public class GameManager : MonoBehaviour
     public TransitionManager GetTransitionManager()
     {
         return transitionManager;
+    }
+
+    public void SetInputFreeze(bool freeze)
+    {
+        inputFreeze = freeze;
+    }
+
+    public bool GetInputFreeze()
+    {
+        return inputFreeze;
     }
 }

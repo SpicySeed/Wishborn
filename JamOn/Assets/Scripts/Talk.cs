@@ -62,9 +62,7 @@ public class Talk : MonoBehaviour
             //dialogueManager.EndDialogue();
             //Dialogue.SetActive(false);
 
-            player.GetComponent<Movement>().FreezeInput(false);
-            player.GetComponent<Jump>().FreezeInput(false);
-            player.GetComponent<Throw>().FreezeInput(false);
+            GameManager.Instance.SetInputFreeze(false);
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }
@@ -99,9 +97,7 @@ public class Talk : MonoBehaviour
 
         if (player != null)
         {
-            player.GetComponent<Movement>().FreezeInput(true);
-            player.GetComponent<Jump>().FreezeInput(true);
-            player.GetComponent<Throw>().FreezeInput(true);
+            GameManager.Instance.SetInputFreeze(true);
         }
 
         yield return 0.1f;

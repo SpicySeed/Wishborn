@@ -24,8 +24,6 @@ public class Jump : MonoBehaviour
     [Tooltip("Tiempo que se queda guardado un inout de salto para que tenga efecto mas tarde")]
     [Range(0.0f, 1.0f)] [SerializeField] private float inputRemerberTime;
 
-    bool inputFrozen = false;
-
     private void Update()
     {
         // Coyote time
@@ -36,7 +34,7 @@ public class Jump : MonoBehaviour
         if (groundDetector.IsGrounded() && jumpTimer <= 0)
             groundedRemember = coyoteTime;
 
-        if (!inputFrozen && Input.GetKeyDown(KeyCode.Space)) 
+        if (!GameManager.Instance.GetInputFreeze() && Input.GetKeyDown(KeyCode.Space)) 
             inputTimer = inputRemerberTime;
 
         if(inputTimer > 0.0f)
@@ -88,10 +86,5 @@ public class Jump : MonoBehaviour
 
             groundedRemember = 0.0f;
         }
-    }
-
-    public void FreezeInput(bool freeze)
-    {
-        inputFrozen = freeze;
     }
 }

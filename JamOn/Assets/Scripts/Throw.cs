@@ -26,11 +26,10 @@ public class Throw : MonoBehaviour
     [SerializeField] private float gravityScaleOnTeleport = 0.2f;
     [SerializeField] private float timeToWaitOnTeleport = 0.5f;
 
-    bool frozenInput = false;
 
     private void Update()
     {
-        if (frozenInput) return;
+        if (GameManager.Instance.GetInputFreeze()) return;
 
         if (Input.GetMouseButtonUp(0) && throwable == null && !thrown && !stopped)
         {
@@ -92,11 +91,6 @@ public class Throw : MonoBehaviour
         direction.Normalize();
         Vector3 force = direction * forceMultiplier;
         return ThrowObject(prefab, force);
-    }
-
-    public void FreezeInput(bool freeze)
-    {
-        frozenInput = freeze;
     }
 
     public void ChargeUp()

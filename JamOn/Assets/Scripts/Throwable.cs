@@ -27,6 +27,7 @@ public class Throwable : MonoBehaviour
         if (!teleportEnabled)
         {
             Health playerHealth = player.GetComponent<Health>();
+            player.transform.position = transform.position;
             if (playerHealth != null) playerHealth.Die();
         }
         else
@@ -36,7 +37,7 @@ public class Throwable : MonoBehaviour
             Collider2D[] collisions = Physics2D.OverlapBoxAll(transform.position, 1.25f * collider.bounds.size, 0.0f);
 
             if (collisions.Length > 0)
-                transform.position -= Vector3.up * collider.bounds.size.y * 0.8f; ;
+                transform.position -= Vector3.up * collider.bounds.size.y * 0.8f;
             player.transform.position = transform.position;
         }
     }
