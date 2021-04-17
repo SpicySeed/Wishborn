@@ -47,6 +47,8 @@ public class Health : MonoBehaviour
     public void Die()
     {
         GameManager.Instance.SetInputFreeze(true);
+        gameObject.layer = LayerMask.NameToLayer("PlayerDead");
+
         timer = timeToRespawn;
         RuntimeManager.PlayOneShotAttached("event:/Posible muerte", this.gameObject);
         deathParticles.Play();
@@ -72,6 +74,7 @@ public class Health : MonoBehaviour
         }
 
         GameManager.Instance.SetInputFreeze(false);
+        gameObject.layer = LayerMask.NameToLayer("Player");
 
         playerAnim.SetTrigger("Reset");
         deathParticles.Stop();
