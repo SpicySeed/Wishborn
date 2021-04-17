@@ -30,6 +30,6 @@ public class CollectableManager : MonoBehaviour
     private void UpdateText()
     {
         if (collectableText != null)
-            collectableText.text = numCollected.ToString() + " / " + maxNumber.ToString();
+            collectableText.text = numCollected.ToString() + "/" + maxNumber.ToString();
     }
 }
