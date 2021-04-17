@@ -299,6 +299,7 @@ MonoBehaviour:
     - "Hay un diamante azul como yo cerca de aqu\xED que tiene algo que decirte..."
     - "Anda, mira a ver qu\xE9 quiere"
     - "\xA1Hasta ahora!"
+  myLight: {fileID: 5682899780617187215}
 --- !u!95 &7932658439426108713
 Animator:
   serializedVersion: 3

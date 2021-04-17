@@ -20,6 +20,8 @@ public class Talk : MonoBehaviour
 
     public Dialogue dialogue;
 
+    public GameObject myLight;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -49,6 +51,7 @@ public class Talk : MonoBehaviour
 
             GameManager.Instance.SetInputFreeze(false);
             GetComponent<BoxCollider2D>().enabled = false;
+            myLight.SetActive(false);
         }
     }
 

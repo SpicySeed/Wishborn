@@ -17,8 +17,6 @@ public class Throw : MonoBehaviour
     [SerializeField] private float aimOffset = 1.0f;
     [SerializeField] private StudioEventEmitter soundEmitter;
 
-
-
     [SerializeField] private Throwable throwablePrefab;
     private Throwable throwable = null;
     private bool thrown = false;
@@ -40,6 +38,16 @@ public class Throw : MonoBehaviour
 
     private void Update()
     {
+        if (!playerHealth.IsAlive())
+        {
+            startCastingParticles.Stop();
+            castingParticles.Stop();
+            throwParticles.Stop();
+            appearParticles.Stop();
+            soundEmitter.Stop();
+            playingSound = false;
+        }
+
         if (GameManager.Instance.GetInputFreeze()) return;
 
         if (Input.GetMouseButtonUp(0) && throwable == null && !thrown && !stopped)
@@ -121,6 +129,7 @@ public class Throw : MonoBehaviour
 
             orb.Reset();
             aimTarget.SetActive(false);
+            castingParticles.Stop();
 
         }
 
