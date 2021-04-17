@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3742768134328210140}
   myCollider: {fileID: 2670851697568035330}
-  deltaTimeMultiplier: 4
+  deltaTimeMultiplier: 7
 --- !u!96 &5903249585452928937
 TrailRenderer:
   serializedVersion: 2
