@@ -36,7 +36,7 @@ public class Throwable : MonoBehaviour
         {
             Health playerHealth = player.GetComponent<Health>();
             player.transform.position = transform.position;
-            if (playerHealth != null) playerHealth.Die();
+            if (playerHealth != null && playerHealth.IsAlive()) playerHealth.Die();
         }
         else
         {

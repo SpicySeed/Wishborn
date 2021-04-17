@@ -16,7 +16,8 @@ public class RoomManager : MonoBehaviour
 
     private void Update()
     {
-        if (!playerHealth.IsAlive()) Reset();
+        if (playerHealth.HasBeenRevived()) 
+            Reset();
     }
 
     private void Reset()

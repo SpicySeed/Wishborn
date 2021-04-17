@@ -16,10 +16,10 @@ public class Throw : MonoBehaviour
     [SerializeField] private GameObject aimTarget;
     [SerializeField] private float aimOffset = 1.0f;
     [SerializeField] private StudioEventEmitter soundEmitter;
-   
 
 
-   [SerializeField] private Throwable throwablePrefab;
+
+    [SerializeField] private Throwable throwablePrefab;
     private Throwable throwable = null;
     private bool thrown = false;
     private bool stopped = false;
@@ -68,9 +68,6 @@ public class Throw : MonoBehaviour
             orb.Reset();
             orb.Teleport();
 
-           
-
-
             playerAnim.SetTrigger("Appear");
             appearParticles.Play();
 
@@ -79,11 +76,8 @@ public class Throw : MonoBehaviour
             jump.SetGravityScaleForTTime(gravityScaleOnTeleport, timeToWaitOnTeleport);
             Destroy(throwable.gameObject);
 
-
-            
-          
             RuntimeManager.PlayOneShotAttached("event:/Teleport", this.gameObject);
-           
+
         }
         else if (Input.GetMouseButtonDown(1) && throwable != null && !stopped)
         {
@@ -100,6 +94,7 @@ public class Throw : MonoBehaviour
             Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - orbSpawn.position);
             direction.z = 0;
             aimTarget.transform.position = orbSpawn.position + direction.normalized * aimOffset;
+            aimTarget.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Rad2Deg * Mathf.Atan2(direction.y, direction.x));
 
             playerAnim.SetBool("Casting", true);
             castingParticles.Play();
@@ -119,15 +114,14 @@ public class Throw : MonoBehaviour
         {
             playerAnim.SetBool("Casting", false);
             if (playingSound)
-            { 
+            {
                 playingSound = false;
                 soundEmitter.Stop();
             }
 
-           // soundEmitter.Event = null;
             orb.Reset();
             aimTarget.SetActive(false);
-            
+
         }
 
         if (throwable == null && thrown && groundDetector.IsGrounded())

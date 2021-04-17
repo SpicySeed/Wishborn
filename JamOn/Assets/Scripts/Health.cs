@@ -8,10 +8,11 @@ public class Health : MonoBehaviour
 {
     private Throwable throwable;
     private bool alive = true;
+    private bool revived = true;
 
     private Vector2 respanwPosition;
 
-    public Transform forceTranform;
+    public Transform forceTransform;
 
     public float timeToRespawn = 1.0f;
     private float timer = 0.0f;
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
 
     public ParticleSystem deathParticles;
     public Animator playerAnim;
+
 
     private void Awake()
     {
@@ -37,6 +39,8 @@ public class Health : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
+        revived = false;
+        if (timer < 0.2f && !IsAlive()) deathParticles.Stop();
         if (timer < 0.0f && !IsAlive()) Revive();
     }
 
@@ -72,19 +76,24 @@ public class Health : MonoBehaviour
         playerAnim.SetTrigger("Reset");
         deathParticles.Stop();
 
-         for(int i = 0; i < bodyParts.Length; i++)
-         {
+        for (int i = 0; i < bodyParts.Length; i++)
+        {
             bodyParts[i].enabled = true;
-         }
-
+        }
 
         alive = true;
         transform.position = respanwPosition;
+        revived = true;
     }
 
     public bool IsAlive()
     {
         return alive;
+    }
+
+    public bool HasBeenRevived()
+    {
+        return revived;
     }
 
     public void SetThrowable(Throwable throwable)
@@ -104,13 +113,13 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Damage"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Damage") && alive)
             Die();
     }
 
     private void InstantiateDeathBody()
     {
-        for(int i = 0; i < bodyParts.Length; i++)
+        for (int i = 0; i < bodyParts.Length; i++)
         {
             GameObject gO = Instantiate(bodyParts[i].gameObject, bodyParts[i].gameObject.transform.position, bodyParts[i].transform.rotation);
             gO.transform.localScale = mainBody.transform.localScale;
@@ -122,7 +131,7 @@ public class Health : MonoBehaviour
 
             CircleCollider2D pCol = gO.AddComponent<CircleCollider2D>();
             Rigidbody2D rb = gO.AddComponent<Rigidbody2D>();
-            rb.AddForce((gO.transform.position - forceTranform.position).normalized * 5.0f, ForceMode2D.Impulse);
+            rb.AddForce((gO.transform.position - forceTransform.position).normalized * 5.0f, ForceMode2D.Impulse);
             instantiated.Add(gO);
         }
     }

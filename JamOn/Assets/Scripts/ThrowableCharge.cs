@@ -5,16 +5,11 @@ using UnityEngine;
 public class ThrowableCharge : Collectable
 {
     [SerializeField] private float coolDown = 2;
+    [SerializeField] private Animator anim;
+
     private float count = 0;
 
     private bool collected = false;
-
-    private SpriteRenderer sprite = null;
-
-    private void Start()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-    }
 
     private void Update()
     {
@@ -24,7 +19,7 @@ public class ThrowableCharge : Collectable
             if (count > coolDown)
             {
                 collected = false;
-                sprite.enabled = true;
+                anim.Play("ChargeAppear");
                 count = 0;
             }
         }
@@ -35,7 +30,7 @@ public class ThrowableCharge : Collectable
         if (!collected && collision.gameObject.CompareTag("Player"))
         {
             collected = true;
-            sprite.enabled = false;
+            anim.Play("ChargeDisappear");
             collision.gameObject.GetComponent<Throw>().ChargeUp();
             TimeManager.Instance.DoSlowMotion();
         }
