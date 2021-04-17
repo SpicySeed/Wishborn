@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguefinished = false;
         sentences.Clear();
-
+       
         foreach (string sentence in dialogue.sentences)
             sentences.Enqueue(sentence);
 
@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
         if(dialogueTrigger != null)
             dialogueTrigger.GetComponent<Animator>().SetBool("active", false);
         dialoguefinished = true;
-
+        RuntimeManager.PlayOneShotAttached("event:/closeDialogue", this.gameObject);
         endText.SetActive(false);
     }
 

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{6cdc39d9-53fe-4952-9f4f-5fc98ce56512}">
+	<object class="AudioFile" id="{a31f1f5e-1521-4635-9949-f21cdd6718c6}">
 		<property name="assetPath">
-			<value>Muerte.wav</value>
+			<value>Posible pasar nivel.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>96</value>
+			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>1.6249479166666667</value>
+			<value>1.8828344671201813</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{e97340de-fba6-4d9e-86eb-af11d128eb05}</destination>

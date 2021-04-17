@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class Jump : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D myRigidbody;
@@ -89,6 +89,7 @@ public class Jump : MonoBehaviour
             jumpParticles.Play();
             playerAnim.Play("PlayerJump");
             playerAnim.SetTrigger("Jump");
+            RuntimeManager.PlayOneShotAttached("event:/Salto", this.gameObject);
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0);
             myRigidbody.velocity += Vector2.up * jumpSpeed;
 
