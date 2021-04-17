@@ -580,7 +580,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: -4770221426619114315}
+  - {fileID: 27596400166826083}
   MinDistance: 0
   MaxDistance: 0
   Length: 1883
@@ -1133,6 +1133,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &-5019213742252374743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lanzamiento/Lanzar
+  m_EditorClassIdentifier: 
+  Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-4996039329113190581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,6 +1516,46 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-4207465296706257481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Time/TimeON
+  m_EditorClassIdentifier: 
+  Name: TimeON
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
+--- !u!114 &-4197250193528146091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lanzamiento/Lanzar
+  m_EditorClassIdentifier: 
+  Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-4097086402448122909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1620,6 +1680,26 @@ MonoBehaviour:
     data2: 0
   Exists: 0
 --- !u!114 &-3792761756368512439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lanzamiento/Lanzar
+  m_EditorClassIdentifier: 
+  Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
+--- !u!114 &-3787603343298450057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2025,7 +2105,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -6943026166395377995}
+  - {fileID: 7732315668745227349}
   MinDistance: 1
   MaxDistance: 20
   Length: 455
@@ -2149,6 +2229,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-2029574698580888002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Time/TimeON
+  m_EditorClassIdentifier: 
+  Name: TimeON
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-1882175513059504414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,6 +2262,26 @@ MonoBehaviour:
   m_Name: parameter:/lanzamiento/Lanzar
   m_EditorClassIdentifier: 
   Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
+--- !u!114 &-1845309301880175282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pasos/Ground
+  m_EditorClassIdentifier: 
+  Name: Ground
   Min: 0
   Max: 1
   Default: 0
@@ -2586,8 +2706,28 @@ MonoBehaviour:
   - {fileID: 7966329182492409479}
   StringsBanks:
   - {fileID: 3098391940439949233}
-  stringsBankWriteTime: 637542810786365504
+  stringsBankWriteTime: 637542813618058020
   cacheVersion: 6
+--- !u!114 &27596400166826083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Time/TimeON
+  m_EditorClassIdentifier: 
+  Name: TimeON
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &46700896773107792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3031,7 +3171,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 3919082851320897461}
+  - {fileID: -4197250193528146091}
   MinDistance: 1
   MaxDistance: 20
   Length: 5717
@@ -3539,7 +3679,7 @@ MonoBehaviour:
   Path: ../FMOD PROJECT/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637542810786365504
+  lastModified: 637542813618058020
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -4553,6 +4693,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &7098107300130183594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pasos/Ground
+  m_EditorClassIdentifier: 
+  Name: Ground
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &7131522781030999918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4652,6 +4812,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &7732315668745227349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pasos/Ground
+  m_EditorClassIdentifier: 
+  Name: Ground
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &7898770926747469426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4727,7 +4907,7 @@ MonoBehaviour:
   Path: ../FMOD PROJECT/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637542810786335531
+  lastModified: 637542813617988096
   LoadResult: 0
   FileSizes: []
   Exists: 1
