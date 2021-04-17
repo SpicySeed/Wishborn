@@ -161,11 +161,8 @@
 	<object class="SFXReverbEffect" id="{1c9886c4-ba0d-449a-b2ce-a9c38009a2fb}" />
 	<object class="MixerBusFader" id="{f88f955a-a867-4b35-98cc-da1c58263eb7}" />
 	<object class="SpatialiserEffect" id="{379d0027-1674-4f28-964c-3f140443ea9a}">
-		<property name="distanceRolloffType">
-			<value>4</value>
-		</property>
 		<property name="maximumDistance">
-			<value>45</value>
+			<value>25</value>
 		</property>
 		<property name="extentMode">
 			<value>2</value>

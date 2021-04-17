@@ -10,7 +10,7 @@ public class NextLevelDoor : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Health playerHealth = collision.gameObject.GetComponent<Health>();
-           
+            RuntimeManager.PlayOneShotAttached("event:/posible pasar de nivel", this.gameObject);
             if (playerHealth != null && playerHealth.IsAlive())
                 GameManager.Instance.LoadNextLevel();
         }

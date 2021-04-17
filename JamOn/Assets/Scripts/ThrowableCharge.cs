@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class ThrowableCharge : Collectable
 {
     [SerializeField] private float coolDown = 2;
@@ -30,6 +30,7 @@ public class ThrowableCharge : Collectable
         if (!collected && collision.gameObject.CompareTag("Player"))
         {
             collected = true;
+            RuntimeManager.PlayOneShotAttached("event:/Carga recuperada", this.gameObject);
             anim.Play("ChargeDisappear");
             collision.gameObject.GetComponent<Throw>().ChargeUp();
             TimeManager.Instance.DoSlowMotion();

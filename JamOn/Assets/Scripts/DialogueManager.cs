@@ -58,13 +58,13 @@ public class DialogueManager : MonoBehaviour
             //  RuntimeManager.PlayOneShotAttached("event:/hablar", this.gameObject);
             //AudioManager.instance.Stop("Write");
             //AudioManager.instance.Play("Write");
-            soundEmitter.Stop();
+            //soundEmitter.Stop();
             soundEmitter.Play();
 
             if (letter == '.') 
                 yield return new WaitForSeconds(0.2f);
             else
-                yield return new WaitForSeconds(0.05f); ;
+                yield return new WaitForSeconds(0.1f); ;
         }
 
         endText.SetActive(true);
