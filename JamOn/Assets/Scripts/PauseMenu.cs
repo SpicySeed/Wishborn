@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject panel;
     private bool stopped = false;
     private TimeManager tm;
+    [SerializeField] private StudioEventEmitter soundEmitter;
 
     void Start()
     {
@@ -23,14 +24,25 @@ public class PauseMenu : MonoBehaviour
                 panel.SetActive(false);
                 stopped = false;
                 tm.Resume();
-                RuntimeManager.PlayOneShotAttached("event:/Reaundar", this.gameObject);
+                if (!soundEmitter.IsPlaying())
+                    soundEmitter.Play();
+                soundEmitter.EventInstance.setParameterByName("TimeON", 1);
+
+                //if (!soundEmitter.IsPlaying())
+                //soundEmitter.Play();
             }
             else
             {
                 panel.SetActive(true);
                 stopped = true;
                 tm.Pause();
-                RuntimeManager.PlayOneShotAttached("event:/Pausar", this.gameObject);
+                // soundEmitter.Stop();
+                if (!soundEmitter.IsPlaying())
+                    soundEmitter.Play();
+                soundEmitter.EventInstance.setParameterByName("TimeON", 0);
+                //soundEmitter.SetParameter();
+                // 
+                
             }
         }
     }
@@ -40,7 +52,11 @@ public class PauseMenu : MonoBehaviour
         panel.SetActive(false);
         stopped = false;
         tm.Resume();
-        RuntimeManager.PlayOneShotAttached("event:/Reaundar", this.gameObject);
+        if (!soundEmitter.IsPlaying())
+            soundEmitter.Play();
+        soundEmitter.EventInstance.setParameterByName("TimeON", 1);
+        // if (!soundEmitter.IsPlaying())
+        
     }
 
     public void LoadMainMenu()

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using FMODUnity;
 public class DialogueManager : MonoBehaviour
 {
     public Text dialogueText;
     public GameObject endText;
     DialogueTrigger dialogueTrigger;
     public bool dialoguefinished = false;
-
+    [SerializeField] private StudioEventEmitter soundEmitter;
     Queue<string> sentences;
     
     void Start()
@@ -55,13 +55,16 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
 
             // TODO: AQUI HACER SONIDO DE ESCRIBIR LETRA
+            //  RuntimeManager.PlayOneShotAttached("event:/hablar", this.gameObject);
             //AudioManager.instance.Stop("Write");
             //AudioManager.instance.Play("Write");
+            soundEmitter.Stop();
+            soundEmitter.Play();
 
             if (letter == '.') 
                 yield return new WaitForSeconds(0.2f);
             else
-                yield return new WaitForSeconds(0.02f); ;
+                yield return new WaitForSeconds(0.05f); ;
         }
 
         endText.SetActive(true);

@@ -14,7 +14,7 @@ public class GroundDetector : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
 
     [SerializeField] private ParticleSystem landParticles;
-
+    [SerializeField] private StudioEventEmitter soundEmitter;
     private void Update()
     {
         bool currGrounded = grounded;
@@ -45,9 +45,11 @@ public class GroundDetector : MonoBehaviour
         {
             if (((1 << colliders[i].gameObject.layer) & groundMask) != 0)
             {
+                soundEmitter.SetParameter("Ground", 1);
                 return grounded = true;
             }
         }
+        soundEmitter.SetParameter("Ground", 0);
         return grounded = false;
     }
 
