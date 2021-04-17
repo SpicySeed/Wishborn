@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         loading = true;
         currentLevel++;
-        StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.CURTAIN, currentLevel));
+        StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.FADE, currentLevel));
     }
 
     public void ResetCurrentLevel()

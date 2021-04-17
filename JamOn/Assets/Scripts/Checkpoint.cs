@@ -8,7 +8,9 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Health>().SetRespawnPosition(transform.position);
+            Health playerHealth = collision.gameObject.GetComponent<Health>();
+            if (playerHealth != null && playerHealth.IsAlive())
+               playerHealth.SetRespawnPosition(transform.position);
         }
     }
 }

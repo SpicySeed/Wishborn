@@ -8,7 +8,9 @@ public class NextLevelDoor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.LoadNextLevel();
+            Health playerHealth = collision.gameObject.GetComponent<Health>();
+            if (playerHealth != null && playerHealth.IsAlive())
+                GameManager.Instance.LoadNextLevel();
         }
     }
 }
