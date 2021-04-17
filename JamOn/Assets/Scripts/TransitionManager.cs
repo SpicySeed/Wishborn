@@ -44,6 +44,7 @@ public class TransitionManager : MonoBehaviour
         transitions[(int)transitionType].SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
 
+        GameManager.Instance.EndLoad();
         SceneManager.LoadScene(sceneIndex);
     }
 

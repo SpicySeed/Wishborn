@@ -40,7 +40,7 @@ public class EnemyFollow : MonoBehaviour
         {
             if (chaseLastPosition)
             {
-                transform.position = Vector2.MoveTowards(transform.position, chasePosition.position, maxMoveSpeed);
+                transform.position = Vector2.MoveTowards(transform.position, chasePosition.position, maxMoveSpeed * Time.deltaTime);
                 FlipCharacter(chasePosition.position);
             }
             else
@@ -57,7 +57,7 @@ public class EnemyFollow : MonoBehaviour
                     timer = 0.0f;
                 }
 
-                transform.position = Vector2.MoveTowards(transform.position, targetPos[0], maxMoveSpeed);
+                transform.position = Vector2.MoveTowards(transform.position, targetPos[0], maxMoveSpeed * Time.deltaTime);
                 FlipCharacter(targetPos[0]);
                 timer += Time.deltaTime;
             }

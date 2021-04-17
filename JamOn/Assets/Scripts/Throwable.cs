@@ -9,7 +9,7 @@ public class Throwable : MonoBehaviour
     [SerializeField] private Collider2D myCollider;
     [SerializeField] private float deltaTimeMultiplier = 1.2f;
 
-    public void Update()
+    public void FixedUpdate()
     {
         float increasedDeltaTime = deltaTimeMultiplier * Time.deltaTime;
         rb.velocity += Physics2D.gravity / rb.mass * increasedDeltaTime;

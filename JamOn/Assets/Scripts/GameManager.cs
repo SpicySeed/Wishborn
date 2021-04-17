@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DeathManager deathManager;
     [SerializeField] private TimeCountManager timeCountManager;
 
-    private bool timerEnabled = true;
+    private bool timerEnabled = false;
 
     private int numDeaths = 0;
     private int currentLevel = 1;
@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
         Instance.transitionManager = this.transitionManager;
         Instance.collectableManager = this.collectableManager;
         Instance.deathManager = this.deathManager;
-        Instance.deathManager.PlayerDeath(numDeaths);
         Instance.timeCountManager = this.timeCountManager;
+        if (Instance.deathManager != null) Instance.deathManager.PlayerDeath(Instance.numDeaths);
         if (Instance.timeCountManager != null) Instance.timerStopped = false;
         Instance.loading = false;
         Destroy(gameObject);
@@ -115,5 +115,9 @@ public class GameManager : MonoBehaviour
             time += Time.deltaTime;
             timeCountManager.SetTime(time);
         }
+    }
+    public void EndLoad()
+    {
+        loading = false;
     }
 }
