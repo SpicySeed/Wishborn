@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 2531902431791377599}
   - component: {fileID: 2531902431791377597}
   - component: {fileID: 1745590093}
+  - component: {fileID: 6886076944529424154}
   m_Layer: 9
   m_Name: Boss 1
   m_TagString: Untagged
@@ -754,6 +755,8 @@ MonoBehaviour:
   newPosTime: 0.1
   hairDir: {fileID: 2531902430389066148}
   tailDir: {fileID: 2531902431391267189}
+  hair: {fileID: 0}
+  tail: {fileID: 0}
   anim: {fileID: 1745590093}
 --- !u!61 &2531902431791377597
 BoxCollider2D:
@@ -800,6 +803,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6886076944529424154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531902431791377598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Viento
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 45
 --- !u!1 &2531902431843646333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,16 +1232,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 612489105443989957, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
---- !u!4 &4760497768500919347 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7004136077308754349, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
-  m_PrefabInstance: {fileID: 2531902430568056222}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6983132334108369996 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4884732158358839762, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
-  m_PrefabInstance: {fileID: 2531902430568056222}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5237377405082383820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1473247892802981806, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
@@ -1226,6 +1242,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3405602787502590196, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
   m_PrefabInstance: {fileID: 2531902430568056222}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6983132334108369996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4884732158358839762, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
+  m_PrefabInstance: {fileID: 2531902430568056222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8536805391773802469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6150734697474562683, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
@@ -1234,6 +1255,11 @@ Transform:
 --- !u!4 &5016769635843277759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7402856483589883425, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
+  m_PrefabInstance: {fileID: 2531902430568056222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4760497768500919347 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7004136077308754349, guid: 0d323e335e42f2d48bbfc4f2e9524647, type: 3}
   m_PrefabInstance: {fileID: 2531902430568056222}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4295798719594228670 stripped

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class EnemyFollow : MonoBehaviour
 {
@@ -93,6 +94,9 @@ public class EnemyFollow : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.otherCollider.CompareTag("Player") || collision.collider.CompareTag("Player"))
+        {
             anim.Play("Boss_Laugh");
+            RuntimeManager.PlayOneShotAttached("event:/Risa malvada", this.gameObject);
+        }
     }
 }
