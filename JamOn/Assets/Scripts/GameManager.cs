@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         Instance.timeCountManager = this.timeCountManager;
         if (Instance.deathManager != null) Instance.deathManager.PlayerDeath(Instance.numDeaths);
         if (Instance.timeCountManager != null) Instance.timerStopped = false;
+        Instance.SetInputFreeze(false);
         Instance.loading = false;
         Destroy(gameObject);
     }

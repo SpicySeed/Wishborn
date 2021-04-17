@@ -17,6 +17,7 @@ public class NextLevelDoor : MonoBehaviour
             if (playerHealth != null && playerHealth.IsAlive())
             {
                 GameManager.Instance.StopTimer(true);
+                GameManager.Instance.SetInputFreeze(true);
                 GameManager.Instance.LoadNextLevel();
             }
         }

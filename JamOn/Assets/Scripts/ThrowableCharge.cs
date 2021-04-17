@@ -27,7 +27,7 @@ public class ThrowableCharge : Collectable
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collected && collision.gameObject.CompareTag("Player"))
+        if (!collected && collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponent<Health>().IsAlive())
         {
             collected = true;
             RuntimeManager.PlayOneShotAttached("event:/Carga recuperada", this.gameObject);

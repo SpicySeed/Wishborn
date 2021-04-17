@@ -44,6 +44,7 @@ public class EndDoor : MonoBehaviour
         if (opened == 1 && Input.GetKeyDown(KeyCode.E))
         {
             GameManager.Instance.StopTimer(true);
+            GameManager.Instance.SetInputFreeze(true);
             opened = 2;
             shake.ShakeCamera(shakeIntensity, shakeTime);
             tutorial.enabled = false;

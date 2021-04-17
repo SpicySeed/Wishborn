@@ -19,7 +19,7 @@ public class Key : Collectable
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && picked == 0)
+        if (collision.gameObject.CompareTag("Player") && picked == 0 && collision.gameObject.GetComponent<Health>().IsAlive())
         {
             picked = 1;
             tutorial.enabled = true;
