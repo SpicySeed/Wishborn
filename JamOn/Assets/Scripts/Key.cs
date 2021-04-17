@@ -49,4 +49,9 @@ public class Key : Collectable
         }
 
     }
+
+    public bool HasBeenPicked()
+    {
+        return picked == 3;
+    }
 }

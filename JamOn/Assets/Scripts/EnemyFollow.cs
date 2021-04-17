@@ -9,7 +9,6 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private float maxMoveSpeed = 0.1f;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform chasePosition;
-    [SerializeField] private Vector2 respawnOffset = new Vector2(-2.0f, -2.0f);
     [SerializeField] private bool chaseLastPosition = false;
     [SerializeField] private bool useTime;
     [SerializeField] private float newPosTime = 1.0f;
@@ -22,6 +21,7 @@ public class EnemyFollow : MonoBehaviour
     private Health playerHealth;
     private List<Vector2> targetPos;
     private float timer = 0.0f;
+    private bool chasing = true;
 
     private void Start()
     {
@@ -29,14 +29,14 @@ public class EnemyFollow : MonoBehaviour
         targetPos = new List<Vector2>();
         targetPos.Add(chasePosition.position);
 
-        transform.position = playerHealth.GetRespawnPosition() + respawnOffset;
+        transform.position = playerHealth.GetBossPos();
         hair.Teleport();
         tail.Teleport();
     }
 
     private void Update()
     {
-        if (playerHealth.IsAlive())
+        if (playerHealth.IsAlive() && chasing)
         {
             if (chaseLastPosition)
             {
@@ -65,7 +65,7 @@ public class EnemyFollow : MonoBehaviour
 
         if (playerHealth.HasBeenRevived())
         {
-            transform.position = playerHealth.GetRespawnPosition() + respawnOffset;
+            transform.position = playerHealth.GetBossPos();
             hair.Teleport();
             tail.Teleport();
             targetPos.Clear();
@@ -101,5 +101,10 @@ public class EnemyFollow : MonoBehaviour
             anim.Play("Boss_Laugh");
             RuntimeManager.PlayOneShotAttached("event:/Risa malvada", this.gameObject);
         }
+    }
+
+    public void StopChase()
+    {
+        chasing = false;
     }
 }

@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     private bool revived = true;
 
     private Vector2 respanwPosition;
+    private Vector2 bossOffset = new Vector2(10.0f, 7.5f);
 
     public Transform forceTransform;
 
@@ -105,14 +106,20 @@ public class Health : MonoBehaviour
         this.throwable = throwable;
     }
 
-    public void SetRespawnPosition(Vector2 position)
+    public void SetRespawnPosition(Vector2 position, Vector2 offset)
     {
         respanwPosition = position;
+        bossOffset = offset;
     }
 
     public Vector2 GetRespawnPosition()
     {
         return respanwPosition;
+    }
+
+    public Vector2 GetBossPos()
+    {
+        return bossOffset;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
