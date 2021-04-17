@@ -48,6 +48,8 @@ public class Hair : MonoBehaviour
 
     public void Teleport()
     {
+        if (segmentPoses.Length == 0) return;
+
         segmentPoses[0] = targetDir.position;
 
         for (int i = 1; i < segmentPoses.Length; i++)

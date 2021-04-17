@@ -47,6 +47,7 @@ public class Health : MonoBehaviour
     public void Die()
     {
         GameManager.Instance.SetInputFreeze(true);
+        GameManager.Instance.PlayerDeath();
         gameObject.layer = LayerMask.NameToLayer("PlayerDead");
 
         timer = timeToRespawn;

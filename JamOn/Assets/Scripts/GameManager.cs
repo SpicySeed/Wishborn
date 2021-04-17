@@ -5,10 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private int numLevels = 3;
     [SerializeField] private TransitionManager transitionManager;
     [SerializeField] private CollectableManager collectableManager;
+    [SerializeField] private DeathManager deathManager;
 
+    private bool timerEnabled = true;
+
+    private int numDeaths = 0;
     private int currentLevel = 1;
     private bool loading = false;
 
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
         }
         Instance.transitionManager = this.transitionManager;
         Instance.collectableManager = this.collectableManager;
+        Instance.deathManager = this.deathManager;
         Instance.loading = false;
         Destroy(gameObject);
     }
@@ -58,6 +62,22 @@ public class GameManager : MonoBehaviour
     public void CollectableReset()
     {
         collectableManager.ObjectReset();
+    }
+
+    public void PlayerDeath()
+    {
+        numDeaths++;
+        deathManager.PlayerDeath(numDeaths);
+    }
+
+    public void SetTimedModeActive(bool active)
+    {
+        timerEnabled = active;
+    }
+
+    public bool IsTimeModeActive()
+    {
+        return timerEnabled;
     }
 
     public TransitionManager GetTransitionManager()

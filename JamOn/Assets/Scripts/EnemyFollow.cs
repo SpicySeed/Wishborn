@@ -28,7 +28,10 @@ public class EnemyFollow : MonoBehaviour
         playerHealth = player.GetComponent<Health>();
         targetPos = new List<Vector2>();
         targetPos.Add(chasePosition.position);
+
         transform.position = playerHealth.GetRespawnPosition() + respawnOffset;
+        hair.Teleport();
+        tail.Teleport();
     }
 
     private void Update()
