@@ -7,6 +7,7 @@ public class EnemyFollow : MonoBehaviour
 {
     [SerializeField] private float stoppingDistance = 0.5f;
     [SerializeField] private float maxMoveSpeed = 0.1f;
+    [SerializeField] private float delayTime = 2;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform chasePosition;
     [SerializeField] private bool chaseLastPosition = false;
@@ -73,7 +74,7 @@ public class EnemyFollow : MonoBehaviour
             FlipCharacter(targetPos[0]);
             anim.Play("Boss_Idle");
             StopChase();
-            Invoke("ResumeChase", 2.0f);
+            Invoke("ResumeChase", delayTime);
         }
 
 
