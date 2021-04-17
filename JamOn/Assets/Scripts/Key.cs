@@ -10,6 +10,10 @@ public class Key : Collectable
     [SerializeField] SpriteRenderer keyRenderer;
     [SerializeField] float shakeIntensity;
     [SerializeField] float shakeTime;
+
+    [SerializeField] private GameObject lightMed;
+    [SerializeField] private GameObject lightFoc;
+
     int picked = 0;
 
 
@@ -46,6 +50,8 @@ public class Key : Collectable
             GameManager.Instance.SetInputFreeze(false);
             picked = 3;
             boss.SetActive(true);
+            lightMed.SetActive(true);
+            lightFoc.SetActive(true);
         }
 
     }

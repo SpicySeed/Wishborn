@@ -4240,4 +4240,6 @@ ScriptedImporter:
   textureAssetName: boss Texture
   prefabAssetName: boss Prefab
   spriteLibAssetName: boss Sprite Lib
-  secondarySpriteTextures: []
+  secondarySpriteTextures:
+  - name: _NormalMap
+    texture: {fileID: -596552431257024031, guid: 5e33f741d2f45844e93fdc428832343b, type: 3}
