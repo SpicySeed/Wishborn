@@ -42,12 +42,14 @@ public class Key : Collectable
             shake.ShakeCamera(shakeIntensity, shakeTime);
             keyRenderer.enabled = false;
             GameManager.Instance.SetInputFreeze(true);
+            GameManager.Instance.StopTimer(true);
             tutorial.enabled = false;
             picked = 2;
         }
         if (picked == 2 && !shake.isShaking())
         {
             GameManager.Instance.SetInputFreeze(false);
+            GameManager.Instance.StopTimer(false);
             picked = 3;
             boss.SetActive(true);
             lightMed.SetActive(true);

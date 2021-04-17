@@ -72,6 +72,8 @@ public class EnemyFollow : MonoBehaviour
             targetPos.Add(chasePosition.position);
             FlipCharacter(targetPos[0]);
             anim.Play("Boss_Idle");
+            StopChase();
+            Invoke("ResumeChase", 2.0f);
         }
 
 
@@ -106,5 +108,10 @@ public class EnemyFollow : MonoBehaviour
     public void StopChase()
     {
         chasing = false;
+    }
+
+    public void ResumeChase()
+    {
+        chasing = true;
     }
 }

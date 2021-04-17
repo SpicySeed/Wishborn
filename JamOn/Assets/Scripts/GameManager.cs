@@ -8,26 +8,34 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TransitionManager transitionManager;
     [SerializeField] private CollectableManager collectableManager;
     [SerializeField] private DeathManager deathManager;
+    [SerializeField] private TimeCountManager timeCountManager;
 
     private bool timerEnabled = true;
 
     private int numDeaths = 0;
     private int currentLevel = 1;
     private bool loading = false;
+    private float time = 0.0f;
 
     private bool inputFreeze = false;
+    private bool timerStopped = true;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            time = 0.0f;
+            if (Instance.timeCountManager != null) Instance.timerStopped = false;
             DontDestroyOnLoad(gameObject);
             return;
         }
         Instance.transitionManager = this.transitionManager;
         Instance.collectableManager = this.collectableManager;
         Instance.deathManager = this.deathManager;
+        Instance.deathManager.PlayerDeath(numDeaths);
+        Instance.timeCountManager = this.timeCountManager;
+        if (Instance.timeCountManager != null) Instance.timerStopped = false;
         Instance.loading = false;
         Destroy(gameObject);
     }
@@ -93,5 +101,19 @@ public class GameManager : MonoBehaviour
     public bool GetInputFreeze()
     {
         return inputFreeze;
+    }
+
+    public void StopTimer(bool stopped)
+    {
+        timerStopped = stopped;
+    }
+
+    private void Update()
+    {
+        if (timeCountManager != null && timerEnabled && !timerStopped)
+        {
+            time += Time.deltaTime;
+            timeCountManager.SetTime(time);
+        }
     }
 }

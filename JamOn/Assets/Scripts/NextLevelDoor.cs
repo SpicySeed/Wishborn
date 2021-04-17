@@ -16,7 +16,7 @@ public class NextLevelDoor : MonoBehaviour
             RuntimeManager.PlayOneShotAttached("event:/posible pasar de nivel", this.gameObject);
             if (playerHealth != null && playerHealth.IsAlive())
             {
-                timeCountManager.StopTimer();
+                GameManager.Instance.StopTimer(true);
                 GameManager.Instance.LoadNextLevel();
             }
         }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EndDoor : MonoBehaviour
 {
-    [SerializeField] private TimeCountManager timeCountManager;
     [SerializeField] private CinemachineShake shake;
     [SerializeField] private EnemyFollow boss;
     [SerializeField] private SpriteRenderer tutorial;
@@ -44,7 +43,7 @@ public class EndDoor : MonoBehaviour
     {
         if (opened == 1 && Input.GetKeyDown(KeyCode.E))
         {
-            timeCountManager.StopTimer();
+            GameManager.Instance.StopTimer(true);
             opened = 2;
             shake.ShakeCamera(shakeIntensity, shakeTime);
             tutorial.enabled = false;
