@@ -648,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 236479908462285045, guid: 4fb7d2146f4eb214c80ec151933c66e3, type: 3}
       propertyPath: m_Text
-      value: Textoooooooooooooooooooooooooooooooooooooooo
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 236479908462285051, guid: 4fb7d2146f4eb214c80ec151933c66e3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -664,6 +664,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 236479908462285051, guid: 4fb7d2146f4eb214c80ec151933c66e3, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272973905767966498, guid: 4fb7d2146f4eb214c80ec151933c66e3, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

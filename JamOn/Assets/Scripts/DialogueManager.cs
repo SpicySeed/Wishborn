@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     Queue<string> sentences;
 
     public bool skip = false;
+    public bool typing = false;
 
     void Start()
     {
@@ -35,14 +36,13 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-
-
         if (sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
 
+        endText.SetActive(false);
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
@@ -51,8 +51,6 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
-
-        endText.SetActive(false);
 
         foreach (char letter in sentence.ToCharArray())
         {
@@ -65,10 +63,8 @@ public class DialogueManager : MonoBehaviour
             if (skip)
             {
                 dialogueText.text = sentence;
-
                 skip = false;
                 endText.SetActive(true);
-
                 yield break;
             }
             else if (letter == '.')

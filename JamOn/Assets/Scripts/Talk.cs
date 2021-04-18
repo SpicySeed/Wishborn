@@ -32,7 +32,7 @@ public class Talk : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && player != null)
         {
             if (tutorial.activeSelf)
             {
@@ -40,15 +40,16 @@ public class Talk : MonoBehaviour
                 canEnd = true;
                 dialogueManager.dialoguefinished = false;
             }
-            else if (dialogueManager.endText.activeSelf)
+            else if (canEnd && dialogueManager.endText.activeSelf)
                 dialogueManager.DisplayNextSentence();
-            else if (player != null && canEnd)
+            else if (canEnd)
                 dialogueManager.skip = true;
         }
 
         if (canEnd && !end && dialogueManager.IsDialogueFinished())
         {
             end = true;
+            canEnd = false;
 
             GameManager.Instance.SetInputFreeze(false);
             GetComponent<BoxCollider2D>().enabled = false;
@@ -82,9 +83,7 @@ public class Talk : MonoBehaviour
         dialogueTrigger.dialogue = dialogue;
 
         if (player != null)
-        {
             GameManager.Instance.SetInputFreeze(true);
-        }
 
         yield return 0.1f;
 
