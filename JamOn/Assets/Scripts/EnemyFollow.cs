@@ -18,7 +18,7 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private Hair hair;
     [SerializeField] private Hair tail;
     [SerializeField] private Animator anim;
-   
+
 
     private Health playerHealth;
     private List<Vector2> targetPos;
@@ -30,8 +30,13 @@ public class EnemyFollow : MonoBehaviour
         playerHealth = player.GetComponent<Health>();
         targetPos = new List<Vector2>();
         targetPos.Add(chasePosition.position);
-        
+
         transform.position = playerHealth.GetBossPos();
+        Invoke("ResetHair", 0.01f);
+    }
+
+    public void ResetHair()
+    {
         hair.Teleport();
         tail.Teleport();
     }
@@ -68,8 +73,7 @@ public class EnemyFollow : MonoBehaviour
         if (playerHealth.HasBeenRevived())
         {
             transform.position = playerHealth.GetBossPos();
-            hair.Teleport();
-            tail.Teleport();
+            ResetHair();
             targetPos.Clear();
             targetPos.Add(chasePosition.position);
             FlipCharacter(targetPos[0]);
