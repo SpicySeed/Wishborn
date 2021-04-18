@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
         foreach (string sentence in dialogue.sentences)
             sentences.Enqueue(sentence);
 
+        GameManager.Instance.SetOnDialogue(true);
         DisplayNextSentence();
     }
 
@@ -89,6 +90,7 @@ public class DialogueManager : MonoBehaviour
         dialoguefinished = true;
         RuntimeManager.PlayOneShotAttached("event:/closeDialogue", this.gameObject);
         endText.SetActive(false);
+        GameManager.Instance.SetOnDialogue(false);
     }
 
     public bool IsDialogueFinished()

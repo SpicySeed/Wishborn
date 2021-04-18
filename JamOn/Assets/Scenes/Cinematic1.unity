@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5738007697166851327, guid: f119d401b912cdd4f915bae7920e2d8f, type: 3}
+      propertyPath: transitionTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8351448565822440712, guid: f119d401b912cdd4f915bae7920e2d8f, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
       value: "After fullfilling the three wishes of his master, the genie\u2019s

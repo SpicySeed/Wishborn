@@ -106,6 +106,7 @@ public class Cinematic : MonoBehaviour
     public void EndCinematic()
     {
         GameManager.Instance.SetInputFreeze(false);
+        GameManager.Instance.SetOnDialogue(false);
         GameManager.Instance.LoadScene(nextSceneName);
     }
 }

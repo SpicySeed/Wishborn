@@ -20,6 +20,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsOnDialogue()) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (stopped)

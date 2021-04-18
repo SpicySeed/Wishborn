@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TimeCountManager timeCountManager;
 
     private bool timerEnabled = false;
+    private bool onDialogue = false;
 
     private int numDeaths = 0;
     private int numCollectables = 0;
@@ -153,5 +154,15 @@ public class GameManager : MonoBehaviour
     public void EndLoad()
     {
         loading = false;
+    }
+
+    public void SetOnDialogue(bool onDialogue)
+    {
+        this.onDialogue = onDialogue;
+    }
+
+    public bool IsOnDialogue()
+    {
+        return onDialogue;
     }
 }
