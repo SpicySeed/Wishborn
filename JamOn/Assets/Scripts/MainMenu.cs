@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     {
         GameManager.Instance.SetTimedModeActive(true);
         GameManager.Instance.NewRun();
-        GameManager.Instance.LoadScene(1);
+        GameManager.Instance.LoadScene("Cinematic1");
     }
 
     public void CloseGame()
