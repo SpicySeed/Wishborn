@@ -1562,7 +1562,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3867586939933754762, guid: e87291d3389c7334a9fd4ca24c18cfa1, type: 3}
       propertyPath: Event
-      value: event:/Music/MenuMusic
+      value: event:/Menu
       objectReference: {fileID: 0}
     - target: {fileID: 3867586939933754762, guid: e87291d3389c7334a9fd4ca24c18cfa1, type: 3}
       propertyPath: OverrideMaxDistance

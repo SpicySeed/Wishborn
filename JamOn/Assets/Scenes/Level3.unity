@@ -2182,6 +2182,10 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 2531902431791377599, guid: 833f85e4cc5fa2b41a63c895445cf6aa, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 1327129258}
+    - target: {fileID: 2531902431791377599, guid: 833f85e4cc5fa2b41a63c895445cf6aa, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 766706104}
@@ -3787,6 +3791,10 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 268220925}
+    - target: {fileID: 3064572542608968680, guid: 43e7710ae56b86940ad386f48982872f, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 1327129258}
     - target: {fileID: 3064572542608968680, guid: 43e7710ae56b86940ad386f48982872f, type: 3}
       propertyPath: shake
       value: 
@@ -15742,7 +15750,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3867586939933754762, guid: e87291d3389c7334a9fd4ca24c18cfa1, type: 3}
       propertyPath: Event
-      value: event:/Music/Level3Music
+      value: event:/Level3Music
       objectReference: {fileID: 0}
     - target: {fileID: 3867586939933754762, guid: e87291d3389c7334a9fd4ca24c18cfa1, type: 3}
       propertyPath: OverrideMaxDistance
@@ -54903,6 +54911,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1327129258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3867586939933754762, guid: e87291d3389c7334a9fd4ca24c18cfa1, type: 3}
+  m_PrefabInstance: {fileID: 1146708016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1342511140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510175510672954228, guid: 6e370183eea6e4242aadeeacc9d19b7e, type: 3}
