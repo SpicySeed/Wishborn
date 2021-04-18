@@ -19,7 +19,7 @@ public class DialogueTrigger : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetBool("active", true);
         RuntimeManager.PlayOneShotAttached("event:/openDialogue", this.gameObject);
-        Invoke("StartDialogue", 0.5f);
+        Invoke("StartDialogue", 0.1f);
     }
 
     void StartDialogue()

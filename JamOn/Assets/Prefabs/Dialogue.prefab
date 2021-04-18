@@ -55,7 +55,7 @@ MonoBehaviour:
   dialoguefinished: 0
   typing: 0
   skip: 0
-  showEndText: 0
+  showEndText: 1
 --- !u!114 &15830515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +175,6 @@ MonoBehaviour:
     sentences:
     - Buenas tardes
     - Todo bien por aqui
-  anim: {fileID: 236479908434172145}
 --- !u!95 &236479908434172145
 Animator:
   serializedVersion: 3

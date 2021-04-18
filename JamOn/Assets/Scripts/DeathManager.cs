@@ -18,6 +18,7 @@ public class DeathManager : MonoBehaviour
     {
         this.numDeaths = numDeaths;
         UpdateText();
+        if (anim == null) anim = GetComponent<Animator>();
         anim.Play("PlayerDeath");
     }
 

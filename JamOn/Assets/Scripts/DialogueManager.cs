@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     public bool dialoguefinished = false;
     public bool typing = false;
     public bool skip = false;
-    public bool showEndText = false;
+    public bool showEndText = true;
 
     DialogueTrigger dialogueTrigger;
     Queue<string> sentences;

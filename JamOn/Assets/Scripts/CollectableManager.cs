@@ -27,6 +27,7 @@ public class CollectableManager : MonoBehaviour
     {
         numCollected++;
         UpdateText();
+        if (anim == null) anim = GetComponent<Animator>();
         anim.Play("CollectableCollected");
     }
 

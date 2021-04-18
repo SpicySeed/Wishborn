@@ -85,7 +85,6 @@ public class Cinematic : MonoBehaviour
             end = true;
             canEnd = false;
 
-            GameManager.Instance.SetInputFreeze(false);
             skipButton.gameObject.SetActive(false);
             EndCinematic();
         }
@@ -106,6 +105,7 @@ public class Cinematic : MonoBehaviour
 
     public void EndCinematic()
     {
+        GameManager.Instance.SetInputFreeze(false);
         GameManager.Instance.LoadScene(nextSceneName);
     }
 }

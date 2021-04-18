@@ -34,10 +34,9 @@ public class Talk : MonoBehaviour
             if (tutorial.activeSelf)
             {
                 StartCoroutine(StartTalking());
-                canEnd = true;
                 dialogueManager.dialoguefinished = false;
             }
-            else if (canEnd && dialogueManager.endText.activeSelf)
+            else if (canEnd && !dialogueManager.typing)
                 dialogueManager.DisplayNextSentence();
             else if (canEnd)
                 dialogueManager.skip = true;
@@ -84,5 +83,7 @@ public class Talk : MonoBehaviour
         yield return 0.1f;
 
         dialogueTrigger.TriggerDialogue();
+        dialogueManager.typing = true;
+        canEnd = true;
     }
 }
