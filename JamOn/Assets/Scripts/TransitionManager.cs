@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
-    public enum Transitions { FADE, CURTAIN, DIAMOND };
+    public enum Transitions { FADE, CURTAIN, DIAMOND, NONE };
     public enum Mode { START, END, WHOLE };
     [SerializeField] private Animator[] transitions;
     [SerializeField] private float transitionTime = 1.0f;
@@ -18,6 +18,8 @@ public class TransitionManager : MonoBehaviour
 
     public IEnumerator StartTransition(Transitions transitionType, Mode mode)
     {
+        if (transitionType == Transitions.NONE) yield break;
+
         if ((int)transitionType >= transitions.Length) yield return null;
 
         transitions[(int)transitionType].gameObject.SetActive(true);
@@ -39,11 +41,14 @@ public class TransitionManager : MonoBehaviour
 
     public IEnumerator StartTransitionAndLoad(Transitions transitionType, string sceneName)
     {
-        if ((int)transitionType >= transitions.Length) yield return null;
+        if (transitionType != Transitions.NONE)
+        {
+            if ((int)transitionType >= transitions.Length) yield return null;
 
-        transitions[(int)transitionType].gameObject.SetActive(true);
-        transitions[(int)transitionType].SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
+            transitions[(int)transitionType].gameObject.SetActive(true);
+            transitions[(int)transitionType].SetTrigger("Start");
+            yield return new WaitForSeconds(transitionTime);
+        }
 
         GameManager.Instance.EndLoad();
         SceneManager.LoadScene(sceneName);

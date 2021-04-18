@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     private bool stopped = false;
     private TimeManager tm;
     [SerializeField] private StudioEventEmitter soundEmitter;
+    [SerializeField] private StudioEventEmitter TimeEvent;
 
     void Start()
     {
@@ -23,13 +24,22 @@ public class PauseMenu : MonoBehaviour
             {
                 panel.SetActive(false);
                 stopped = false;
+               
+                if (!soundEmitter.IsPlaying())
+                    soundEmitter.Play();
+                soundEmitter.EventInstance.setParameterByName("TimeON", 1);
                 tm.Resume();
+                TimeEvent.Stop();
             }
             else
             {
                 panel.SetActive(true);
                 stopped = true;
+                if (!soundEmitter.IsPlaying())
+                    soundEmitter.Play();
+                soundEmitter.EventInstance.setParameterByName("TimeON", 0);
                 tm.Pause();
+                TimeEvent.Play();
             }
         }
     }
@@ -38,7 +48,11 @@ public class PauseMenu : MonoBehaviour
     {
         panel.SetActive(false);
         stopped = false;
+        if(!soundEmitter.IsPlaying())
+            soundEmitter.Play();
+        soundEmitter.EventInstance.setParameterByName("TimeON", 1);
         tm.Resume();
+        TimeEvent.Stop();
     }
 
     public void LoadMainMenu()
@@ -47,5 +61,6 @@ public class PauseMenu : MonoBehaviour
         gm.LoadScene(0);
         gm.ResetCurrentLevel();
         tm.Resume();
+        TimeEvent.Stop();
     }
 }

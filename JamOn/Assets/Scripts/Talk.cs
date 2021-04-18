@@ -10,7 +10,7 @@ public class Talk : MonoBehaviour
     DialogueTrigger dialogueTrigger;
     DialogueManager dialogueManager;
 
-    GameObject player;
+    GameObject player = null;
 
     bool end = false;
     bool canEnd = false;
@@ -21,7 +21,7 @@ public class Talk : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = null;
         dialogueTrigger = Dialogue.GetComponent<DialogueTrigger>();
         dialogueManager = Dialogue.GetComponentInChildren<DialogueManager>();
         tutorial.SetActive(false);
@@ -79,8 +79,7 @@ public class Talk : MonoBehaviour
 
         dialogueTrigger.dialogue = dialogue;
 
-        if (player != null)
-            GameManager.Instance.SetInputFreeze(true);
+        GameManager.Instance.SetInputFreeze(true);
 
         yield return 0.1f;
 

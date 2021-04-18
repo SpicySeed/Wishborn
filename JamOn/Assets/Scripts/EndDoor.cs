@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class EndDoor : MonoBehaviour
 {
@@ -49,11 +50,12 @@ public class EndDoor : MonoBehaviour
             shake.ShakeCamera(shakeIntensity, shakeTime);
             tutorial.enabled = false;
             boss.StopChase();
+            RuntimeManager.PlayOneShotAttached("event:/Puerta abriendose", this.gameObject);
             anim.Play("Open");
         }
         else if (opened == 2 && !shake.isShaking())
         {
-            GameManager.Instance.LoadScene("CreditsScene");
+            GameManager.Instance.LoadScene("Cinematic2");
         }
     }
 }

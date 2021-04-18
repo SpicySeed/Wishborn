@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     public bool dialoguefinished = false;
     public bool typing = false;
     public bool skip = false;
+    public bool showEndText = false;
 
     DialogueTrigger dialogueTrigger;
     Queue<string> sentences;
@@ -43,6 +44,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         endText.SetActive(false);
+        typing = true;
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
@@ -61,7 +63,8 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.text = sentence;
                 skip = false;
-                endText.SetActive(true);
+                typing = false;
+                endText.SetActive(true && showEndText);
                 yield break;
             }
             else if (letter == '.')
@@ -73,7 +76,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         skip = false;
-        endText.SetActive(true);
+        typing = false;
+        endText.SetActive(true && showEndText);
     }
 
     public void EndDialogue()

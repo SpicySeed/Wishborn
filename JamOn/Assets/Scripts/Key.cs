@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Key : Collectable
 {
@@ -12,6 +13,7 @@ public class Key : Collectable
     [SerializeField] float shakeTime;
 
     [SerializeField] private GameObject lightMed;
+    [SerializeField] private StudioEventEmitter music;
     [SerializeField] private GameObject lightFoc;
 
     int picked = 0;
@@ -39,6 +41,9 @@ public class Key : Collectable
         if (picked == 1 && Input.GetKeyDown(KeyCode.E))
         {
             shake.ShakeCamera(shakeIntensity, shakeTime);
+            RuntimeManager.PlayOneShotAttached("event:/Llave", this.gameObject);
+            RuntimeManager.PlayOneShotAttached("event:/Terremoto", this.gameObject);
+            music.EventInstance.setParameterByName("Boss", 1);
             keyRenderer.enabled = false;
             GameManager.Instance.SetInputFreeze(true);
             GameManager.Instance.StopTimer(true);
