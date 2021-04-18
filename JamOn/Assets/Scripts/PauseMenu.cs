@@ -6,6 +6,8 @@ using FMODUnity;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject optionsPanel;
     private bool stopped = false;
     private TimeManager tm;
     [SerializeField] private StudioEventEmitter soundEmitter;
@@ -27,6 +29,8 @@ public class PauseMenu : MonoBehaviour
             if (stopped)
             {
                 panel.SetActive(false);
+                pausePanel.SetActive(true);
+                optionsPanel.SetActive(false);
                 stopped = false;
                
                 if (!soundEmitter.IsPlaying())

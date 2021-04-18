@@ -26,11 +26,13 @@ public class FollowingOrb : MonoBehaviour
 
     public ParticleSystem resetParticles;
 
+
     void Start()
     {
         segmentPoses = new Vector3[length];
         segmentV = new Vector3[length];
         nSegment = length - 1;
+        resetParticles.Stop();
     }
 
     void Update()
