@@ -10,12 +10,12 @@ public class PauseMenu : MonoBehaviour
     private TimeManager tm;
     [SerializeField] private StudioEventEmitter soundEmitter;
     [SerializeField] private StudioEventEmitter TimeEvent;
-    private Animator playerAnim;
+    private Throw playerThrow;
 
     void Start()
     {
         tm = TimeManager.Instance;
-        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
+        playerThrow = GameObject.FindGameObjectWithTag("Player").GetComponent<Throw>();
     }
 
     private void Update()
@@ -34,10 +34,11 @@ public class PauseMenu : MonoBehaviour
                 soundEmitter.EventInstance.setParameterByName("TimeON", 1);
                 tm.Resume();
                 TimeEvent.Stop();
+                playerThrow.StopCasting();
             }
             else
             {
-                playerAnim.SetTrigger("Reset");
+                playerThrow.StopCasting();
                 panel.SetActive(true);
                 stopped = true;
                 if (!soundEmitter.IsPlaying())

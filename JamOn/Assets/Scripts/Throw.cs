@@ -164,7 +164,7 @@ public class Throw : MonoBehaviour
 
     private Throwable InternalThrow(Throwable prefab)
     {
-        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - orbSpawn.position);
         direction.z = 0;
         direction.Normalize();
         Vector3 force = direction * forceMultiplier;
@@ -174,5 +174,15 @@ public class Throw : MonoBehaviour
     public void ChargeUp()
     {
         thrown = false;
+    }
+
+    public void StopCasting()
+    {
+        castingParticles.Stop();
+        soundEmitter.Stop();
+        playingSound = false;
+        playerAnim.SetBool("Casting", false);
+        playerAnim.SetTrigger("Reset");
+        orb.Reset();
     }
 }
