@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Vase : Collectable
 {
@@ -18,9 +19,14 @@ public class Vase : Collectable
 
     List<GameObject> instantiated;
 
+    public ParticleSystem soulParticles;
+    public Light2D myLight;
+    float intensity;
+
     private void Start()
     {
         instantiated = new List<GameObject>();
+        intensity = myLight.intensity;
     }
 
     private void Update()
@@ -32,6 +38,9 @@ public class Vase : Collectable
                 collected = 0;
                 spriteRenderer.enabled = true;
                 Reset();
+                soulParticles.Play();
+                myLight.gameObject.SetActive(true);
+                myLight.intensity = intensity;
                 GameManager.Instance.CollectableReset();
             }
             else if (groundDetector.IsGrounded())
@@ -43,8 +52,13 @@ public class Vase : Collectable
         if (collected == 2)
         {
             timer += Time.deltaTime;
+
+            myLight.intensity = intensity - timer / brokenTime * intensity;
             if (timer > brokenTime)
+            {
                 gameObject.SetActive(false);
+                myLight.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -55,6 +69,7 @@ public class Vase : Collectable
             if (spriteRenderer.enabled) emitter.Play();
             spriteRenderer.enabled = false;
             Shatter();
+            soulParticles.Stop();
             GameManager.Instance.ObjectCollected();
             playerHealth = collision.gameObject.GetComponent<Health>();
             groundDetector = collision.gameObject.GetComponent<Jump>().groundDetector;
