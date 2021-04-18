@@ -36,17 +36,25 @@ public class Throw : MonoBehaviour
     [SerializeField] private ParticleSystem throwParticles;
     [SerializeField] private ParticleSystem appearParticles;
 
+    private void Start()
+    {
+        Invoke("StopParticles", 0.5f);
+    }
+
+    private void StopParticles()
+    {
+        startCastingParticles.Stop();
+        castingParticles.Stop();
+        throwParticles.Stop();
+        appearParticles.Stop();
+        soundEmitter.Stop();
+        playingSound = false;
+    }
+
     private void Update()
     {
         if (!playerHealth.IsAlive())
-        {
-            startCastingParticles.Stop();
-            castingParticles.Stop();
-            throwParticles.Stop();
-            appearParticles.Stop();
-            soundEmitter.Stop();
-            playingSound = false;
-        }
+            StopParticles();
 
         if (GameManager.Instance.GetInputFreeze()) return;
 
@@ -134,7 +142,7 @@ public class Throw : MonoBehaviour
                 soundEmitter.Stop();
             }
 
-            orb.Reset();
+            //orb.Reset();
             aimTarget.SetActive(false);
             castingParticles.Stop();
 
