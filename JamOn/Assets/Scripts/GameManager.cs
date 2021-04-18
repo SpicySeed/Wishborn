@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (timeCountManager != null && timerEnabled && !timerStopped)
+        if (timeCountManager != null && !timerStopped)
         {
             time += Time.deltaTime;
             timeCountManager.SetTime(time);
