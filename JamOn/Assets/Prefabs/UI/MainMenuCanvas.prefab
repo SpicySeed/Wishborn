@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 6412522531777578344}
   - component: {fileID: 6412522531777578347}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,15 +1784,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4071409765224960603, guid: 000f8540ee82c6347b15484697ef748f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4071409765224960603, guid: 000f8540ee82c6347b15484697ef748f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4071409765224960603, guid: 000f8540ee82c6347b15484697ef748f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4071409765224960603, guid: 000f8540ee82c6347b15484697ef748f, type: 3}
       propertyPath: m_AnchoredPosition.y

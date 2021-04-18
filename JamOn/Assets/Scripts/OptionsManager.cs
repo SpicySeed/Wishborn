@@ -7,21 +7,35 @@ public class OptionsManager : MonoBehaviour
 {
     [SerializeField] private Dropdown resDropdown;
     [SerializeField] private Toggle fullScreenToggle;
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider soundsVolumeSlider;
 
     private Resolution[] resolutions = null;
+
+    private FMOD.Studio.Bus music;
+    private FMOD.Studio.Bus soundEffects;
+    private float musicVolume = 0;
+    private float soundsVolume = 0;
 
     public void Awake()
     {
         resolutions = Screen.resolutions;
         LoadResolutions();
 
+        music = FMODUnity.RuntimeManager.GetBus("bus:/MUSIC");
+        soundEffects = FMODUnity.RuntimeManager.GetBus("bus:/SoundEffects");
+
         fullScreenToggle.isOn = Screen.fullScreen;
-        volumeSlider.value = AudioListener.volume;
+
+        music.getVolume(out musicVolume);
+        music.getVolume(out soundsVolume);
+        musicVolumeSlider.value = musicVolume;
+        soundsVolumeSlider.value = soundsVolume;
 
         resDropdown.onValueChanged.AddListener(delegate { CheckResolutionDropdown(); });
         fullScreenToggle.onValueChanged.AddListener(delegate { CheckFullscreenToggle(); });
-        volumeSlider.onValueChanged.AddListener(delegate { CheckVolumeSlider(); });
+        musicVolumeSlider.onValueChanged.AddListener(delegate { CheckVolumeSlider(); });
+        soundsVolumeSlider.onValueChanged.AddListener(delegate { CheckVolumeSlider(); });
     }
 
     private void LoadResolutions()
@@ -54,7 +68,9 @@ public class OptionsManager : MonoBehaviour
 
     private void CheckVolumeSlider()
     {
-        AudioListener.volume = volumeSlider.value;
-        Debug.Log("Volume: " + volumeSlider.value.ToString());
+        music.setVolume(musicVolumeSlider.value);
+        soundEffects.setVolume(soundsVolumeSlider.value);
+        Debug.Log("Volume: " + musicVolumeSlider.value.ToString());
+        Debug.Log("Volume: " + soundsVolumeSlider.value.ToString());
     }
 }
