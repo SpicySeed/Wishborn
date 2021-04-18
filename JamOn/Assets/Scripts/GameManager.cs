@@ -105,6 +105,13 @@ public class GameManager : MonoBehaviour
         return time;
     }
 
+    public void NewRun()
+    {
+        time = 0.0f;
+        numDeaths = 0;
+        numCollectables = 0;
+    }
+
     public void SetTimedModeActive(bool active)
     {
         timerEnabled = active;

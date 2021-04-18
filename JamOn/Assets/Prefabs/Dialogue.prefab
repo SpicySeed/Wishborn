@@ -49,10 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c4b915c6340ee47a7d47bde5b3e089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEmitter: {fileID: 15830515}
   dialogueText: {fileID: 236479908462285045}
   endText: {fileID: 8272973905767966498}
   dialoguefinished: 0
-  soundEmitter: {fileID: 15830515}
+  typing: 0
+  skip: 0
+  showEndText: 0
 --- !u!114 &15830515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,10 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    face: 0
     sentences:
     - Buenas tardes
     - Todo bien por aqui
+  anim: {fileID: 236479908434172145}
 --- !u!95 &236479908434172145
 Animator:
   serializedVersion: 3

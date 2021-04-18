@@ -55,7 +55,7 @@ public class EndDoor : MonoBehaviour
         }
         else if (opened == 2 && !shake.isShaking())
         {
-            GameManager.Instance.LoadScene("CreditsScene");
+            GameManager.Instance.LoadScene("Cinematic2");
         }
     }
 }
