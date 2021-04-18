@@ -40,10 +40,11 @@ public class Talk : MonoBehaviour
                 canEnd = true;
                 dialogueManager.dialoguefinished = false;
             }
-            else if ( dialogueManager.gameObject.activeSelf && dialogueManager.endText.activeSelf)
+            else if (dialogueManager.endText.activeSelf)
                 dialogueManager.DisplayNextSentence();
+            else if (player != null && canEnd)
+                dialogueManager.skip = true;
         }
-        
 
         if (canEnd && !end && dialogueManager.IsDialogueFinished())
         {

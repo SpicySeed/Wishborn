@@ -11,7 +11,9 @@ public class DialogueManager : MonoBehaviour
     public bool dialoguefinished = false;
     [SerializeField] private StudioEventEmitter soundEmitter;
     Queue<string> sentences;
-    
+
+    public bool skip = false;
+
     void Start()
     {
         dialogueTrigger = GetComponentInParent<DialogueTrigger>();
@@ -24,7 +26,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguefinished = false;
         sentences.Clear();
-       
+
         foreach (string sentence in dialogue.sentences)
             sentences.Enqueue(sentence);
 
@@ -33,6 +35,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+
+
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -54,26 +58,35 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text += letter;
 
-            // TODO: AQUI HACER SONIDO DE ESCRIBIR LETRA
             //  RuntimeManager.PlayOneShotAttached("event:/hablar", this.gameObject);
-            //AudioManager.instance.Stop("Write");
-            //AudioManager.instance.Play("Write");
             //soundEmitter.Stop();
             soundEmitter.Play();
 
-            if (letter == '.') 
+            if (skip)
+            {
+                dialogueText.text = sentence;
+
+                skip = false;
+                endText.SetActive(true);
+
+                yield break;
+            }
+            else if (letter == '.')
                 yield return new WaitForSeconds(0.2f);
+            else if (letter == ',')
+                yield return new WaitForSeconds(0.1f);
             else
-                yield return new WaitForSeconds(0.1f); ;
+                yield return new WaitForSeconds(0.02f);
         }
 
+        skip = false;
         endText.SetActive(true);
     }
 
     public void EndDialogue()
     {
         dialogueText.text = "";
-        if(dialogueTrigger != null)
+        if (dialogueTrigger != null)
             dialogueTrigger.GetComponent<Animator>().SetBool("active", false);
         dialoguefinished = true;
         RuntimeManager.PlayOneShotAttached("event:/closeDialogue", this.gameObject);
