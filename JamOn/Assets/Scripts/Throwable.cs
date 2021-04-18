@@ -9,6 +9,8 @@ public class Throwable : MonoBehaviour
     [SerializeField] private Collider2D myCollider;
     [SerializeField] private float deltaTimeMultiplier = 1.2f;
 
+    public ParticleSystem breakParticles;
+
     public void FixedUpdate()
     {
         float increasedDeltaTime = deltaTimeMultiplier * Time.deltaTime;
@@ -20,6 +22,9 @@ public class Throwable : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Damage"))
         {
             RuntimeManager.PlayOneShotAttached("event:/orbeRompiendose", this.gameObject);
+            ParticleSystem particles = Instantiate(breakParticles, gameObject.transform.position, Quaternion.identity);
+            particles.Play();
+            Destroy(particles.gameObject, 4.0f);
             Destroy(gameObject);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
