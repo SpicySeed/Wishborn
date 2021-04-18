@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    private Health playerHealth;
-
     [SerializeField] private MovingFloor[] movingFloors;
-    // Más elementos de la sala
+    private Health playerHealth;
 
     private void Start()
     {
@@ -16,13 +14,13 @@ public class RoomManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerHealth.HasBeenRevived()) 
+        if (playerHealth.HasBeenRevived())
             Reset();
     }
 
     private void Reset()
     {
-        foreach (MovingFloor mf in movingFloors) mf.Reset();
-        // Más elementos de la sala
+        foreach (MovingFloor mf in movingFloors)
+            mf.Reset();
     }
 }

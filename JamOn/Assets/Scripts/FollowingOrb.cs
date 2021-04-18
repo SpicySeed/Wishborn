@@ -52,7 +52,7 @@ public class FollowingOrb : MonoBehaviour
             transform.position = Vector3.Lerp(segmentPoses[nSegment], chargeTransform.position, chargeTimer / chargeTime);
             chargeTimer += Time.deltaTime;
         }
-        else if(!chargingUp)
+        else if (!chargingUp)
             transform.position = segmentPoses[nSegment];
     }
 

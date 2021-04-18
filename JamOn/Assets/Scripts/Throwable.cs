@@ -22,7 +22,7 @@ public class Throwable : MonoBehaviour
             RuntimeManager.PlayOneShotAttached("event:/orbeRompiendose", this.gameObject);
             Destroy(gameObject);
         }
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             RuntimeManager.PlayOneShotAttached("event:/Colision anillo", this.gameObject);
         }
@@ -41,11 +41,11 @@ public class Throwable : MonoBehaviour
         else
         {
             Collider2D collider = player.GetComponent<Collider2D>();
-
             Collider2D[] collisions = Physics2D.OverlapBoxAll(transform.position, 1.25f * collider.bounds.size, 0.0f);
 
             if (collisions.Length > 0)
                 transform.position -= Vector3.up * collider.bounds.size.y * 0.8f;
+
             player.transform.position = transform.position;
         }
     }

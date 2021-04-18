@@ -27,6 +27,7 @@ public class TransitionManager : MonoBehaviour
             transitions[(int)transitionType].SetTrigger("Start");
             yield return new WaitForSeconds(transitionTime);
         }
+
         if (mode == Mode.END || mode == Mode.WHOLE)
         {
             transitions[(int)transitionType].SetTrigger("End");
@@ -34,6 +35,18 @@ public class TransitionManager : MonoBehaviour
         }
 
         transitions[(int)transitionType].gameObject.SetActive(false);
+    }
+
+    public IEnumerator StartTransitionAndLoad(Transitions transitionType, string sceneName)
+    {
+        if ((int)transitionType >= transitions.Length) yield return null;
+
+        transitions[(int)transitionType].gameObject.SetActive(true);
+        transitions[(int)transitionType].SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+
+        GameManager.Instance.EndLoad();
+        SceneManager.LoadScene(sceneName);
     }
 
     public IEnumerator StartTransitionAndLoad(Transitions transitionType, int sceneIndex)

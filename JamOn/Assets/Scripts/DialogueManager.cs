@@ -5,15 +5,15 @@ using UnityEngine.UI;
 using FMODUnity;
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private StudioEventEmitter soundEmitter;
     public Text dialogueText;
     public GameObject endText;
-    DialogueTrigger dialogueTrigger;
     public bool dialoguefinished = false;
-    [SerializeField] private StudioEventEmitter soundEmitter;
-    Queue<string> sentences;
-
-    public bool skip = false;
     public bool typing = false;
+    public bool skip = false;
+
+    DialogueTrigger dialogueTrigger;
+    Queue<string> sentences;
 
     void Start()
     {
@@ -55,9 +55,6 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-
-            //  RuntimeManager.PlayOneShotAttached("event:/hablar", this.gameObject);
-            //soundEmitter.Stop();
             soundEmitter.Play();
 
             if (skip)
@@ -84,6 +81,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         if (dialogueTrigger != null)
             dialogueTrigger.GetComponent<Animator>().SetBool("active", false);
+
         dialoguefinished = true;
         RuntimeManager.PlayOneShotAttached("event:/closeDialogue", this.gameObject);
         endText.SetActive(false);

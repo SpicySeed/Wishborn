@@ -64,6 +64,7 @@ public class Throw : MonoBehaviour
             startCastingParticles.Play();
             castingParticles.Stop();
             soundEmitter.SetParameter("Lanzar", 1);
+
             if (playingSound)
             {
                 playingSound = false;
@@ -107,11 +108,16 @@ public class Throw : MonoBehaviour
             playerAnim.SetBool("Casting", true);
             castingParticles.Play();
             soundEmitter.Event = "event:/lanzamiento";
+
             if (!playingSound)
+            {
                 soundEmitter.Stop();
+            }
+
             soundEmitter.SetParameter("Lanzar", 0);
             soundEmitter.OverrideAttenuation = true;
             soundEmitter.OverrideMaxDistance = 500;
+
             if (!playingSound)
             {
                 playingSound = true;
@@ -121,6 +127,7 @@ public class Throw : MonoBehaviour
         else if (throwable == null && !thrown)
         {
             playerAnim.SetBool("Casting", false);
+
             if (playingSound)
             {
                 playingSound = false;

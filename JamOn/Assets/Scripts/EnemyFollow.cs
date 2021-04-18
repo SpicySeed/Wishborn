@@ -8,11 +8,11 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private float stoppingDistance = 0.5f;
     [SerializeField] private float maxMoveSpeed = 0.1f;
     [SerializeField] private float delayTime = 2;
-    [SerializeField] private GameObject player;
-    [SerializeField] private Transform chasePosition;
     [SerializeField] private bool chaseLastPosition = false;
     [SerializeField] private bool useTime;
     [SerializeField] private float newPosTime = 1.0f;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform chasePosition;
     [SerializeField] private Transform hairDir;
     [SerializeField] private Transform tailDir;
     [SerializeField] private Hair hair;
@@ -76,8 +76,6 @@ public class EnemyFollow : MonoBehaviour
             StopChase();
             Invoke("ResumeChase", delayTime);
         }
-
-
     }
 
     private void FlipCharacter(Vector3 target)

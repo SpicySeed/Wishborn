@@ -46,14 +46,14 @@ public class CreditsManager : MonoBehaviour
         float timer = fadeTime;
 
         // Fade in
-        while(timer > 0.0f)
+        while (timer > 0.0f)
         {
             imagePanel.color = new Color(0.0f, 0.0f, 0.0f, 1.0f - timer / fadeTime);
             timer -= Time.deltaTime;
             yield return null;
         }
 
-        if(!p1.activeSelf && !p2.activeSelf)
+        if (!p1.activeSelf && !p2.activeSelf)
         {
             p1.SetActive(true);
             p2.SetActive(false);
@@ -70,6 +70,7 @@ public class CreditsManager : MonoBehaviour
         }
 
         timer = fadeTime;
+
         // Fade out
         while (timer > 0.0f)
         {
@@ -77,7 +78,6 @@ public class CreditsManager : MonoBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
-
 
         imagePanel.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(true);

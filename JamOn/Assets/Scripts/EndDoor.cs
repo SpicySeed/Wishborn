@@ -53,7 +53,7 @@ public class EndDoor : MonoBehaviour
         }
         else if (opened == 2 && !shake.isShaking())
         {
-            GameManager.Instance.LoadNextLevel();
+            GameManager.Instance.LoadScene("CreditsScene");
         }
     }
 }

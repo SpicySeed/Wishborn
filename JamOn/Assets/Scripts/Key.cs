@@ -16,7 +16,6 @@ public class Key : Collectable
 
     int picked = 0;
 
-
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && picked == 0 && collision.gameObject.GetComponent<Health>().IsAlive())
@@ -37,7 +36,7 @@ public class Key : Collectable
 
     private void Update()
     {
-        if(picked == 1 && Input.GetKeyDown(KeyCode.E))
+        if (picked == 1 && Input.GetKeyDown(KeyCode.E))
         {
             shake.ShakeCamera(shakeIntensity, shakeTime);
             keyRenderer.enabled = false;
@@ -46,6 +45,7 @@ public class Key : Collectable
             tutorial.enabled = false;
             picked = 2;
         }
+
         if (picked == 2 && !shake.isShaking())
         {
             GameManager.Instance.SetInputFreeze(false);
@@ -55,7 +55,6 @@ public class Key : Collectable
             lightMed.SetActive(true);
             lightFoc.SetActive(true);
         }
-
     }
 
     public bool HasBeenPicked()

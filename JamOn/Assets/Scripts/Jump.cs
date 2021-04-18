@@ -36,13 +36,13 @@ public class Jump : MonoBehaviour
         if (groundDetector.IsGrounded() && jumpTimer <= 0)
             groundedRemember = coyoteTime;
 
-        if (!GameManager.Instance.GetInputFreeze() && Input.GetKeyDown(KeyCode.Space)) 
+        if (!GameManager.Instance.GetInputFreeze() && Input.GetKeyDown(KeyCode.Space))
             inputTimer = inputRemerberTime;
 
-        if(inputTimer > 0.0f)
+        if (inputTimer > 0.0f)
             ExecuteJump();
 
-        if(groundDetector.IsGrounded())
+        if (groundDetector.IsGrounded())
             playerAnim.SetBool("Falling", false);
 
         if (myRigidbody.velocity.y < 0)

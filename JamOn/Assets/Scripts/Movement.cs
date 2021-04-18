@@ -54,7 +54,6 @@ public class Movement : MonoBehaviour
                 soundEmitter.Play();
                 sound = true;
             }
-            
 
             // Flip & hair rotation
             if (currentDirection == 1)

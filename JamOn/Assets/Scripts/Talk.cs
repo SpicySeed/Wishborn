@@ -13,14 +13,11 @@ public class Talk : MonoBehaviour
     GameObject player;
 
     bool end = false;
-
     bool canEnd = false;
 
     public GameObject tutorial;
-
-    public Dialogue dialogue;
-
     public GameObject myLight;
+    public Dialogue dialogue;
 
     private void Start()
     {

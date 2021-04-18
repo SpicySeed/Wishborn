@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager Instance;
     public float slowdownFactor = 0.05f;
     public float slowdownLength = 2f;
-    public static TimeManager Instance;
-    private bool stopped=false;
+    private bool stopped = false;
 
     private void Awake()
     {
@@ -40,11 +40,13 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
     }
+
     public void Resume()
     {
         ResetTimeScale();
         stopped = false;
     }
+
     public void Pause()
     {
         Time.timeScale = 0;

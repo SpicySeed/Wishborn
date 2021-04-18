@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimeCountManager : MonoBehaviour
 {
     [SerializeField] Text timerText;
-        
+
     void Start()
     {
         gameObject.SetActive((GameManager.Instance.IsTimeModeActive()));

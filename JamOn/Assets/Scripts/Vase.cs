@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class Coin : Collectable
+public class Vase : Collectable
 {
-    private int collected = 0;
-    private Health playerHealth = null;
-    private GroundDetector groundDetector = null;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private StudioEventEmitter emitter;
     [SerializeField] private SpriteRenderer[] brokenParts;
-    public Transform forceTransform;
     [SerializeField] private float brokenTime = 2.0f;
-    private float timer = 0.0f;
+
+    private Health playerHealth = null;
+    private GroundDetector groundDetector = null;
+    public Transform forceTransform;
+    private int collected = 0;
+    private float timer = 0;
 
     List<GameObject> instantiated;
 
@@ -46,12 +47,12 @@ public class Coin : Collectable
                 gameObject.SetActive(false);
         }
     }
+
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && collected == 0)
         {
-            if (spriteRenderer.enabled)
-                emitter.Play();
+            if (spriteRenderer.enabled) emitter.Play();
             spriteRenderer.enabled = false;
             Shatter();
             GameManager.Instance.ObjectCollected();

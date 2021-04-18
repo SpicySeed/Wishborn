@@ -24,25 +24,12 @@ public class PauseMenu : MonoBehaviour
                 panel.SetActive(false);
                 stopped = false;
                 tm.Resume();
-                /*if (!soundEmitter.IsPlaying())
-                    soundEmitter.Play();
-                soundEmitter.EventInstance.setParameterByName("TimeON", 1);*/
-
-                //if (!soundEmitter.IsPlaying())
-                //soundEmitter.Play();
             }
             else
             {
                 panel.SetActive(true);
                 stopped = true;
                 tm.Pause();
-                // soundEmitter.Stop();
-                /*if (!soundEmitter.IsPlaying())
-                    soundEmitter.Play();
-                soundEmitter.EventInstance.setParameterByName("TimeON", 0);*/
-                //soundEmitter.SetParameter();
-                // 
-                
             }
         }
     }
@@ -52,11 +39,6 @@ public class PauseMenu : MonoBehaviour
         panel.SetActive(false);
         stopped = false;
         tm.Resume();
-        /*if (!soundEmitter.IsPlaying())
-            soundEmitter.Play();
-        soundEmitter.EventInstance.setParameterByName("TimeON", 1);*/
-        // if (!soundEmitter.IsPlaying())
-        
     }
 
     public void LoadMainMenu()

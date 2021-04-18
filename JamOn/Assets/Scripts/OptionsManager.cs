@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
-
     [SerializeField] private Dropdown resDropdown;
     [SerializeField] private Toggle fullScreenToggle;
     [SerializeField] private Slider volumeSlider;

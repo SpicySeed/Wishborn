@@ -106,7 +106,6 @@ public class MovingFloor : MonoBehaviour
         calculated = true;
         oldColliders = currColliders;
         currColliders = Physics2D.OverlapBoxAll((Vector2)platformTransform.position + center, size * platformTransform.lossyScale * size, 0.0f);
-   
 
         for (int i = 0; i < currColliders.Length; i++)
         {
