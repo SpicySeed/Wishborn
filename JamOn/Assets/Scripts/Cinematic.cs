@@ -12,6 +12,7 @@ public class Cinematic : MonoBehaviour
     [SerializeField] private string nextSceneName;
     [SerializeField] private TransitionManager transitionManager;
     [SerializeField] private float initialDelay = 0.5f;
+    [SerializeField] private float endDelay = 0.5f;
 
     int dialogueIndex = 0;
 
@@ -36,6 +37,7 @@ public class Cinematic : MonoBehaviour
     {
         dialogueManager = Dialogue.GetComponentInChildren<DialogueManager>();
         dialogueTrigger = Dialogue.GetComponent<DialogueTrigger>();
+        GameManager.Instance.SetOnDialogue(true);
         if (timePerDialogue.Length < dialogue.sentences.Length)
         {
             timePerDialogue = new float[dialogue.sentences.Length];
@@ -86,7 +88,7 @@ public class Cinematic : MonoBehaviour
             canEnd = false;
 
             skipButton.gameObject.SetActive(false);
-            EndCinematic();
+            Invoke("EndCinematic", endDelay);
         }
 
         if (Input.anyKeyDown && !skipButton.gameObject.activeSelf)
@@ -97,7 +99,6 @@ public class Cinematic : MonoBehaviour
     {
         Dialogue.SetActive(true);
         dialogueTrigger.dialogue = dialogue;
-        GameManager.Instance.SetInputFreeze(true);
 
         yield return 0.1f;
         dialogueTrigger.TriggerDialogue();

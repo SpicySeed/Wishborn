@@ -1842,6 +1842,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1490154666}
     - target: {fileID: 8351448565822440712, guid: f119d401b912cdd4f915bae7920e2d8f, type: 3}
+      propertyPath: endDelay
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351448565822440712, guid: f119d401b912cdd4f915bae7920e2d8f, type: 3}
       propertyPath: initialDelay
       value: 20
       objectReference: {fileID: 0}
@@ -1851,7 +1855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8351448565822440712, guid: f119d401b912cdd4f915bae7920e2d8f, type: 3}
       propertyPath: defaultTimePerDialogue
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8351448565822440712, guid: f119d401b912cdd4f915bae7920e2d8f, type: 3}
       propertyPath: dialogue.sentences.Array.size

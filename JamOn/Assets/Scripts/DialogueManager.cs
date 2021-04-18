@@ -32,7 +32,6 @@ public class DialogueManager : MonoBehaviour
         foreach (string sentence in dialogue.sentences)
             sentences.Enqueue(sentence);
 
-        GameManager.Instance.SetOnDialogue(true);
         DisplayNextSentence();
     }
 

@@ -34,6 +34,7 @@ public class Talk : MonoBehaviour
             if (tutorial.activeSelf)
             {
                 StartCoroutine(StartTalking());
+                GameManager.Instance.SetOnDialogue(true);
                 dialogueManager.dialoguefinished = false;
             }
             else if (canEnd && !dialogueManager.typing)
