@@ -6,12 +6,19 @@ using UnityEngine.UI;
 public class DeathManager : MonoBehaviour
 {
     [SerializeField] private Text deathsText;
+    private Animator anim;
     private int numDeaths = 0;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     public void PlayerDeath(int numDeaths)
     {
         this.numDeaths = numDeaths;
         UpdateText();
+        anim.Play("PlayerDeath");
     }
 
     private void UpdateText()

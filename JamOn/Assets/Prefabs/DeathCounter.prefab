@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7730229959596741955}
   - component: {fileID: 7730229959596741954}
+  - component: {fileID: 3232399810538667126}
   m_Layer: 0
   m_Name: DeathCounter
   m_TagString: Untagged
@@ -52,6 +53,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathsText: {fileID: 7730229961219806112}
+--- !u!95 &3232399810538667126
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730229959596741952}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98ac66988e4c01c4f8a09a21e9dbef56, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7730229959806481265
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.79999924, y: 2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7730229960529345814

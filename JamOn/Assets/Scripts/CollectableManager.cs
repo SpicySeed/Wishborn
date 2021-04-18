@@ -7,11 +7,13 @@ public class CollectableManager : MonoBehaviour
 {
     [SerializeField] private Text collectableText;
     [SerializeField] private Transform collectablesParent;
+    private Animator anim;
     private int numCollected = 0, maxNumber;
 
     private void Start()
     {
         maxNumber = collectablesParent.childCount;
+        anim = GetComponent<Animator>();
         UpdateText();
     }
 
@@ -25,6 +27,7 @@ public class CollectableManager : MonoBehaviour
     {
         numCollected++;
         UpdateText();
+        anim.Play("CollectableCollected");
     }
 
     private void UpdateText()
