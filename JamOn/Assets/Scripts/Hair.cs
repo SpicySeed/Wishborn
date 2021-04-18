@@ -54,7 +54,7 @@ public class Hair : MonoBehaviour
 
         for (int i = 1; i < segmentPoses.Length; i++)
         {
-            segmentPoses[i] = segmentPoses[i - 1] + targetDir.right * targetDist + new Vector3(0, -0.002f * Mathf.Pow(i, 2.0f));
+            segmentPoses[i] = segmentPoses[i - 1] + targetDir.right * targetDist + new Vector3(0, -0.002f * Mathf.Pow(i, 2.0f), 0);
         }
         lineRend.SetPositions(segmentPoses);
     }

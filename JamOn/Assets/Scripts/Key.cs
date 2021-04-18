@@ -57,6 +57,7 @@ public class Key : Collectable
             GameManager.Instance.StopTimer(false);
             picked = 3;
             boss.SetActive(true);
+            boss.GetComponent<EnemyFollow>().ResetHair();
             lightMed.SetActive(true);
             lightFoc.SetActive(true);
         }

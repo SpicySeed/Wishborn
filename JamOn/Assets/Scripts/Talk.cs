@@ -47,10 +47,16 @@ public class Talk : MonoBehaviour
             end = true;
             canEnd = false;
 
-            GameManager.Instance.SetInputFreeze(false);
-            GetComponent<BoxCollider2D>().enabled = false;
-            myLight.SetActive(false);
+            Invoke("DialogueEnd", 0.5f);
         }
+    }
+
+    private void DialogueEnd()
+    {
+        GameManager.Instance.SetOnDialogue(false);
+        GameManager.Instance.SetInputFreeze(false);
+        myLight.SetActive(false);
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -79,6 +85,9 @@ public class Talk : MonoBehaviour
         dialogueTrigger.dialogue = dialogue;
 
         GameManager.Instance.SetInputFreeze(true);
+        GameManager.Instance.SetOnDialogue(true);
+        Throw playerThrow = player.GetComponentInChildren<Throw>();
+        playerThrow.StopCasting();
 
         yield return 0.1f;
 
