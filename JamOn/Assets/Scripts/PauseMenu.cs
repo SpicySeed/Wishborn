@@ -24,9 +24,9 @@ public class PauseMenu : MonoBehaviour
                 panel.SetActive(false);
                 stopped = false;
                 tm.Resume();
-                if (!soundEmitter.IsPlaying())
+                /*if (!soundEmitter.IsPlaying())
                     soundEmitter.Play();
-                soundEmitter.EventInstance.setParameterByName("TimeON", 1);
+                soundEmitter.EventInstance.setParameterByName("TimeON", 1);*/
 
                 //if (!soundEmitter.IsPlaying())
                 //soundEmitter.Play();
@@ -37,9 +37,9 @@ public class PauseMenu : MonoBehaviour
                 stopped = true;
                 tm.Pause();
                 // soundEmitter.Stop();
-                if (!soundEmitter.IsPlaying())
+                /*if (!soundEmitter.IsPlaying())
                     soundEmitter.Play();
-                soundEmitter.EventInstance.setParameterByName("TimeON", 0);
+                soundEmitter.EventInstance.setParameterByName("TimeON", 0);*/
                 //soundEmitter.SetParameter();
                 // 
                 
@@ -52,9 +52,9 @@ public class PauseMenu : MonoBehaviour
         panel.SetActive(false);
         stopped = false;
         tm.Resume();
-        if (!soundEmitter.IsPlaying())
+        /*if (!soundEmitter.IsPlaying())
             soundEmitter.Play();
-        soundEmitter.EventInstance.setParameterByName("TimeON", 1);
+        soundEmitter.EventInstance.setParameterByName("TimeON", 1);*/
         // if (!soundEmitter.IsPlaying())
         
     }
