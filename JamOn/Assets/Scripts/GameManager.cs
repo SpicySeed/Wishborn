@@ -68,11 +68,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(transitionManager.StartTransitionAndLoad(TransitionManager.Transitions.FADE, currentLevel));
     }
 
-    public void ResetCurrentLevel()
-    {
-        currentLevel = 1;
-    }
-
     public void ObjectCollected()
     {
         collectableManager.ObjectCollected();
@@ -111,6 +106,7 @@ public class GameManager : MonoBehaviour
         time = 0.0f;
         numDeaths = 0;
         numCollectables = 0;
+        currentLevel = 1;
     }
 
     public void SetTimedModeActive(bool active)

@@ -32,7 +32,6 @@ public class PauseMenu : MonoBehaviour
                 pausePanel.SetActive(true);
                 optionsPanel.SetActive(false);
                 stopped = false;
-               
                 if (!soundEmitter.IsPlaying())
                     soundEmitter.Play();
                 soundEmitter.EventInstance.setParameterByName("TimeON", 1);
@@ -58,7 +57,7 @@ public class PauseMenu : MonoBehaviour
     {
         panel.SetActive(false);
         stopped = false;
-        if(!soundEmitter.IsPlaying())
+        if (!soundEmitter.IsPlaying())
             soundEmitter.Play();
         soundEmitter.EventInstance.setParameterByName("TimeON", 1);
         tm.Resume();
@@ -69,7 +68,6 @@ public class PauseMenu : MonoBehaviour
     {
         GameManager gm = GameManager.Instance;
         gm.LoadScene(0);
-        gm.ResetCurrentLevel();
         tm.Resume();
         TimeEvent.Stop();
     }
