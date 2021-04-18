@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             return;
         }
+        Instance.onDialogue = false;
         Instance.transitionManager = this.transitionManager;
         Instance.collectableManager = this.collectableManager;
         Instance.deathManager = this.deathManager;
