@@ -372,6 +372,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-8449001323662589884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Time/TimeON
+  m_EditorClassIdentifier: 
+  Name: TimeON
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-8367935951314641286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +558,29 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-8096778646271171787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/PausaTime
+  m_EditorClassIdentifier: 
+  Path: snapshot:/PausaTime
+  guid: 46eaa9ab64e0ba4a92312d698785f367
+  Banks:
+  - {fileID: -7937342939415361955}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-7937342939415361955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +596,7 @@ MonoBehaviour:
   Path: ../FMOD PROJECT/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637543477721464543
+  lastModified: 637543502222378450
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -846,6 +889,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-7033335060403459462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level3Music/Boss
+  m_EditorClassIdentifier: 
+  Name: Boss
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-6943026166395377995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +972,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 244218
+--- !u!114 &-6787922734386506809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Lanzamiento/Lanzar
+  m_EditorClassIdentifier: 
+  Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-6749224332645591181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1699,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1194
+--- !u!114 &-5075492796263215241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Lanzamiento/Lanzar
+  m_EditorClassIdentifier: 
+  Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-5019213742252374743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,6 +2248,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &-4150648245043445707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pasos/Ground
+  m_EditorClassIdentifier: 
+  Name: Ground
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-4097086402448122909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2428,6 +2551,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-3707910454989879081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pasos/Ground
+  m_EditorClassIdentifier: 
+  Name: Ground
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-3695795772259161054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2674,6 +2817,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-2911753487199117595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Lanzamiento/Lanzar
+  m_EditorClassIdentifier: 
+  Name: Lanzar
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-2862255439530137565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2901,7 +3064,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 8019868890834076526}
+  - {fileID: -3707910454989879081}
   MinDistance: 1
   MaxDistance: 20
   Length: 455
@@ -2920,11 +3083,11 @@ MonoBehaviour:
   Path: ../FMOD PROJECT/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637543477721494508
+  lastModified: 637543502222418394
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2508
+    Value: 2594
   Exists: 1
 --- !u!114 &-2505075606228087708
 MonoBehaviour:
@@ -3751,6 +3914,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &-276013569474227316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level3Music/Boss
+  m_EditorClassIdentifier: 
+  Name: Boss
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-157447055017027841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3771,7 +3954,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 3437565260782527462}
+  - {fileID: -8449001323662589884}
   MinDistance: 0
   MaxDistance: 0
   Length: 1883
@@ -3869,12 +4052,13 @@ MonoBehaviour:
   - {fileID: -136049217569099096}
   - {fileID: -4888107961966014526}
   - {fileID: 1154850075874991611}
+  - {fileID: -8096778646271171787}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7937342939415361955}
   StringsBanks:
   - {fileID: -2535614820820378595}
-  stringsBankWriteTime: 637543477721494508
+  stringsBankWriteTime: 637543502222418394
   cacheVersion: 6
 --- !u!114 &27596400166826083
 MonoBehaviour:
@@ -4039,6 +4223,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &579113032510265040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Time/TimeON
+  m_EditorClassIdentifier: 
+  Name: TimeON
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &583393086191293455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4678,6 +4882,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &2080938910888020552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Pasos/Ground
+  m_EditorClassIdentifier: 
+  Name: Ground
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &2196447180516657275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4964,6 +5188,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &2708680803308338506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Level3Music/Boss
+  m_EditorClassIdentifier: 
+  Name: Boss
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &2725907088766627258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5314,7 +5558,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -8581395903900486496}
+  - {fileID: -276013569474227316}
   MinDistance: 0
   MaxDistance: 0
   Length: 420218
@@ -5984,7 +6228,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -7886472929685781985}
+  - {fileID: -6787922734386506809}
   MinDistance: 1
   MaxDistance: 20
   Length: 5717
@@ -6384,6 +6628,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 422243
+--- !u!114 &5984369697820069607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Time/TimeON
+  m_EditorClassIdentifier: 
+  Name: TimeON
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &6068048636652065469
 MonoBehaviour:
   m_ObjectHideFlags: 0
